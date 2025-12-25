@@ -1,43 +1,68 @@
-const stateSelect = document.getElementById("state");
-const citySelect = document.getElementById("city");
+document.addEventListener("DOMContentLoaded", function () {
 
-// ONLINE JSON FILE
-const dataURL =
-  "https://raw.githubusercontent.com/sab99r/Indian-States-And-Districts/master/states-and-districts.json";
+  const country = document.querySelector('#country');
+  const state = document.querySelector('#state');
+  const city = document.querySelector('#city');
 
-let indiaData = [];
+  let countries = [];
 
-// Load data from internet
-fetch(dataURL)
-  .then(response => response.json())
-  .then(data => {
-    indiaData = data.states;
-
-    // Fill state dropdown
-    indiaData.forEach(state => {
-      const option = document.createElement("option");
-      option.value = state.state;
-      option.text = state.state;
-      stateSelect.appendChild(option);
+  fetch("https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/refs/heads/master/json/countries%2Bstates%2Bcities.json")
+    .then(res => res.json())
+    .then(data => {
+      countries = data;
+      country.innerHTML = `<option value="">Select Country</option>`;
+      data.forEach(c => {
+        country.innerHTML += `<option value="${c.name}" data-id="${c.id}">${c.name}</option>`;
+      });
     });
+
+  /* COUNTRY CHANGE */
+  country.addEventListener("change", function () {
+  state.innerHTML = `<option value="">Select State</option>`;
+  city.innerHTML = `<option value="">Select City</option>`;
+
+  if (!this.value) return;
+
+  const countryId =
+    this.options[this.selectedIndex].dataset.id;
+
+  const selectedCountry =
+    countries.find(c => c.id == countryId);
+
+  selectedCountry.states.forEach(s => {
+    state.innerHTML += `
+      <option value="${s.name}" data-id="${s.id}">
+        ${s.name}
+      </option>`;
   });
+});
 
-// When state changes
-stateSelect.addEventListener("change", function () {
-  citySelect.innerHTML = "<option value=''>Select City</option>";
 
-  const selectedState = this.value;
+  /* STATE CHANGE */
+  state.addEventListener("change", function () {
+  city.innerHTML = `<option value="">Select City</option>`;
 
-  const stateObj = indiaData.find(
-    s => s.state === selectedState
-  );
+  if (!this.value) return;
 
-  if (!stateObj) return;
+  const countryId =
+    country.options[country.selectedIndex].dataset.id;
 
-  stateObj.districts.forEach(city => {
-    const option = document.createElement("option");
-    option.value = city;
-    option.text = city;
-    citySelect.appendChild(option);
+  const stateId =
+    this.options[this.selectedIndex].dataset.id;
+
+  const selectedCountry =
+    countries.find(c => c.id == countryId);
+
+  const selectedState =
+    selectedCountry.states.find(s => s.id == stateId);
+
+  selectedState.cities.forEach(c => {
+    city.innerHTML += `
+      <option value="${c.name}">
+        ${c.name}
+      </option>`;
   });
+});
+
+
 });

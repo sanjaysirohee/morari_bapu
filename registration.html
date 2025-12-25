@@ -39,6 +39,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	<script src="js/bootstrap.bundle.min.js"></script>
+	<script src="https://unpkg.com/country-state-city@3.2.1/dist/csc.min.js"></script>
 
 </head>
 <body>
@@ -316,55 +317,76 @@
   <div class="contact_1r">
 
     <!-- Name & Email -->
+	 <form action="sendemail.php" method="post" enctype="multipart/form-data">
     <div class="contact_1ri row">
-      <div class="col-md-6">
+      <div class="col-md-4">
         <div class="contact_1ril">
-          <h6>Full Name (as per ID):</h6>
-          <input class="form-control" placeholder="Your Name*" type="text">
+          <h6>First Name (as per ID):</h6>
+          <input class="form-control" placeholder="Your First Name*" name="first_name" type="text" required>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="contact_1ril">
+          <h6>Middle Name (as per ID):</h6>
+          <input class="form-control" placeholder="Your Middle Name" name="middle_name" type="text">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="contact_1ril">
+          <h6>Last Name (as per ID):</h6>
+          <input class="form-control" placeholder="Your Last Name" name="last_name" type="text">
         </div>
       </div>
 
-      <div class="col-md-6">
-        <div class="contact_1ril">
-          <h6>Email ID (Optional):</h6>
-          <input class="form-control" placeholder="Mail*" type="text">
-        </div>
-      </div>
-    </div>
+      
 
     <!-- Phone Numbers -->
     <div class="contact_1ri row mt-4">
-      <div class="col-md-6">
+		<div class="col-md-4">
+        <div class="contact_1ril">
+          <h6>Email ID <br>(Required):</h6>
+          <input class="form-control" placeholder="Mail*" name="main_email_id" type="text" required>
+        </div>
+      </div>
+      <div class="col-md-4">
         <div class="contact_1ril">
           <h6>Mobile Number (WhatsApp preferred):</h6>
-          <input class="form-control" placeholder="Your Phone" type="text">
+          <input class="form-control" placeholder="Your Phone*" name="main_phone_no" type="text" required>
         </div>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-4">
         <div class="contact_1ril">
           <h6>Alternate Mobile Number (Optional):</h6>
-          <input class="form-control" placeholder="Your Phone" type="text">
+          <input class="form-control" placeholder="Your Phone" name="alt_phone_no" type="text">
         </div>
       </div>
     </div>
 
     <!-- State & City -->
     <div class="contact_1ri row mt-4">
-      <div class="col-md-6">
+      <div class="col-md-4">
+        <div class="contact_1ril">
+          <h6>Select Country</h6>
+          <select class="form-control" name="country" id="country">
+           
+          </select>
+        </div>
+      </div>
+      <div class="col-md-4">
         <div class="contact_1ril">
           <h6>Select State</h6>
-          <select class="form-control" id="state">
-            <option value="">Select State</option>
+          <select class="form-control" name="state" id="state">
+            
           </select>
         </div>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-4">
         <div class="contact_1ril">
           <h6>Select City</h6>
-          <select class="form-control" id="city">
-            <option value="">Select City</option>
+          <select class="form-control" name="city" id="city">
+            
           </select>
         </div>
       </div>
@@ -372,10 +394,10 @@
 
     <!-- ID Proof -->
     <div class="contact_1ri row mt-4">
-      <div class="col-md-6">
+      <div class="col-md-4">
         <div class="contact_1ril">
           <h6>ID Proof Type:</h6>
-          <select class="form-control">
+          <select class="form-control" name="main_id_proof_type" required>
             <option value="">Select ID</option>
             <option>Aadhaar</option>
             <option>PAN</option>
@@ -385,10 +407,17 @@
         </div>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-4">
+        <div class="contact_1ril">
+          <h6>ID Proof Upload:</h6>
+          <input class="form-control" name="main_id_proof" type="file" accept=".jpg,.jpeg,.png,.pdf" required>
+        </div>
+      </div>
+
+      <div class="col-md-4">
         <div class="contact_1ril">
           <h6>ID Proof Number:</h6>
-          <input class="form-control" type="text">
+          <input class="form-control" name="main_id_proof_no" type="text" required>
         </div>
       </div>
     </div>
@@ -400,12 +429,12 @@
           <h6>Will you attend Ram Katha?</h6>
 
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="attend">
+            <input class="form-check-input" type="radio" name="attend" value="Yes">
             <label class="form-check-label">Yes</label>
           </div>
 
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="attend">
+            <input class="form-check-input" type="radio" name="attend" value="No">
             <label class="form-check-label">No</label>
           </div>
         </div>
@@ -414,14 +443,87 @@
       <div class="col-md-6">
         <div class="contact_1ril">
           <h6>Number of Persons Attending:</h6>
-
-          <div class="form-check"><input type="radio" name="persons"> 1</div>
-          <div class="form-check"><input type="radio" name="persons"> 2</div>
-          <div class="form-check"><input type="radio" name="persons"> 3</div>
-          <div class="form-check">More (please specify):<input type="text" name="persons"></div>
+		  <select class="form-control" name="total_people" id="total_people" required>
+            <option value="">Select people</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
         </div>
       </div>
+
     </div>
+	<div class="contact_1ri row mt-4">
+
+		<div id="peopleContainer"></div>
+		<template id="personTemplate">
+	  <div class="person-box mt-3">
+		<h5>Person <span class="person-no"></span></h5>
+		<hr>
+		<div class="contact_1ri row mt-4">
+			<div class="col-md-4">
+				<div class="contact_1ril">
+					<label>Full Name</label>
+					<input type="text" name="full_name[]" class="form-control" placeholder="Enter Name" required>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="contact_1ril">
+					<label>Email Id</label>
+					<input type="text" name="email_id[]" class="form-control" placeholder="Enter Email" required >
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="contact_1ril">
+					<label>Phone Number</label>
+					<input type="text" name="phone_number[]" class="form-control" placeholder="Enter PhoneNo." required>
+				</div>
+			</div>
+		</div>
+		<div class="contact_1ri row mt-4">
+
+			<div class="col-md-3">
+				<div class="contact_1ril">
+					<label>ID Proof Type</label>
+					<select class="form-control" name="id_proof_type[]" required>
+						<option value="">Select ID</option>
+						<option>Aadhaar</option>
+						<option>PAN</option>
+						<option>Voter ID</option>
+						<option>Passport</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="contact_1ril">
+					<label>ID Proof Number</label>
+					<input type="text" name="id_proof_no[]" class="form-control" placeholder="Enter ID Number" required>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="contact_1ril">
+					<label>ID Proof File</label>
+					<input type="file" name="id_proof[]" accept=".jpg,.jpeg,.png,.pdf" class="form-control" required>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="contact_1ril">
+					<label>Photo</label>
+					<input type="file" name="photo[]" accept=".jpg,.jpeg,.png" class="form-control" required>
+				</div>
+			</div>
+
+		</div>
+		</div>
+	  <hr>
+	</template>
+
+	</div>
+
 
     <!-- Accommodation -->
     <div class="contact_1ri row mt-4">
@@ -430,14 +532,21 @@
           <h6>Do you require accommodation?</h6>
 
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="stay">
+            <input class="form-check-input" type="radio" name="stay" value="Yes">
             <label class="form-check-label">Yes</label>
           </div>
 
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="stay">
+            <input class="form-check-input" type="radio" name="stay" value="No">
             <label class="form-check-label">No</label>
           </div>
+        </div>
+      </div>
+
+	  <div class="col-md-6">
+        <div class="contact_1ril">
+          <h6>Upload Photo:</h6>
+          <input class="form-control" type="file" name="main_photo" accept=".jpg,.jpeg,.png" required>
         </div>
       </div>
     </div>
@@ -446,8 +555,9 @@
     <div class="contact_1ri row mt-4">
       <div class="col-md-6">
         <div class="contact_1ril">
-          <h6>Check-In Date</h6>
-          <select class="form-control">
+          <h6>Date of Arrival</h6>
+          <select class="form-control" name="arrival_date" required>
+            <option value="">Select date</option>
             <option value="17 January 2026">17 January 2026</option>
 			<option value="18 January 2026">18 January 2026</option>
 			<option value="19 January 2026">19 January 2026</option>
@@ -462,9 +572,10 @@
 
       <div class="col-md-6">
         <div class="contact_1ril">
-          <h6>Check-Out Date</h6>
-          <select class="form-control">
-            <!-- <option value="17 January 2026">1 January 2026</option> -->
+          <h6>Date of Departure</h6>
+          <select class="form-control" name="departure_date" required>
+            
+			<option value="">Select date</option>
 			<option value="18 January 2026">18 January 2026</option>
 			<option value="19 January 2026">19 January 2026</option>
 			<option value="20 January 2026">20 January 2026</option>
@@ -483,10 +594,10 @@
       <div class="col-md-12">
         <div class="contact_1ril">
           <h6>Full Address:</h6>
-          <input class="form-control" type="text">
+          <input class="form-control" name="address" type="text">
 
           <h6 class="mt-4">
-            <a class="button" href="#">Send Message</a>
+            <input type="submit" class="button" value="Send Message">
           </h6>
 
           <p class="mt-3">
@@ -498,6 +609,7 @@
 
   </div>
 </div>
+</form>
 
   </div>
    <div class="row contact_2 mt-4">
@@ -643,7 +755,8 @@
 
 
 <script src="js/common.js"></script>
-  <script src="js/cities.js"></script>
+<script src="js/cities.js"></script>
+<script src="js/template.js"></script>
 
 
 </body>
