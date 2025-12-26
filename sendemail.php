@@ -118,18 +118,6 @@ for ($i = 0; $i < count($_POST['full_name']); $i++) {
   $idType = $_POST['id_proof_type'][$i];
   $idNo = $_POST['id_proof_no'][$i];
 
-  // files
-  $idFileName = time().'_'.$_FILES['id_proof']['name'][$i];
-  move_uploaded_file(
-    $_FILES['id_proof']['tmp_name'][$i],
-    "uploads/id/".$idFileName
-  );
-
-  $photoFileName = time().'_'.$_FILES['photo']['name'][$i];
-  move_uploaded_file(
-    $_FILES['photo']['tmp_name'][$i],
-    "uploads/photo/".$photoFileName
-  );
 
   // insert person
   $stmt2 = $conn->prepare("
@@ -150,6 +138,7 @@ for ($i = 0; $i < count($_POST['full_name']); $i++) {
     $photoFileName
   );
 
+
   $stmt2->execute();
 }
 
@@ -161,11 +150,11 @@ $conn->close();
     try {
         $mail = new PHPMailer(true);
         $mail->isSMTP(); // using SMTP protocol
-        $mail->Host = '103.133.214.192'; // SMTP host as gmail
+        $mail->Host = 'mail.crmwala.com'; // SMTP host as gmail
         $mail->SMTPAuth = true;  // enable smtp authentication
-        $mail->Username = 'ragini.k@veloxn.com';  // sender gmail host
-        $mail->Password = 'kR.pwd@121'; // sender gmail host password
-        $mail->SMTPSecure = 'tls';  // for encrypted connection
+        $mail->Username = 'emails@crmwala.com';  // sender gmail host
+        $mail->Password = 'rkt.email@121'; // sender gmail host password
+        $mail->SMTPSecure = 'ssl';  // for encrypted connection
         $mail->isHTML(true);
         $mail->SMTPOptions = array(
             'ssl' => array(
@@ -174,14 +163,14 @@ $conn->close();
                 'allow_self_signed' => true
             )
         );
-        $mail->Port = 587;   // port for SMTP
+        $mail->Port = 465;   // port for SMTP
 
       $AdminMessage=
         "<h3> New Registration of {$firstname}</h3>
         <h3>{$firstname} information</h3>
         <p><b>Name:</b> {$firstname} {$middlename} {$lastname}</p>
         <p><b>Phone Number:</b> {$userPhone}</p>
-        <p><b>Alternat Phone Number:</b> {$userPhone}</p>
+        <p><b>Alternat Phone Number:</b> {$altuserphone}</p>
         <p><b>Email Id:</b> {$senderEmail}</p>
         <p><b>Country:</b> {$country}</p>
         <p><b>State:</b> {$state}</p>
@@ -194,17 +183,66 @@ $conn->close();
         <p><b>Arrival Date:</b> {$arrivaldate}</p>
         <p><b>Departure Date:</b> {$departuredate}</p>
         <p><b>Address:</b> {$address}</p>
+        
         "
         ;
 
+        $peopleIdFiles = [];
+        $peoplePhotoFiles = [];
 
-      $mail->setFrom('ragini.k@veloxn.com', "Ram Katha Samiti, Delhi");
+        for ($i = 0; $i < count($_POST['full_name']); $i++) {
+
+          $idFileName = time().'_'.$i.'_'.$_FILES['id_proof']['name'][$i];
+          $idPath = "uploads/id/".$idFileName;
+
+          move_uploaded_file($_FILES['id_proof']['tmp_name'][$i], $idPath);
+
+          $photoFileName = time().'_'.$i.'_'.$_FILES['photo']['name'][$i];
+          $photoPath = "uploads/photo/".$photoFileName;
+
+          move_uploaded_file($_FILES['photo']['tmp_name'][$i], $photoPath);
+
+          // save paths
+          $peopleIdFiles[] = $idPath;
+          $peoplePhotoFiles[] = $photoPath;
+        }
+
+        $peopleInfo = "<h3>Attending People</h3>";
+
+        for ($i = 0; $i < count($_POST['full_name']); $i++) {
+
+          $peopleInfo .= "
+            <hr>
+            <p><b>Name:</b> {$_POST['full_name'][$i]}</p>
+            <p><b>Email:</b> {$_POST['email_id'][$i]}</p>
+            <p><b>Phone:</b> {$_POST['phone_number'][$i]}</p>
+            <p><b>Id Proof:</b> {$_POST['id_proof_type'][$i]}</p>
+            <p><b>Id number:</b> {$_POST['id_proof_no'][$i]}</p>
+          ";
+          if (!empty($peopleIdFiles[$i]) && file_exists($peopleIdFiles[$i])) {
+            $mail->addAttachment(
+              $peopleIdFiles[$i],
+              $_POST['full_name'][$i] . "_ID_" . $_POST['id_proof_type'][$i] . ".pdf"
+            );
+          }
+
+          if (!empty($peoplePhotoFiles[$i]) && file_exists($peoplePhotoFiles[$i])) {
+            $mail->addAttachment(
+              $peoplePhotoFiles[$i],
+              $_POST['full_name'][$i] . "_Photo.jpg"
+            );
+          }
+
+        }
+
+
+      $mail->setFrom('emails@crmwala.com', "Ram Katha Samiti, Delhi");
       if ($isValidEmail) $mail->addReplyTo($senderEmail, $firstname);
-      $mail->addAddress('ragini.k@veloxn.com', "Admin");
+      $mail->addAddress('emails@crmwala.com', "Admin");
       $mail->Subject = "New Registration";
-      $mail->Body = $AdminMessage;
-      $mail->addAttachment($iddestination, $idName);
-      $mail->addAttachment($photodestination, $photoName);
+      $mail->Body = $AdminMessage . $peopleInfo;
+      $mail->addAttachment($iddestination, $firstname."_ID_" . $idprooftype . ".pdf");
+      $mail->addAttachment($photodestination, $firstname. "_Photo.jpg");
       try {
         $mail->send();
         // echo 'Admin email sent successfully';
@@ -215,12 +253,12 @@ $conn->close();
       if($isValidEmail){
         $userMail = new PHPMailer(true);
         $userMail->isSMTP();
-        $userMail->Host = '103.133.214.192';
+        $userMail->Host = 'mail.crmwala.com';
         $userMail->SMTPAuth = true;
-        $userMail->Username = 'ragini.k@veloxn.com';
-        $userMail->Password = 'kR.pwd@121';
-        $userMail->SMTPSecure = 'tls';
-        $userMail->Port = 587;
+        $userMail->Username = 'emails@crmwala.com';
+        $userMail->Password = 'rkt.email@121';
+        $userMail->SMTPSecure = 'ssl';
+        $userMail->Port = 465;
         $userMail->isHTML(true);
         $userMail->SMTPOptions = [
             'ssl' => [
@@ -231,10 +269,11 @@ $conn->close();
         ];
         $userMessage=
           "<p><b>Dear Devotee</b>,</p>
-            <p>Your registration to attend Ram Katha in Delhi from 17 January 2026 to 25 January 2026 has been successfully completed.</p>
+            <p>Your registration to attend Ram Katha in Delhi from ${arrivaldate} to ${departuredate} has been successfully completed.</p>
             <p>We welcome you to visit the Ram Katha Office for hotel confirmation.
             👉 Hotel allotment will be done on a first come, first basis.<br></p>
-            <ul><b>Please note:</b>
+            <b>Please note:</b>
+            <ul>
               <li>Accommodation will be provided on a sharing basis.</li>
               <li>Accommodation is subject to availability.</li>
               <li>The Ram Katha Samiti will try its best to accommodate maximum devotees.</li>
@@ -244,7 +283,7 @@ $conn->close();
             <p>We look forward to your presence and blessings.</p><br>
             <br><p>Jai Shri Ram 🙏<br><b>Ram Katha Samiti, Delhi</b></p>";
             
-        $userMail->setFrom('ragini.k@veloxn.com', "Ram Katha Samiti, Delhi");
+        $userMail->setFrom('emails@crmwala.com', "Ram Katha Samiti, Delhi");
         $userMail->addAddress($senderEmail, $firstname);
         $userMail->Subject = 'Your Registration is successful';
         $userMail->Body = $userMessage;
