@@ -10,8 +10,8 @@ $dbname = "moraridb";
 }else{
  $servername = "localhost";
  $username = "morari_bapu1db";
- $password = "india@vbd121";
- $dbname = "morari_bapu1db";
+ $password = "rkt.ftp@121";
+ $dbname = "crmwala_moraribapudb";
 }
 
 
