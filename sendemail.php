@@ -177,18 +177,34 @@ $conn->close();
         $mail->Port = 587;   // port for SMTP
 
       $AdminMessage=
-        "<h3> New Message from Veloxn Private Limited</h3>
-        <h3> {$firstname} has a Query</h3>
-        <p><b>Name:</b> {$firstname}</p>
-        <p><b>Phone no:</b> {$userPhone}</p>
-        <p><b>Email:</b> {$senderEmail}</p>";
+        "<h3> New Registration of {$firstname}</h3>
+        <h3>{$firstname} information</h3>
+        <p><b>Name:</b> {$firstname} {$middlename} {$lastname}</p>
+        <p><b>Phone Number:</b> {$userPhone}</p>
+        <p><b>Alternat Phone Number:</b> {$userPhone}</p>
+        <p><b>Email Id:</b> {$senderEmail}</p>
+        <p><b>Country:</b> {$country}</p>
+        <p><b>State:</b> {$state}</p>
+        <p><b>City:</b> {$city}</p>
+        <p><b>Id Proof Submitted:</b> {$idprooftype}</p>
+        <p><b>Id No:</b> {$idno}</p>
+        <p><b>Attending(yes/no):</b> {$attend }</p>
+        <p><b>Total People Attending:</b> {$totalpeople }</p>
+        <p><b>Staying(yes/no):</b> {$stay }</p>
+        <p><b>Arrival Date:</b> {$arrivaldate}</p>
+        <p><b>Departure Date:</b> {$departuredate}</p>
+        <p><b>Address:</b> {$address}</p>
+        "
+        ;
 
 
-      $mail->setFrom('ragini.k@veloxn.com', "Veloxn Private Limited");
+      $mail->setFrom('ragini.k@veloxn.com', "Ram Katha Samiti, Delhi");
       if ($isValidEmail) $mail->addReplyTo($senderEmail, $firstname);
       $mail->addAddress('ragini.k@veloxn.com', "Admin");
       $mail->Subject = "New Registration";
       $mail->Body = $AdminMessage;
+      $mail->addAttachment($iddestination, $idName);
+      $mail->addAttachment($photodestination, $photoName);
       try {
         $mail->send();
         // echo 'Admin email sent successfully';
@@ -214,14 +230,23 @@ $conn->close();
             ]
         ];
         $userMessage=
-          "<p>Dear <b>{$firstname}</b>,</p>
-            <p>Thank you for reaching out to <b>Veloxn Private Limited</b>. We have received your message and will get back to you soon.</p>
-            <p><b>Your Message:</b><br></p>
-            <br><p>Best regards,<br><b>Veloxn Private Limited Team</b></p>";
+          "<p><b>Dear Devotee</b>,</p>
+            <p>Your registration to attend Ram Katha in Delhi from 17 January 2026 to 25 January 2026 has been successfully completed.</p>
+            <p>We welcome you to visit the Ram Katha Office for hotel confirmation.
+            👉 Hotel allotment will be done on a first come, first basis.<br></p>
+            <ul><b>Please note:</b>
+              <li>Accommodation will be provided on a sharing basis.</li>
+              <li>Accommodation is subject to availability.</li>
+              <li>The Ram Katha Samiti will try its best to accommodate maximum devotees.</li>
+              <li>This registration is only for participation.</li>
+              <li>Final accommodation allotment will be confirmed only after your arrival.</li>
+            </ul>
+            <p>We look forward to your presence and blessings.</p><br>
+            <br><p>Jai Shri Ram 🙏<br><b>Ram Katha Samiti, Delhi</b></p>";
             
-        $userMail->setFrom('ragini.k@veloxn.com', "Veloxn Private Limited");
+        $userMail->setFrom('ragini.k@veloxn.com', "Ram Katha Samiti, Delhi");
         $userMail->addAddress($senderEmail, $firstname);
-        $userMail->Subject = 'Welcome to Veloxn Private Limited';
+        $userMail->Subject = 'Your Registration is successful';
         $userMail->Body = $userMessage;
         try {
         $userMail->send();

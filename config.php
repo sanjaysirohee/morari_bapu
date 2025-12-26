@@ -9,9 +9,9 @@ $password = "";
 $dbname = "moraridb";
 }else{
  $servername = "localhost";
- $username = "veloxnc1_veloxndbun";
+ $username = "morari_bapu1db";
  $password = "india@vbd121";
- $dbname = "veloxnc1_veloxndb";
+ $dbname = "morari_bapu1db";
 }
 
 
