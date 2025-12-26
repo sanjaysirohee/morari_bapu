@@ -9,7 +9,7 @@ define("PASSWORD","");
 define("DATABASE","moraridb");
 }else{
 define("HOSTNAME","localhost");
-define("USERNAME","morari_bapu1db");
+define("USERNAME","crmwala_mbdbun");
 define("PASSWORD","rkt.ftp@121");
 define("DATABASE","crmwala_moraribapudb");
 }
