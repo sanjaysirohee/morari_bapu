@@ -273,26 +273,46 @@
 			  
 			   <h5 class="mt-4">Personal Info</h5>
 			   <div class="donate_dt1l2i1 row mt-3">
-			  <div class="col-md-6">
-			   <div class="donate_dt1l2i1l">
-			    <input class="form-control rounded_20 border-0 bg_light font_14" placeholder="Country Code" type="text">
-			   </div>
-			</div>
+			  
 			<div class="col-md-6">
 			   <div class="donate_dt1l2i1l">
-			    <input class="form-control rounded_20 border-0 bg_light font_14" placeholder="Mobile Number" type="text">
-			   </div>
-			   </div>
-			   </div>
+				   <h6>Select Country Code and Write Mobile no</h6>
+				<div class="input-group overflow-hidden rounded_20 border-0 bg_light font_14">
+					<select class="form-select rounded_20 border-0 bg_light font_14" name="countryCode" id="countryCode" style="max-width: 160px;">
+						<option>Country Code</option>
+					</select>
+					<input class="form-control rounded_20 border-0 bg_light font_14" placeholder="Mobile Number" type="text">
 
-			  <div class="donate_dt1l2i1 row mt-3">
-				  <div class="col-md-12">
+				</div>
+			   </div>
+			   </div>
+			   <div class="col-md-6">
 				   <div class="donate_dt1l2i1l">
+					<label>Email Address</label>
 					<input class="form-control rounded_20 border-0 bg_light font_14" placeholder="Email Address" type="text">
 				   </div>
 				  </div>
-
-			  </div>
+			   </div>
+			  <div class="donate_dt1l2i1 row mt-3">
+			  <div class="col-md-4">
+					<div class="contact_1ril">
+						<label>First Name</label>
+						<input type="text" name="full_name[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="First Name" required>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="contact_1ril">
+						<label>Middle Name</label>
+						<input type="text" name="full_name[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Middle Name" required>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="contact_1ril">
+						<label>Last Name</label>
+						<input type="text" name="full_name[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="last Name" required>
+					</div>
+				</div>
+				</div>
 			  <div class="donate_dt1l2i1 row mt-3">
 			  <div class="col-md-6">
 			   <div class="donate_dt1l2i1l">
@@ -658,6 +678,7 @@
 <script src="js/common.js"></script>
 <script src="js/template.js"></script>
 <script src="js/cities.js"></script>
+<script src="js/country-code.js"></script>
 
 </body>
 
