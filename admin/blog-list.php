@@ -6,8 +6,8 @@
 <?php
 // include "../config.php" ; 
 // $sql111 = "Select b.*, bc.id,bc.name as name From blogs as b left join blog_category as bc on b.category = bc.id ORDER BY b.id desc" ;
-$sql111 = "select * from blogs ORDER BY id desc";
-$result = mysqli_query($conn, $sql111);
+// $sql111 = "select * from blogs ORDER BY id desc";
+// $result = mysqli_query($conn, $sql111);
 ?>
 
 <!-- Content Wrapper. Contains page content -->

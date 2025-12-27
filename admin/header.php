@@ -201,6 +201,7 @@ include ('config.php');
                             <ul aria-expanded="false" class="collapse">
 
                                 <li><a href="manage-queries.php">Main Person Queries</a></li>
+                                <li><a href="blog-list.php"> blog Queries</a></li>
                                 <li><a href="manage-small-queries.php">People Attending With Main Person Queries</a></li>
 								<!-- <li><a href="junk-queries.php">Junk Queries</a></li> -->
 								<!-- <li><a href="website-cost-queries.php">Website Cost Queries</a></li> -->

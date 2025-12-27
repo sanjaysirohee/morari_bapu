@@ -1,9 +1,11 @@
 const totalPeople = document.querySelector("#total_people");
 const container = document.querySelector("#peopleContainer");
 const template = document.querySelector("#personTemplate");
-console.log(totalPeople)
-totalPeople.addEventListener("change", function () {
+
+
+totalPeople.addEventListener("input", function () {
   container.innerHTML = "";
+  // console.log(totalPeople.value);
 
   const count = parseInt(this.value);
   if (!count) return;
