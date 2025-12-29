@@ -6,7 +6,12 @@ fetch("https://gist.githubusercontent.com/anubhavshrimal/75f6183458db8c453306f93
 .then((data)=>{
     countrycode.innerHTML= `<option value="">Country Code</option>`;
     data.forEach(code => {
-        countrycode.innerHTML+=`<option value="${code.dial_code} ${code.name}">${code.dial_code}(${code.code}) ${code.name}</option>`
+            countrycode.innerHTML+=`<option value="${code.dial_code} ${code.name}" ${code.name==='India'?"selected":""}>${code.dial_code}(${code.code}) ${code.name}</option>`
+            
+            
+            
+            // countrycode.innerHTML+=`<option value="${code.dial_code} ${code.name}">${code.dial_code}(${code.code}) ${code.name}</option>`
+
     });
 })
 });
