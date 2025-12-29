@@ -20,19 +20,19 @@ require 'PHPMailer/src/SMTP.php';
 
 // Read the form values
 
-$firstname = isset($_POST['first_name']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['first_name']) : "";
-$middlename = isset($_POST['middle_name']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['middle_name']) : "";
-$lastname = isset($_POST['last_name']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['last_name']) : "";
+$firstname = isset($_POST['main_first_name']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['main_first_name']) : "";
+$middlename = isset($_POST['main_middle_name']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['main_middle_name']) : "";
+$lastname = isset($_POST['main_last_name']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['main_last_name']) : "";
 $senderEmail = isset($_POST['main_email_id']) ? preg_replace("/[^\.\-\_\@a-zA-Z0-9]/", "", $_POST['main_email_id']) : "";
 $userPhone = isset($_POST['main_phone_no']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['main_phone_no']) : "";
-$altuserphone = isset($_POST['alt_phone_no']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['alt_phone_no']) : "";
+$countryCode = isset($_POST['countryCode']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['countryCode']) : "";
+$gender = isset($_POST['countryCode']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['main_gender']) : "";
 $country = isset($_POST['country']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['country']) : "";
 $state = isset($_POST['state']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['state']) : "";
 $city = isset($_POST['city']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['city']) : "";
 $idprooftype = isset($_POST['main_id_proof_type']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['main_id_proof_type']) : "";
 $idno = isset($_POST['main_id_proof_no']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['main_id_proof_no']) : "";
-$attend = isset($_POST['attend']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['attend']) : "";
-$totalpeople = isset($_POST['total_people']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['total_people']) : "";
+$guest = isset($_POST['total_people']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['total_people']) : "";
 $stay = isset($_POST['stay']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['stay']) : "";
 $arrivaldate = isset($_POST['arrival_date']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['arrival_date']) : "";
 $departuredate = isset($_POST['departure_date']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['departure_date']) : "";
@@ -98,7 +98,7 @@ if ($idError === 0 && $photoError === 0 ) {
 // Save data to database
 if (move_uploaded_file($idTmpPath, $iddestination) && move_uploaded_file($photoTmpPath,$photodestination)) {
 $stmt = $conn->prepare("INSERT INTO req_query_table (first_name, middle_name, last_name, email_id, phone_number, other_number, country, state, city, id_proof_type, id_proof_number,id_proof, attending, total_people_attending, staying, arrival_date, departure_date, photo,address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?)");
-$stmt->bind_param("sssssssssssssssssss", $firstname, $middlename, $lastname, $senderEmail, $userPhone, $altuserphone, $country, $state, $city, $idprooftype, $idno, $iddestination, $attend, $totalpeople, $stay,$arrivaldate, $departuredate, $photodestination, $address);
+$stmt->bind_param("sssssssssssssssssss", $firstname, $middlename, $lastname, $senderEmail, $userPhone, $altuserphone, $country, $state, $city, $idprooftype, $idno, $iddestination, $attend, $guest, $stay,$arrivaldate, $departuredate, $photodestination, $address);
 
 
 if ($stmt->execute()) {
@@ -112,7 +112,9 @@ $request_id = $conn->insert_id;
 
 for ($i = 0; $i < count($_POST['full_name']); $i++) {
 
-  $name = $_POST['full_name'][$i];
+  $guestfirstname = $_POST['first_name'][$i];
+  $guestmiddlename = $_POST['first_name'][$i];
+  $guestlastname = $_POST['first_name'][$i];
   $email = $_POST['email_id'][$i];
   $phone = $_POST['phone_number'][$i];
   $idType = $_POST['id_proof_type'][$i];
@@ -178,7 +180,7 @@ $conn->close();
         <p><b>Id Proof Submitted:</b> {$idprooftype}</p>
         <p><b>Id No:</b> {$idno}</p>
         <p><b>Attending(yes/no):</b> {$attend }</p>
-        <p><b>Total People Attending:</b> {$totalpeople }</p>
+        <p><b>Total People Attending:</b> {$guest }</p>
         <p><b>Staying(yes/no):</b> {$stay }</p>
         <p><b>Arrival Date:</b> {$arrivaldate}</p>
         <p><b>Departure Date:</b> {$departuredate}</p>
