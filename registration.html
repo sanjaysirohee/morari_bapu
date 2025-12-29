@@ -269,273 +269,355 @@
 	     <div class="col-md-12">
 		   <div class="donate_dt1l rounded_20 p-4 border_1">
 		     
-			 <div class="donate_dt1l2 mt-3">
-			  
-			   <h5 class="mt-4">Personal Info</h5>
-			   <div class="donate_dt1l2i1 row mt-3">
-			  
-			<div class="col-md-6">
-			   <div class="donate_dt1l2i1l">
-				   <h6>Select Country Code and Write Mobile no</h6>
-				<div class="input-group overflow-hidden rounded_20 border-0 bg_light font_14">
-					<select class="form-select rounded_20 border-0 bg_light font_14" name="countryCode" id="countryCode" style="max-width: 160px;">
-						<option>Country Code</option>
-					</select>
-					<input class="form-control rounded_20 border-0 bg_light font_14" placeholder="Mobile Number" type="text">
+			   <form action="sendemail.php" method="post" enctype="multipart/form-data">
+				   <div class="donate_dt1l2 mt-3">
+					 <h5 class="mt-4">Personal Info</h5>
+					 <div class="donate_dt1l2i1 row mt-3">
+					
+				  <div class="col-md-4">
+					 <div class="contact_1ril">
+						 <h6>Select Country Code and Write Mobile no</h6>
+					  <div class="input-group overflow-hidden rounded_20 border-0 bg_light font_14">
+						  <select class="form-select rounded_20 border-0 bg_light font_14" name="countryCode" id="countryCode" style="max-width: 160px;" required>
+							  <option>Country Code</option>
+						  </select>
+						  <input class="form-control rounded_20 border-0 bg_light font_14" placeholder="Mobile Number" type="text" name="main_phone_no" pattern="[0-9]{10}" id="phoneno" required>
+						<script>
+							const number=document.querySelector('#phoneno');
+							number.addEventListener('invalid',(e)=>{
+								e.target.setCustomValidity('Mobile number should be a 10 digit number');
+							})
+							number.addEventListener('input',(e)=>{
+								e.target.setCustomValidity('');
+							})
+						</script>
+					  </div>
+					 </div>
+					 </div>
+					 <div class="col-md-4">
+						 <div class="contact_1ril">
+						  <label>Email Address</label>
+						  <input class="form-control rounded_20 border-0 bg_light font_14" placeholder="Email Address" name="main_email_id"  type="text" >
+						 </div>
+						</div>
+						<div class="col-md-4">
+						<div class="contact_1ril">
+							<label class="d-block">Sex</label>
 
-				</div>
-			   </div>
-			   </div>
-			   <div class="col-md-6">
-				   <div class="donate_dt1l2i1l">
-					<label>Email Address</label>
-					<input class="form-control rounded_20 border-0 bg_light font_14" placeholder="Email Address" type="text">
-				   </div>
+							<div class="d-flex flex-column flex-md-row flex-wrap gap-3 mt-4">
+							
+							<div class="form-check">
+								<input type="radio" name="sex" value="Male" class="form-check-input" name="main_gender" required>
+								<label class="form-check-label">Male</label>
+							</div>
+
+							<div class="form-check">
+								<input type="radio" name="sex" value="Female" class="form-check-input" name="main_gender" required>
+								<label class="form-check-label">Female</label>
+							</div>
+
+							<div class="form-check">
+								<input type="radio" name="sex" value="Other" class="form-check-input" name="main_gender" required>
+								<label class="form-check-label">Other</label>
+							</div>
+
+							</div>
+						</div>
+						</div>
+					 </div>
+					 
+					<div class="donate_dt1l2i1 row mt-3">
+					<div class="col-md-4">
+						  <div class="contact_1ril">
+							  <label>First Name</label>
+							  <input type="text" class="form-control rounded_20 border-0 bg_light font_14" name="first_name" placeholder="First Name" maxlength="25" required>
+						  </div>
+					  </div>
+					  <div class="col-md-4">
+						  <div class="contact_1ril">
+							  <label>Middle Name</label>
+							  <input type="text" class="form-control rounded_20 border-0 bg_light font_14" name="middle_name" placeholder="Middle Name" maxlength="25" required>
+						  </div>
+					  </div>
+					  <div class="col-md-4">
+						  <div class="contact_1ril">
+							  <label>Last Name</label>
+							  <input type="text" class="form-control rounded_20 border-0 bg_light font_14" name="last_name" placeholder="last Name" maxlength="25" required>
+						  </div>
+					  </div>
+					  </div>
+					  <div class="donate_dt1l2i1 row mt-3">
+						<div class="contact_1ri row mt-4">
+		  
+					  <div class="col-md-3">
+						  <div class="contact_1ril">
+							  <label>ID Proof Type</label>
+							  <select class="form-control rounded_20 border-0 bg_light font_14" name="main_id_proof_type" required>
+								  <option value="">Select ID</option>
+								  <option>Aadhaar</option>
+								  <option>PAN</option>
+								  <option>Voter ID</option>
+								  <option>Passport</option>
+							  </select>
+						  </div>
+					  </div>
+					  <div class="col-md-3">
+						  <div class="contact_1ril">
+							  <label>ID Proof Number</label>
+							  <input type="text" name="main_id_proof_no" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter ID Number" required>
+						  </div>
+					  </div>
+					  <div class="col-md-3">
+						  <div class="contact_1ril">
+							  <label>ID Proof File</label>
+							  <input type="file" name="main_id_proof" accept=".jpg,.jpeg,.png,.pdf " class="form-control rounded_20 border-0 bg_light font_14" required>
+						  </div>
+					  </div>
+					  <div class="col-md-3">
+						  <div class="contact_1ril">
+							  <label>Photo</label>
+							  <input type="file" name="photo[]" accept=".jpg,.jpeg,.png" class="form-control rounded_20 border-0 bg_light font_14" required>
+						  </div>
+					  </div>
+		  
 				  </div>
-			   </div>
-			  <div class="donate_dt1l2i1 row mt-3">
-			  <div class="col-md-4">
-					<div class="contact_1ril">
-						<label>First Name</label>
-						<input type="text" name="full_name[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="First Name" required>
+					  </div>
+					<div class="donate_dt1l2i1 row mt-3">
+					<div class="col-md-6">
+					 <div class="donate_dt1l2i1l">
+					  <h6>Date of Arrival</h6>
+					  <select class="form-control rounded_20 border-0 bg_light font_14" name="arrival_date" required>
+						  <option value="">Select date</option>
+						  <option value="17 January 2026">17 January 2026</option>
+						  <option value="18 January 2026">18 January 2026</option>
+						  <option value="19 January 2026">19 January 2026</option>
+						  <option value="20 January 2026">20 January 2026</option>
+						  <option value="21 January 2026">21 January 2026</option>
+						  <option value="22 January 2026">22 January 2026</option>
+						  <option value="23 January 2026">23 January 2026</option>
+						  <option value="24 January 2026">24 January 2026</option>
+					  </select>
+					 </div>
 					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="contact_1ril">
-						<label>Middle Name</label>
-						<input type="text" name="full_name[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Middle Name" required>
+					<div class="col-md-6">
+					 <h6>Date of Departure</h6>
+					  <select class="form-control rounded_20 border-0 bg_light font_14" name="departure_date" required>
+						  
+						  <option value="">Select date</option>
+						  <option value="18 January 2026">18 January 2026</option>
+						  <option value="19 January 2026">19 January 2026</option>
+						  <option value="20 January 2026">20 January 2026</option>
+						  <option value="21 January 2026">21 January 2026</option>
+						  <option value="22 January 2026">22 January 2026</option>
+						  <option value="23 January 2026">23 January 2026</option>
+						  <option value="24 January 2026">24 January 2026</option>
+						  <option value="24 January 2026">25 January 2026</option>
+					  </select>
+					  </div>
 					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="contact_1ril">
-						<label>Last Name</label>
-						<input type="text" name="full_name[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="last Name" required>
-					</div>
-				</div>
-				</div>
-			  <div class="donate_dt1l2i1 row mt-3">
-			  <div class="col-md-6">
-			   <div class="donate_dt1l2i1l">
-			    <h6>Date of Arrival</h6>
-				<select class="form-control rounded_20 border-0 bg_light font_14" name="arrival_date" required>
-					<option value="">Select date</option>
-					<option value="17 January 2026">17 January 2026</option>
-					<option value="18 January 2026">18 January 2026</option>
-					<option value="19 January 2026">19 January 2026</option>
-					<option value="20 January 2026">20 January 2026</option>
-					<option value="21 January 2026">21 January 2026</option>
-					<option value="22 January 2026">22 January 2026</option>
-					<option value="23 January 2026">23 January 2026</option>
-					<option value="24 January 2026">24 January 2026</option>
-				</select>
-			   </div>
-			  </div>
-			  <div class="col-md-6">
-			   <h6>Date of Departure</h6>
-				<select class="form-control rounded_20 border-0 bg_light font_14" name="departure_date" required>
-					
-					<option value="">Select date</option>
-					<option value="18 January 2026">18 January 2026</option>
-					<option value="19 January 2026">19 January 2026</option>
-					<option value="20 January 2026">20 January 2026</option>
-					<option value="21 January 2026">21 January 2026</option>
-					<option value="22 January 2026">22 January 2026</option>
-					<option value="23 January 2026">23 January 2026</option>
-					<option value="24 January 2026">24 January 2026</option>
-					<option value="24 January 2026">25 January 2026</option>
-				</select>
-        		</div>
-			  </div>
-			 <div class="donate_dt1l2i1 mt-3">
-				<div class="col-md-12">
-			   <div class="donate_dt1l2i1l">
-				<h6>Number of Guests:</h6>
-				<div class="input-group overflow-hidden rounded_20 border-0 bg_light font_14">
-						<i class="bi bi-dash-square-fill btn btn-danger" id="sub"></i>
-
-					<input
-						type="number"
-						class="form-control border-0 bg_light font_14"
-						placeholder="Number of Guests"
-						name="total_people" id="total_people" ;
-					>
-						<i class="bi bi-plus-square-fill btn btn-danger" id="add"></i>
-
-					</div>
-				</div>
-				</div>
-				<script>
-					const guest=document.querySelector('#total_people');
-					const add=document.querySelector('#add');
-					const sub=document.querySelector('#sub');
-					function triggerInput() {
-						guest.dispatchEvent(new Event('input'));
-					}
-					add.addEventListener('click',()=>{
-						if (guest.value === '') {
-    						guest.value = 0;
-  						}
-						guest.value=Number(guest.value)+1;
-						triggerInput(); 
-					});
-					
-					sub.addEventListener('click',()=>{
-						if (guest.value === '') {
-    						guest.value=0;
-  						}
-						if(guest.value>0){
-							guest.value=Number(guest.value)-1;
-
-						}
-						if(guest.value==0){
-							guest.value='';
-						}
-						triggerInput(); 
-					})
-				</script>
-
-			 </div>
-			 <div class="donate_dt1l2i1 row mt-3">
-				 <div id="peopleContainer"></div>
-			<template id="personTemplate">
-		  <div class="person-box mt-3">
-			<h5>Person <span class="person-no"></span></h5>
-			<hr>
-			<div class="contact_1ri row mt-4">
-				<div class="col-md-4">
-					<div class="contact_1ril">
-						<label>First Name</label>
-						<input type="text" name="full_name[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter Name" required>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="contact_1ril">
-						<label>Middle Name</label>
-						<input type="text" name="full_name[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter Name" required>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="contact_1ril">
-						<label>Last Name</label>
-						<input type="text" name="full_name[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter Name" required>
-					</div>
-				</div>
-				<div class="contact_1ri row mt-4">
-
-					<div class="col-md-4">
+				   <div class="donate_dt1l2i1 mt-3">
+					  <div class="col-md-12">
+					 <div class="donate_dt1l2i1l">
+					  <h6>Number of Guests:</h6>
+					  <div class="input-group overflow-hidden rounded_20 border-0 bg_light font_14">
+							  <i class="bi bi-dash-square-fill btn btn-danger" id="sub"></i>
+	  
+						  <input
+							  type="number"
+							  class="form-control border-0 bg_light font_14"
+							  placeholder="Number of Guests"
+							  name="total_people" id="total_people" ;
+						  >
+							  <i class="bi bi-plus-square-fill btn btn-danger" id="add"></i>
+	  
+						  </div>
+					  </div>
+					  </div>
+					  <script>
+						  const guest=document.querySelector('#total_people');
+						  const add=document.querySelector('#add');
+						  const sub=document.querySelector('#sub');
+						  function triggerInput() {
+							  guest.dispatchEvent(new Event('input'));
+						  }
+						  add.addEventListener('click',()=>{
+							  if (guest.value === '') {
+								  guest.value = 0;
+								}
+							  guest.value=Number(guest.value)+1;
+							  triggerInput(); 
+						  });
+						  
+						  sub.addEventListener('click',()=>{
+							  if (guest.value === '') {
+								  guest.value=0;
+								}
+							  if(guest.value>0){
+								  guest.value=Number(guest.value)-1;
+	  
+							  }
+							  if(guest.value==0){
+								  guest.value='';
+							  }
+							  triggerInput(); 
+						  })
+					  </script>
+	  
+				   </div>
+				   <div class="donate_dt1l2i1 row mt-3">
+					   <div id="peopleContainer"></div>
+					  
+				  <template id="personTemplate">
+				<div class="person-box mt-3">
+				  <h5>Person <span class="person-no"></span></h5>
+				  <hr>
+				  <div class="contact_1ri row mt-4">
+					  <div class="col-md-4">
+						  <div class="contact_1ril">
+							  <label>First Name</label>
+							  <input type="text" name="first_name[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter Name" required>
+						  </div>
+					  </div>
+					  <div class="col-md-4">
+						  <div class="contact_1ril">
+							  <label>Middle Name</label>
+							  <input type="text" name="middle_name[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter Name" required>
+						  </div>
+					  </div>
+					  <div class="col-md-4">
+						  <div class="contact_1ril">
+							  <label>Last Name</label>
+							  <input type="text" name="last_name[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter Name" required>
+						  </div>
+					  </div>
+					  <div class="row mt-4">
+	  
+						  <div class="col-md-4">
+							  <div class="contact_1ril">
+								  <label>Age</label>
+								  <input type="Number" name="email_id[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter Email" required >
+							  </div>
+						  </div>
+			  
+						 <div class="col-md-4">
 						<div class="contact_1ril">
-							<label>Age</label>
-							<input type="Number" name="email_id[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter Email" required >
+							<label class="d-block">Sex</label>
+
+							<div class="d-flex flex-column flex-md-row flex-wrap gap-3 mt-4">
+							
+							<div class="form-check">
+								<input type="radio" name="sex" value="Male" class="form-check-input" name="gender[]" required>
+								<label class="form-check-label">Male</label>
+							</div>
+
+							<div class="form-check">
+								<input type="radio" name="sex" value="Female" class="form-check-input" name="gender[]" required>
+								<label class="form-check-label">Female</label>
+							</div>
+
+							<div class="form-check">
+								<input type="radio" name="sex" value="Other" class="form-check-input" name="gender[]" required>
+								<label class="form-check-label">Other</label>
+							</div>
+
+							</div>
 						</div>
-					</div>
-		
+						</div>
 					<div class="col-md-4">
-					<div class="contact_1ril ">
-						<label>Sex</label><br>
-
-						<input type="radio" name="sex[]" value="Male" class="form-check-input " required>
-						<label class="form-check-label">Male</label>
-
-						<br>
-
-						<input type="radio" name="sex[]" value="Female" class="form-check-input">
-						<label class="form-check-label">Female</label>
-
-						<br>
-
-						<input type="radio" name="sex[]" value="Other" class="form-check-input">
-						<label class="form-check-label">Other</label>
-					</div>
-					</div>
-
-				<div class="col-md-4">
-						<div class="contact_1ril">
-							<label>Nationality</label>
-							<input type="Number" name="email_id[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter Email" required >
-						</div>
-					</div>
-				</div>
-	
-			<div class="contact_1ri row mt-4">
-	
-				<div class="col-md-3">
-					<div class="contact_1ril">
-						<label>ID Proof Type</label>
-						<select class="form-control rounded_20 border-0 bg_light font_14" name="id_proof_type[]" required>
-							<option value="">Select ID</option>
-							<option>Aadhaar</option>
-							<option>PAN</option>
-							<option>Voter ID</option>
-							<option>Passport</option>
-						</select>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="contact_1ril">
-						<label>ID Proof Number</label>
-						<input type="text" name="id_proof_no[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter ID Number" required>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="contact_1ril">
-						<label>ID Proof File</label>
-						<input type="file" name="id_proof[]" accept=".jpg,.jpeg,.png,.pdf " class="form-control rounded_20 border-0 bg_light font_14" required>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="contact_1ril">
-						<label>Photo</label>
-						<input type="file" name="photo[]" accept=".jpg,.jpeg,.png" class="form-control rounded_20 border-0 bg_light font_14" required>
-					</div>
-				</div>
-	
-			</div>
-			</div>
-		  <hr>
-		</template>
-
-			 </div>
-
-			 <div class="donate_dt1l2i1 row mt-3">
-			  <div class="col-md-4">
-			   <div class="donate_dt1l2i1l">
-			              <h6>Select Country</h6>
-          <select class="form-control rounded_20 border-0 bg_light font_14" name="country" id="country">
-           
-          </select>
-
-			   </div>
-			</div>
-			<div class="col-md-4">
-			   <div class="donate_dt1l2i1l">
-			     <h6>Select State</h6>
-          <select class="form-control rounded_20 border-0 bg_light font_14" name="state" id="state">
-            
-          </select>
-			   </div>
-			   </div>
-			   <div class="col-md-4">
-			   <div class="donate_dt1l2i1l">
-			     <h6>Select City</h6>
-          <select class="form-control rounded_20 border-0 bg_light font_14" name="city" id="city">
-            
-          </select>
-			   </div>
-			   </div>
-			   </div>
-
-
+						  <div class="contact_1ril">
+							  <label>Photo</label>
+							  <input type="file" name="photo[]" accept=".jpg,.jpeg,.png" class="form-control rounded_20 border-0 bg_light font_14" required>
+						  </div>
+					  </div>
+					  </div>
+		  
+				  <div class="row mt-4">
+		  
+					  <div class="col-md-4">
+						  <div class="contact_1ril">
+							  <label>ID Proof Type</label>
+							  <select class="form-control rounded_20 border-0 bg_light font_14" name="id_proof_type[]" required>
+								  <option value="">Select ID</option>
+								  <option>Aadhaar</option>
+								  <option>PAN</option>
+								  <option>Voter ID</option>
+								  <option>Passport</option>
+							  </select>
+						  </div>
+					  </div>
+					  <div class="col-md-4">
+						  <div class="contact_1ril">
+							  <label>ID Proof Number</label>
+							  <input type="text" name="id_proof_no[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter ID Number" required>
+						  </div>
+					  </div>
+					  <div class="col-md-4">
+						  <div class="contact_1ril">
+							  <label>ID Proof File</label>
+							  <input type="file" name="id_proof[]" accept=".jpg,.jpeg,.png,.pdf " class="form-control rounded_20 border-0 bg_light font_14" required>
+						  </div>
+					  </div>  
+		  
+				  </div>
+				  </div>
+				  </div>
+				  
+				</template>
 			
-			 <div class="donate_dt1l2i1 row mt-3">
-			  <div class="col-md-12">
-			   <div class="donate_dt1l2i1l">
-				<h6>Address</h6>
-			    <textarea placeholder="Write your Address" class="form-control rounded_20 border-0 bg_light font_14 form_text" name="address"></textarea>
-				<h6 class="mb-0 mt-4 center_sm"><a class="button" href="#"><i class="fa fa-heart me-1"></i> Register Now</a></h6>
-			   </div>
-			  </div>
-			 </div>
-			 </div>
+	  
+			</div>
+			<hr>
+				   <div class="donate_dt1l2i1 row mt-3">
+					<div class="col-md-4">
+					 <div class="donate_dt1l2i1l">
+								<h6>Select Country</h6>
+				<select class="form-control rounded_20 border-0 bg_light font_14" name="country" id="country">
+				 
+				</select>
+	  
+					 </div>
+				  </div>
+				  <div class="col-md-4">
+					 <div class="donate_dt1l2i1l">
+					   <h6>Select State</h6>
+				<select class="form-control rounded_20 border-0 bg_light font_14" name="state" id="state">
+				  
+				</select>
+					 </div>
+					 </div>
+					 <div class="col-md-4">
+					 <div class="donate_dt1l2i1l">
+					   <h6>Select City</h6>
+				<select class="form-control rounded_20 border-0 bg_light font_14" name="city" id="city">
+				  
+				</select>
+					 </div>
+					 </div>
+					 </div>
+	  
+	  
+				  
+				   <div class="donate_dt1l2i1 row mt-3">
+					<div class="col-md-12">
+					 <div class="donate_dt1l2i1l">
+					  <h6>Address</h6>
+					  <textarea placeholder="Write your Address" class="form-control rounded_20 border-0 bg_light font_14 form_text" name="address"></textarea>
+					  <h6 class="mb-0 mt-4 center_sm">
+							<input type="submit" class="button" value="Register Now" style="border:0 !important">
+
+						</div>
+						</h6>
+
+
+          <p class="mt-3">
+            Accommodation will be allotted as per availability.
+          </p>
+					 </div>
+					</div>
+				   </div>
+				   </div>
+				 
+			   </form>
 		   </div>
 		 </div>
 	   </div>
