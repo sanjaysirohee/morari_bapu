@@ -113,10 +113,10 @@ $request_id = $conn->insert_id;
 for ($i = 0; $i < count($_POST['full_name']); $i++) {
 
   $guestfirstname = $_POST['first_name'][$i];
-  $guestmiddlename = $_POST['first_name'][$i];
-  $guestlastname = $_POST['first_name'][$i];
-  $email = $_POST['email_id'][$i];
-  $phone = $_POST['phone_number'][$i];
+  $guestmiddlename = $_POST['middle_name'][$i];
+  $guestlastname = $_POST['last_name'][$i];
+  $guestage = $_POST['age'][$i];
+  $guestgender=$_POST['gender'][$i];
   $idType = $_POST['id_proof_type'][$i];
   $idNo = $_POST['id_proof_no'][$i];
 
