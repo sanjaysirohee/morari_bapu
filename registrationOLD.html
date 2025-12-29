@@ -34,7 +34,6 @@
 	 <link href="fonts/css/fontawesome.min.css" rel="stylesheet" >
 	<link href="fonts/css/brands.min.css" rel="stylesheet" />
     <link href="fonts/css/solid.min.css" rel="stylesheet" />
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 	<link href="css/global.css" rel="stylesheet">
 	<link href="css/contact.css?v=1" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
@@ -263,284 +262,359 @@
  </div>
 </div>
 
-<section id="donate_dt" class="p_4 pb-0 w-75 mx-auto">
-    <div class="container-xl">
-	   <div class="donate_dt1 row">
-	     <div class="col-md-12">
-		   <div class="donate_dt1l rounded_20 p-4 border_1">
-		     
-			 <div class="donate_dt1l2 mt-3">
-			  
-			   <h5 class="mt-4">Personal Info</h5>
-			   <div class="donate_dt1l2i1 row mt-3">
-			  
-			<div class="col-md-6">
-			   <div class="donate_dt1l2i1l">
-				   <h6>Select Country Code and Write Mobile no</h6>
-				<div class="input-group overflow-hidden rounded_20 border-0 bg_light font_14">
-					<select class="form-select rounded_20 border-0 bg_light font_14" name="countryCode" id="countryCode" style="max-width: 160px;">
-						<option>Country Code</option>
-					</select>
-					<input class="form-control rounded_20 border-0 bg_light font_14" placeholder="Mobile Number" type="text">
+<section id="contact" class="p_4 pb-0">
+ <div class="container-xl">
+   <div class=" contact_1">
+    <div class="col-md-12">
+  <div class="contact_1l mx-3 row">
 
-				</div>
-			   </div>
-			   </div>
-			   <div class="col-md-6">
-				   <div class="donate_dt1l2i1l">
-					<label>Email Address</label>
-					<input class="form-control rounded_20 border-0 bg_light font_14" placeholder="Email Address" type="text">
-				   </div>
-				  </div>
-			   </div>
-			  <div class="donate_dt1l2i1 row mt-3">
-			  <div class="col-md-4">
-					<div class="contact_1ril">
-						<label>First Name</label>
-						<input type="text" name="full_name[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="First Name" required>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="contact_1ril">
-						<label>Middle Name</label>
-						<input type="text" name="full_name[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Middle Name" required>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="contact_1ril">
-						<label>Last Name</label>
-						<input type="text" name="full_name[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="last Name" required>
-					</div>
-				</div>
-				</div>
-			  <div class="donate_dt1l2i1 row mt-3">
-			  <div class="col-md-6">
-			   <div class="donate_dt1l2i1l">
-			    <h6>Date of Arrival</h6>
-				<select class="form-control rounded_20 border-0 bg_light font_14" name="arrival_date" required>
-					<option value="">Select date</option>
-					<option value="17 January 2026">17 January 2026</option>
-					<option value="18 January 2026">18 January 2026</option>
-					<option value="19 January 2026">19 January 2026</option>
-					<option value="20 January 2026">20 January 2026</option>
-					<option value="21 January 2026">21 January 2026</option>
-					<option value="22 January 2026">22 January 2026</option>
-					<option value="23 January 2026">23 January 2026</option>
-					<option value="24 January 2026">24 January 2026</option>
-				</select>
-			   </div>
-			  </div>
-			  <div class="col-md-6">
-			   <h6>Date of Departure</h6>
-				<select class="form-control rounded_20 border-0 bg_light font_14" name="departure_date" required>
-					
-					<option value="">Select date</option>
-					<option value="18 January 2026">18 January 2026</option>
-					<option value="19 January 2026">19 January 2026</option>
-					<option value="20 January 2026">20 January 2026</option>
-					<option value="21 January 2026">21 January 2026</option>
-					<option value="22 January 2026">22 January 2026</option>
-					<option value="23 January 2026">23 January 2026</option>
-					<option value="24 January 2026">24 January 2026</option>
-					<option value="24 January 2026">25 January 2026</option>
-				</select>
-        		</div>
-			  </div>
-			 <div class="donate_dt1l2i1 mt-3">
-				<div class="col-md-12">
-			   <div class="donate_dt1l2i1l">
-				<h6>Number of Guests:</h6>
-				<div class="input-group overflow-hidden rounded_20 border-0 bg_light font_14">
-						<i class="bi bi-dash-square-fill btn btn-danger" id="sub"></i>
+    <!-- Address -->
+    <div class="col-md-6">
+      <div class="contact_1li row">
+        <div class="col-md-2">
+          <span class="col_oran">
+            <i class="fa fa-map-signs"></i>
+          </span>
+        </div>
+        <div class="col-md-10">
+          <h4>Address</h4>
+          <p class="font_16 mb-0">
+            World Peace Centre, Ahimsa, Sector-39, Gurugram-122022 &
+            Ahimsa Vishwa Bharti, Old Rajinder Nagar, New Delhi-110060
+          </p>
+        </div>
+      </div>
+    </div>
 
-					<input
-						type="number"
-						class="form-control border-0 bg_light font_14"
-						placeholder="Number of Guests"
-						name="total_people" id="total_people" ;
-					>
-						<i class="bi bi-plus-square-fill btn btn-danger" id="add"></i>
+    <!-- Email -->
+    <div class="col-md-6">
+      <div class="contact_1li row">
+        <div class="col-md-2">
+          <span class="col_oran">
+            <i class="fa fa-envelope"></i>
+          </span>
+        </div>
+        <div class="col-md-10">
+          <h4>Mail address</h4>
+          <p class="font_16 mb-0">
+            ahimsa.vishwa@gmail.com,
+            www.ahimsavishwabharti.org
+          </p>
+        </div>
+      </div>
+    </div>
 
-					</div>
-				</div>
-				</div>
-				<script>
-					const guest=document.querySelector('#total_people');
-					const add=document.querySelector('#add');
-					const sub=document.querySelector('#sub');
-					function triggerInput() {
-						guest.dispatchEvent(new Event('input'));
-					}
-					add.addEventListener('click',()=>{
-						if (guest.value === '') {
-    						guest.value = 0;
-  						}
-						guest.value=Number(guest.value)+1;
-						triggerInput(); 
-					});
-					
-					sub.addEventListener('click',()=>{
-						if (guest.value === '') {
-    						guest.value=0;
-  						}
-						if(guest.value>0){
-							guest.value=Number(guest.value)-1;
+  </div>
+</div>
 
-						}
-						if(guest.value==0){
-							guest.value='';
-						}
-						triggerInput(); 
-					})
-				</script>
+    <div class="col-md-12">
+  <div class="contact_1r">
 
-			 </div>
-			 <div class="donate_dt1l2i1 row mt-3">
-				 <div id="peopleContainer"></div>
-			<template id="personTemplate">
-		  <div class="person-box mt-3">
-			<h5>Person <span class="person-no"></span></h5>
-			<hr>
-			<div class="contact_1ri row mt-4">
-				<div class="col-md-4">
-					<div class="contact_1ril">
-						<label>First Name</label>
-						<input type="text" name="full_name[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter Name" required>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="contact_1ril">
-						<label>Middle Name</label>
-						<input type="text" name="full_name[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter Name" required>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="contact_1ril">
-						<label>Last Name</label>
-						<input type="text" name="full_name[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter Name" required>
-					</div>
-				</div>
-				<div class="contact_1ri row mt-4">
+    <!-- Name & Email -->
+	 <form action="sendemail.php" method="post" enctype="multipart/form-data">
+    <div class="contact_1ri row">
+      <div class="col-md-4">
+        <div class="contact_1ril">
+          <h6>First Name (as per ID):</h6>
+          <input class="form-control" placeholder="Your First Name*" name="first_name" type="text" required>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="contact_1ril">
+          <h6>Middle Name (as per ID):</h6>
+          <input class="form-control" placeholder="Your Middle Name" name="middle_name" type="text">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="contact_1ril">
+          <h6>Last Name (as per ID):</h6>
+          <input class="form-control" placeholder="Your Last Name" name="last_name" type="text">
+        </div>
+      </div>
 
-					<div class="col-md-4">
-						<div class="contact_1ril">
-							<label>Age</label>
-							<input type="Number" name="email_id[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter Email" required >
-						</div>
-					</div>
-		
-					<div class="col-md-4">
-					<div class="contact_1ril ">
-						<label>Sex</label><br>
+      
 
-						<input type="radio" name="sex[]" value="Male" class="form-check-input " required>
-						<label class="form-check-label">Male</label>
+    <!-- Phone Numbers -->
+    <div class="contact_1ri row mt-4">
+		<div class="col-md-4">
+        <div class="contact_1ril">
+          <h6>Email ID <br>(Required):</h6>
+          <input class="form-control" placeholder="Mail*" name="main_email_id" type="text" required>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="contact_1ril">
+          <h6>Mobile Number (WhatsApp preferred):</h6>
+          <input class="form-control" placeholder="Your Phone*" name="main_phone_no" type="text" required>
+        </div>
+      </div>
 
-						<br>
+      <div class="col-md-4">
+        <div class="contact_1ril">
+          <h6>Alternate Mobile Number (Optional):</h6>
+          <input class="form-control" placeholder="Your Phone" name="alt_phone_no" type="text">
+        </div>
+      </div>
+    </div>
 
-						<input type="radio" name="sex[]" value="Female" class="form-check-input">
-						<label class="form-check-label">Female</label>
-
-						<br>
-
-						<input type="radio" name="sex[]" value="Other" class="form-check-input">
-						<label class="form-check-label">Other</label>
-					</div>
-					</div>
-
-				<div class="col-md-4">
-						<div class="contact_1ril">
-							<label>Nationality</label>
-							<input type="Number" name="email_id[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter Email" required >
-						</div>
-					</div>
-				</div>
-	
-			<div class="contact_1ri row mt-4">
-	
-				<div class="col-md-3">
-					<div class="contact_1ril">
-						<label>ID Proof Type</label>
-						<select class="form-control rounded_20 border-0 bg_light font_14" name="id_proof_type[]" required>
-							<option value="">Select ID</option>
-							<option>Aadhaar</option>
-							<option>PAN</option>
-							<option>Voter ID</option>
-							<option>Passport</option>
-						</select>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="contact_1ril">
-						<label>ID Proof Number</label>
-						<input type="text" name="id_proof_no[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter ID Number" required>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="contact_1ril">
-						<label>ID Proof File</label>
-						<input type="file" name="id_proof[]" accept=".jpg,.jpeg,.png,.pdf " class="form-control rounded_20 border-0 bg_light font_14" required>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="contact_1ril">
-						<label>Photo</label>
-						<input type="file" name="photo[]" accept=".jpg,.jpeg,.png" class="form-control rounded_20 border-0 bg_light font_14" required>
-					</div>
-				</div>
-	
-			</div>
-			</div>
-		  <hr>
-		</template>
-
-			 </div>
-
-			 <div class="donate_dt1l2i1 row mt-3">
-			  <div class="col-md-4">
-			   <div class="donate_dt1l2i1l">
-			              <h6>Select Country</h6>
-          <select class="form-control rounded_20 border-0 bg_light font_14" name="country" id="country">
+    <!-- State & City -->
+    <div class="contact_1ri row mt-4">
+      <div class="col-md-4">
+        <div class="contact_1ril">
+          <h6>Select Country</h6>
+          <select class="form-control" name="country" id="country">
            
           </select>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="contact_1ril">
+          <h6>Select State</h6>
+          <select class="form-control" name="state" id="state">
+            
+          </select>
+        </div>
+      </div>
 
-			   </div>
-			</div>
+      <div class="col-md-4">
+        <div class="contact_1ril">
+          <h6>Select City</h6>
+          <select class="form-control" name="city" id="city">
+            
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- ID Proof -->
+    <div class="contact_1ri row mt-4">
+      <div class="col-md-4">
+        <div class="contact_1ril">
+          <h6>ID Proof Type:</h6>
+          <select class="form-control" name="main_id_proof_type" required>
+            <option value="">Select ID</option>
+            <option>Aadhaar</option>
+            <option>PAN</option>
+            <option>Voter ID</option>
+            <option>Passport</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="contact_1ril">
+          <h6>ID Proof Upload:</h6>
+          <input class="form-control" name="main_id_proof" type="file" accept=".jpg,.jpeg,.png,.pdf" required>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="contact_1ril">
+          <h6>ID Proof Number:</h6>
+          <input class="form-control" name="main_id_proof_no" type="text" required>
+        </div>
+      </div>
+    </div>
+
+    <!-- Attendance -->
+    <div class="contact_1ri row mt-4">
+      <div class="col-md-6">
+        <div class="contact_1ril">
+          <h6>Will you attend Ram Katha?</h6>
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="attend" value="Yes">
+            <label class="form-check-label">Yes</label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="attend" value="No">
+            <label class="form-check-label">No</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="contact_1ril">
+          <h6>Number of Persons Attending:</h6>
+		  <select class="form-control" name="total_people" id="total_people" required>
+            <option value="">Select people</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+	<div class="contact_1ri row mt-4">
+
+		<div id="peopleContainer"></div>
+		<template id="personTemplate">
+	  <div class="person-box mt-3">
+		<h5>Person <span class="person-no"></span></h5>
+		<hr>
+		<div class="contact_1ri row mt-4">
 			<div class="col-md-4">
-			   <div class="donate_dt1l2i1l">
-			     <h6>Select State</h6>
-          <select class="form-control rounded_20 border-0 bg_light font_14" name="state" id="state">
-            
-          </select>
-			   </div>
-			   </div>
-			   <div class="col-md-4">
-			   <div class="donate_dt1l2i1l">
-			     <h6>Select City</h6>
-          <select class="form-control rounded_20 border-0 bg_light font_14" name="city" id="city">
-            
-          </select>
-			   </div>
-			   </div>
-			   </div>
+				<div class="contact_1ril">
+					<label>Full Name</label>
+					<input type="text" name="full_name[]" class="form-control" placeholder="Enter Name" required>
+				</div>
+			</div>
 
+			<div class="col-md-4">
+				<div class="contact_1ril">
+					<label>Email Id</label>
+					<input type="text" name="email_id[]" class="form-control" placeholder="Enter Email" required >
+				</div>
+			</div>
 
-			
-			 <div class="donate_dt1l2i1 row mt-3">
-			  <div class="col-md-12">
-			   <div class="donate_dt1l2i1l">
-				<h6>Address</h6>
-			    <textarea placeholder="Write your Address" class="form-control rounded_20 border-0 bg_light font_14 form_text" name="address"></textarea>
-				<h6 class="mb-0 mt-4 center_sm"><a class="button" href="#"><i class="fa fa-heart me-1"></i> Register Now</a></h6>
-			   </div>
-			  </div>
-			 </div>
-			 </div>
-		   </div>
-		 </div>
-	   </div>
+			<div class="col-md-4">
+				<div class="contact_1ril">
+					<label>Phone Number</label>
+					<input type="text" name="phone_number[]" class="form-control" placeholder="Enter PhoneNo." required>
+				</div>
+			</div>
+		</div>
+		<div class="contact_1ri row mt-4">
+
+			<div class="col-md-3">
+				<div class="contact_1ril">
+					<label>ID Proof Type</label>
+					<select class="form-control" name="id_proof_type[]" required>
+						<option value="">Select ID</option>
+						<option>Aadhaar</option>
+						<option>PAN</option>
+						<option>Voter ID</option>
+						<option>Passport</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="contact_1ril">
+					<label>ID Proof Number</label>
+					<input type="text" name="id_proof_no[]" class="form-control" placeholder="Enter ID Number" required>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="contact_1ril">
+					<label>ID Proof File</label>
+					<input type="file" name="id_proof[]" accept=".jpg,.jpeg,.png,.pdf" class="form-control" required>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="contact_1ril">
+					<label>Photo</label>
+					<input type="file" name="photo[]" accept=".jpg,.jpeg,.png" class="form-control" required>
+				</div>
+			</div>
+
+		</div>
+		</div>
+	  <hr>
+	</template>
+
 	</div>
-   </section>
+
+
+    <!-- Accommodation -->
+    <div class="contact_1ri row mt-4">
+      <div class="col-md-6">
+        <div class="contact_1ril">
+          <h6>Do you require accommodation?</h6>
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="stay" value="Yes">
+            <label class="form-check-label">Yes</label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="stay" value="No">
+            <label class="form-check-label">No</label>
+          </div>
+        </div>
+      </div>
+
+	  <div class="col-md-6">
+        <div class="contact_1ril">
+          <h6>Upload Photo:</h6>
+          <input class="form-control" type="file" name="main_photo" accept=".jpg,.jpeg,.png" required>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dates -->
+    <div class="contact_1ri row mt-4">
+      <div class="col-md-6">
+        <div class="contact_1ril">
+          <h6>Date of Arrival</h6>
+          <select class="form-control" name="arrival_date" required>
+            <option value="">Select date</option>
+            <option value="17 January 2026">17 January 2026</option>
+			<option value="18 January 2026">18 January 2026</option>
+			<option value="19 January 2026">19 January 2026</option>
+			<option value="20 January 2026">20 January 2026</option>
+			<option value="21 January 2026">21 January 2026</option>
+			<option value="22 January 2026">22 January 2026</option>
+			<option value="23 January 2026">23 January 2026</option>
+			<option value="24 January 2026">24 January 2026</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="contact_1ril">
+          <h6>Date of Departure</h6>
+          <select class="form-control" name="departure_date" required>
+            
+			<option value="">Select date</option>
+			<option value="18 January 2026">18 January 2026</option>
+			<option value="19 January 2026">19 January 2026</option>
+			<option value="20 January 2026">20 January 2026</option>
+			<option value="21 January 2026">21 January 2026</option>
+			<option value="22 January 2026">22 January 2026</option>
+			<option value="23 January 2026">23 January 2026</option>
+			<option value="24 January 2026">24 January 2026</option>
+			<option value="24 January 2026">25 January 2026</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Address & Submit -->
+    <div class="contact_1ri row mt-4">
+      <div class="col-md-12">
+        <div class="contact_1ril">
+          <h6>Full Address:</h6>
+          <input class="form-control" name="address" type="text">
+
+          <h6 class="mt-4">
+            <input type="submit" class="button" value="Send Message">
+          </h6>
+
+          <p class="mt-3">
+            Accommodation will be allotted as per availability.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+</form>
+
+  </div>
+   <div class="row contact_2 mt-4">
+    <div class="col-md-12">
+	  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.054011554721!2d77.04950501107311!3d28.447788175665057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d195f6ff75c97%3A0xc66a6c4ec1a272fc!2sWorld%20Peace%20Center!5e0!3m2!1sen!2sin!4v1766575437850!5m2!1sen!2sin" width="600" height="450" style="border:0; width:100%;"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+	</div>
+   </div>
+</div></section>
+
+
  
 
 <div class="footer_m position-relative">
@@ -551,7 +625,7 @@
      <div class="col-md-4">
 	   <div class="footer_1l">
 	     <a class="text-white mb-5" href="index.html"><img src="img/logo.png" width="120vw" height="50vh"></a>
-		 <p class="text-light">We Invite you to the Ram Katha.</p>
+		 <p class="text-light">Nulla quis lorem ut libero malesuada feugiat. Quisque velit nisi, pretium ut lacinia in</p>
 		 <ul class="mb-0 flex_box">
 <li class="d-flex text-light mt-3"><span class="me-3"><i class="fa fa-envelope col_oran"></i></span> ahimsa.vishwa@gmail.com </li>
 <li class="d-flex text-light mt-3"><span class="me-3"><i class="fa fa-map-marker col_oran"></i></span>  World Peace Centre, Ahimsa, Sector-39, Gurugram-122 022 <br> Ahimsa Vishwa Bharti, 63/1, Old Rajinder Nagar, New Delhi-110 060 </li>
@@ -676,9 +750,9 @@
 
 
 <script src="js/common.js"></script>
-<script src="js/template.js"></script>
 <script src="js/cities.js"></script>
-<script src="js/country-code.js"></script>
+<script src="js/template.js"></script>
+
 
 </body>
 
