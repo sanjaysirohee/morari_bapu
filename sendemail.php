@@ -27,6 +27,7 @@ $senderEmail = isset($_POST['main_email_id']) ? preg_replace("/[^\.\-\_\@a-zA-Z0
 $userPhone = isset($_POST['main_phone_no']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['main_phone_no']) : "";
 $countryCode = isset($_POST['countryCode']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['countryCode']) : "";
 $gender = isset($_POST['countryCode']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['main_gender']) : "";
+$age = isset($_POST['main_age']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['main_age']) : "";
 $country = isset($_POST['country']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['country']) : "";
 $state = isset($_POST['state']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['state']) : "";
 $city = isset($_POST['city']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['city']) : "";

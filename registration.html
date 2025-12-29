@@ -274,8 +274,8 @@
 					 <h5 class="mt-4">Personal Info</h5>
 					 <div class="donate_dt1l2i1 row mt-3">
 					
-				  <div class="col-md-4">
-					 <div class="contact_1ril">
+				  <div class="col-md-6">
+					 <div class="donate_dt1l2i1l">
 						 <h6>Select Country Code and Write Mobile no</h6>
 					  <div class="input-group overflow-hidden rounded_20 border-0 bg_light font_14">
 						  <select class="form-select rounded_20 border-0 bg_light font_14" name="countryCode" id="countryCode" style="max-width: 160px;" required>
@@ -294,17 +294,41 @@
 					  </div>
 					 </div>
 					 </div>
-					 <div class="col-md-4">
-						 <div class="contact_1ril">
+					 <div class="col-md-6">
+						 <div class="donate_dt1l2i1l">
 						  <label>Email Address</label>
 						  <input class="form-control rounded_20 border-0 bg_light font_14" placeholder="Email Address" name="main_email_id"  type="text" >
 						 </div>
 						</div>
+						
+					 </div>
+					 
+					<div class="donate_dt1l2i1 row mt-3">
+					<div class="col-md-4">
+						  <div class="donate_dt1l2i1l">
+							  <label>First Name</label>
+							  <input type="text" class="form-control rounded_20 border-0 bg_light font_14" name="main_first_name" placeholder="First Name" maxlength="25" required>
+						  </div>
+					  </div>
+					  <div class="col-md-4">
+						  <div class="donate_dt1l2i1l">
+							  <label>Middle Name</label>
+							  <input type="text" class="form-control rounded_20 border-0 bg_light font_14" name="main_middle_name" placeholder="Middle Name" maxlength="25" required>
+						  </div>
+					  </div>
+					  <div class="col-md-4">
+						  <div class="donate_dt1l2i1l">
+							  <label>Last Name</label>
+							  <input type="text" class="form-control rounded_20 border-0 bg_light font_14" name="main_last_name" placeholder="last Name" maxlength="25" required>
+						  </div>
+					  </div>
+					  </div>
+					<div class="donate_dt1l2i1 row mt-3">
 						<div class="col-md-4">
-						<div class="contact_1ril">
+						<div class="donate_dt1l2i1l">
 							<label class="d-block">Sex</label>
 
-							<div class="d-flex flex-column flex-md-row flex-wrap gap-3 mt-4">
+							<div class="d-flex flex-column flex-md-row flex-wrap gap-3 mt-2">
 							
 							<div class="form-check">
 								<input type="radio" name="sex" value="Male" class="form-check-input" name="main_gender" required>
@@ -324,33 +348,25 @@
 							</div>
 						</div>
 						</div>
-					 </div>
-					 
-					<div class="donate_dt1l2i1 row mt-3">
-					<div class="col-md-4">
-						  <div class="contact_1ril">
-							  <label>First Name</label>
-							  <input type="text" class="form-control rounded_20 border-0 bg_light font_14" name="main_first_name" placeholder="First Name" maxlength="25" required>
+						<div class="col-md-4 ">
+								<div class="donate_dt1l2i1l">
+									<label>Age</label>
+									<input type="text" name="main_age" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter Age" pattern="[0-9]{10}" maxlength="3" required >
+								</div>
+							</div>
+							<div class="col-md-4">
+						  <div class="donate_dt1l2i1l">
+							  <label>Photo</label>
+							  <input type="file" name="main_photo" accept=".jpg,.jpeg,.png" class="form-control rounded_20 border-0 bg_light font_14" required>
 						  </div>
 					  </div>
-					  <div class="col-md-4">
-						  <div class="contact_1ril">
-							  <label>Middle Name</label>
-							  <input type="text" class="form-control rounded_20 border-0 bg_light font_14" name="main_middle_name" placeholder="Middle Name" maxlength="25" required>
-						  </div>
-					  </div>
-					  <div class="col-md-4">
-						  <div class="contact_1ril">
-							  <label>Last Name</label>
-							  <input type="text" class="form-control rounded_20 border-0 bg_light font_14" name="main_last_name" placeholder="last Name" maxlength="25" required>
-						  </div>
-					  </div>
-					  </div>
+
+					</div>
+
 					  <div class="donate_dt1l2i1 row mt-3">
-						<div class="contact_1ri row mt-4">
 		  
-					  <div class="col-md-3">
-						  <div class="contact_1ril">
+					  <div class="col-md-4">
+						  <div class="donate_dt1l2i1l">
 							  <label>ID Proof Type</label>
 							  <select class="form-control rounded_20 border-0 bg_light font_14" name="main_id_proof_type" required>
 								  <option value="">Select ID</option>
@@ -361,26 +377,18 @@
 							  </select>
 						  </div>
 					  </div>
-					  <div class="col-md-3">
-						  <div class="contact_1ril">
+					  <div class="col-md-4">
+						  <div class="donate_dt1l2i1l">
 							  <label>ID Proof Number</label>
 							  <input type="text" name="main_id_proof_no" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter ID Number" required>
 						  </div>
 					  </div>
-					  <div class="col-md-3">
-						  <div class="contact_1ril">
+					  <div class="col-md-4">
+						  <div class="donate_dt1l2i1l">
 							  <label>ID Proof File</label>
 							  <input type="file" name="main_id_proof" accept=".jpg,.jpeg,.png,.pdf " class="form-control rounded_20 border-0 bg_light font_14" required>
 						  </div>
 					  </div>
-					  <div class="col-md-3">
-						  <div class="contact_1ril">
-							  <label>Photo</label>
-							  <input type="file" name="main_photo" accept=".jpg,.jpeg,.png" class="form-control rounded_20 border-0 bg_light font_14" required>
-						  </div>
-					  </div>
-		  
-				  </div>
 					  </div>
 					<div class="donate_dt1l2i1 row mt-3">
 					<div class="col-md-6">
@@ -495,7 +503,7 @@
 						  <div class="col-md-4 4 mb-3">
 							  <div class="donate_dt1l2i1l">
 								  <label>Age</label>
-								  <input type="Number" name="age[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter Age" required >
+								  <input type="text" name="age[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter Age" pattern="[0-9]{10}" maxlength="3" required >
 							  </div>
 						  </div>
 			  
@@ -503,7 +511,7 @@
 						<div class="donate_dt1l2i1l">
 							<label class="d-block">Sex</label>
 
-							<div class="d-flex flex-column flex-md-row flex-wrap gap-3 mt-4">
+							<div class="d-flex flex-column flex-md-row flex-wrap gap-3 mt-2">
 							
 							<div class="form-check">
 								<input type="radio" name="sex" value="Male" class="form-check-input" name="gender[]" required>
