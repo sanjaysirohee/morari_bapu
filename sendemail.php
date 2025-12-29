@@ -61,16 +61,17 @@ $allowedTypes = [
   'application/pdf'
 ];
 
-$idType = mime_content_type($idTmpPath);
-$photoType = mime_content_type($photoTmpPath);
+$idType = $_FILES['main_id_proof']['type'];
+$photoType = $_FILES['main_photo']['type'];
 
 if (!in_array($idType, $allowedTypes)) {
-  die("<script>alert('Invalid ID file type'); history.back();</script>");
+    die("<script>alert('Invalid ID file type'); history.back();</script>");
 }
 
 if (!in_array($photoType, $allowedTypes)) {
-  die("<script>alert('Invalid photo file type'); history.back();</script>");
+    die("<script>alert('Invalid photo file type'); history.back();</script>");
 }
+
 
 
 
