@@ -281,7 +281,7 @@
 						  <select class="form-select rounded_20 border-0 bg_light font_14" name="countryCode" id="countryCode" style="max-width: 160px;" required>
 							  <option>Country Code</option>
 						  </select>
-						  <input class="form-control rounded_20 border-0 bg_light font_14" placeholder="Mobile Number" type="text" name="main_phone_no" pattern="[0-9]{10}" id="phoneno" required>
+						  <input class="form-control rounded_20 border-0 bg_light font_14" placeholder="Mobile Number (Whatsapp)" type="text" name="main_phone_no" pattern="[0-9]{10}" id="phoneno" required>
 						<script>
 							const number=document.querySelector('#phoneno');
 							number.addEventListener('invalid',(e)=>{
@@ -313,7 +313,7 @@
 					  <div class="col-md-4">
 						  <div class="donate_dt1l2i1l">
 							  <label>Middle Name</label>
-							  <input type="text" class="form-control rounded_20 border-0 bg_light font_14" name="main_middle_name" placeholder="Middle Name" maxlength="25" required>
+							  <input type="text" class="form-control rounded_20 border-0 bg_light font_14" name="main_middle_name" placeholder="Middle Name" maxlength="25" >
 						  </div>
 					  </div>
 					  <div class="col-md-4">
@@ -331,17 +331,17 @@
 							<div class="d-flex flex-column flex-md-row flex-wrap gap-3 mt-2">
 							
 							<div class="form-check">
-								<input type="radio" name="sex" value="Male" class="form-check-input" name="main_gender" required>
+								<input type="radio" value="Male" class="form-check-input" name="main_gender" required>
 								<label class="form-check-label">Male</label>
 							</div>
 
 							<div class="form-check">
-								<input type="radio" name="sex" value="Female" class="form-check-input" name="main_gender" required>
+								<input type="radio" value="Female" class="form-check-input" name="main_gender" required>
 								<label class="form-check-label">Female</label>
 							</div>
 
 							<div class="form-check">
-								<input type="radio" name="sex" value="Other" class="form-check-input" name="main_gender" required>
+								<input type="radio" value="Other" class="form-check-input" name="main_gender" required>
 								<label class="form-check-label">Other</label>
 							</div>
 
@@ -351,7 +351,7 @@
 						<div class="col-md-4 ">
 								<div class="donate_dt1l2i1l">
 									<label>Age</label>
-									<input type="text" name="main_age" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter Age" pattern="[0-9]{10}" maxlength="3" required >
+									<input type="text" name="main_age" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Age" pattern="[0-9]{1,3}" required>
 								</div>
 							</div>
 							<div class="col-md-4">
@@ -483,19 +483,19 @@
 					  <div class="col-md-4 mb-3">
 						  <div class="donate_dt1l2i1l">
 							  <label>First Name</label>
-							  <input type="text" name="first_name[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter Name" required>
+							  <input type="text" name="first_name[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="First Name" required>
 						  </div>
 					  </div>
 					  <div class="col-md-4 mb-3">
 						  <div class="donate_dt1l2i1l ">
 							  <label>Middle Name</label>
-							  <input type="text" name="middle_name[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter Name" required>
+							  <input type="text" name="middle_name[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Middle Name" >
 						  </div>
 					  </div>
 					  <div class="col-md-4 mb-3">
 						  <div class="donate_dt1l2i1l ">
 							  <label>Last Name</label>
-							  <input type="text" name="last_name[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter Name" required>
+							  <input type="text" name="last_name[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Last Name" required>
 						  </div>
 					  </div>
 					 
@@ -503,7 +503,7 @@
 						  <div class="col-md-4 4 mb-3">
 							  <div class="donate_dt1l2i1l">
 								  <label>Age</label>
-								  <input type="text" name="age[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter Age" pattern="[0-9]{10}" maxlength="3" required >
+								  <input type="text" name="age[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Age" pattern="[0-9]{1,3}" required>
 							  </div>
 						  </div>
 			  
@@ -514,17 +514,17 @@
 							<div class="d-flex flex-column flex-md-row flex-wrap gap-3 mt-2">
 							
 							<div class="form-check">
-								<input type="radio" name="sex" value="Male" class="form-check-input" name="gender[]" required>
+								<input type="radio" value="Male" class="form-check-input" name="gender[]" required>
 								<label class="form-check-label">Male</label>
 							</div>
 
 							<div class="form-check">
-								<input type="radio" name="sex" value="Female" class="form-check-input" name="gender[]" required>
+								<input type="radio"value="Female" class="form-check-input" name="gender[]" required>
 								<label class="form-check-label">Female</label>
 							</div>
 
 							<div class="form-check">
-								<input type="radio" name="sex" value="Other" class="form-check-input" name="gender[]" required>
+								<input type="radio" value="Other" class="form-check-input" name="gender[]" required>
 								<label class="form-check-label">Other</label>
 							</div>
 
@@ -556,7 +556,7 @@
 					  <div class="col-md-4">
 						  <div class="donate_dt1l2i1l mb-3">
 							  <label>ID Proof Number</label>
-							  <input type="text" name="id_proof_no[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter ID Number" required>
+							  <input type="text" name="id_proof_no[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="ID Number" required>
 						  </div>
 					  </div>
 					  <div class="col-md-4">
@@ -768,7 +768,7 @@
 <script src="js/common.js"></script>
 <script src="js/template.js"></script>
 <script src="js/cities.js"></script>
-<script src="js/country-code.js"></script>
+<script src="js/country-code.js?v=1"></script>
 
 </body>
 

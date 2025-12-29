@@ -18,7 +18,7 @@ include_once ('header.php');
                 <div class="d-flex justify-content-end align-items-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active">People Attending With Main Person Queries</li>
+                        <li class="breadcrumb-item active">Attending Guests Queries</li>
                     </ol>
                 </div>
             </div>
@@ -53,9 +53,11 @@ include_once ('header.php');
                                     <tr>
                                         <th>S.No</th>
                                         <th>Coming with</th>
-                                        <th>Full Name</th>
-                                        <th>Email Id</th>
-                                        <th>Phone Number</th>
+                                        <th>First Name</th>
+                                        <th>Middle Name</th>
+                                        <th>Last Name</th>
+                                        <th>Gender</th>
+                                        <th>Age</th>
 										<th>ID Proof Type</th>
 										<th>ID Proof Number</th>
 										<th>Uploaded ID Proof</th>
@@ -83,14 +85,20 @@ include_once ('header.php');
                                             </td>
                         
                                             <td>
-                                                <?= $res_blog['full_name']; ?>
+                                                <?= $res_blog['first_name']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $res_blog['middle_name']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $res_blog['last_name']; ?>
                                             </td>
 
                                             <td>
-                                                <?= $res_blog['email']; ?>
+                                                <?= $res_blog['gender']; ?>
                                             </td>
                                             <td>
-                                                <?= $res_blog['phone']; ?>
+                                                <?= $res_blog['age']; ?>
                                             </td>
                                             <td>
 

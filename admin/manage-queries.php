@@ -56,17 +56,17 @@ include_once ('header.php');
                                         <th>Middle Name</th>
                                         <th>Last Name</th>
                                         <th>Email Id</th>
+                                        <th>Country Code</th>
                                         <th>Phone Number</th>
-										<th>Alternate Number</th>
+										<th>Gender</th>
+                                        <th>Age</th>
                                         <th>Country</th>
                                         <th>State</th>
                                         <th>City</th>
 										<th>ID Proof Type</th>
 										<th>ID Proof Number</th>
 										<th>Uploaded ID Proof</th>
-										<th>Attending</th>
-										<th>Total People Attending</th>
-										<th>Staying</th>
+										<th>Total Guests</th>
 										<th>Arrival Date</th>
 										<th>Departure Date</th>
 										<th>Photo</th>
@@ -105,10 +105,16 @@ include_once ('header.php');
                                                 <?= $res_blog['email_id']; ?>
                                             </td>
                                             <td>
+                                                <?= $res_blog['country_code']; ?>
+                                            </td>
+                                            <td>
                                                 <?= $res_blog['phone_number']; ?>
                                             </td>
                                             <td>
-                                                <?= $res_blog['other_number']; ?>
+                                                <?= $res_blog['gender']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $res_blog['age']; ?>
                                             </td>
 
 
@@ -130,15 +136,11 @@ include_once ('header.php');
 											<td>
                                                 <?= $res_blog['id_proof']; ?>
                                             </td>
-											<td>
-                                                <?= $res_blog['attending']; ?>
-                                            </td>
+											
 											<td>
                                                 <?= $res_blog['total_people_attending']; ?>
                                             </td>
-											<td>
-                                                <?= $res_blog['staying']; ?>
-                                            </td>
+											
 											<td>
                                                 <?= $res_blog['arrival_date']; ?>
                                             </td>

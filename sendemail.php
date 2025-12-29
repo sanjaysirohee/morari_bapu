@@ -24,17 +24,16 @@ $firstname = isset($_POST['main_first_name']) ? preg_replace("/[^\s\S\.\-\_\@a-z
 $middlename = isset($_POST['main_middle_name']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['main_middle_name']) : "";
 $lastname = isset($_POST['main_last_name']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['main_last_name']) : "";
 $senderEmail = isset($_POST['main_email_id']) ? preg_replace("/[^\.\-\_\@a-zA-Z0-9]/", "", $_POST['main_email_id']) : "";
-$userPhone = isset($_POST['main_phone_no']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['main_phone_no']) : "";
+$userPhone = isset($_POST['main_phone_no'])? preg_replace("/[^0-9]/", "", $_POST['main_phone_no']): "";
 $countryCode = isset($_POST['countryCode']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['countryCode']) : "";
-$gender = isset($_POST['countryCode']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['main_gender']) : "";
-$age = isset($_POST['main_age']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['main_age']) : "";
+$gender = isset($_POST['main_gender']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['main_gender']) : "";
+$age = isset($_POST['main_age']) ? preg_replace("/[^0-9]/", "", $_POST['main_age']) : "";
 $country = isset($_POST['country']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['country']) : "";
 $state = isset($_POST['state']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['state']) : "";
 $city = isset($_POST['city']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['city']) : "";
 $idprooftype = isset($_POST['main_id_proof_type']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['main_id_proof_type']) : "";
 $idno = isset($_POST['main_id_proof_no']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['main_id_proof_no']) : "";
 $guest = isset($_POST['total_people']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['total_people']) : "";
-$stay = isset($_POST['stay']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['stay']) : "";
 $arrivaldate = isset($_POST['arrival_date']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['arrival_date']) : "";
 $departuredate = isset($_POST['departure_date']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['departure_date']) : "";
 $address = isset($_POST['address']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['address']) : "";
@@ -98,8 +97,8 @@ if ($idError === 0 && $photoError === 0 ) {
 
 // Save data to database
 if (move_uploaded_file($idTmpPath, $iddestination) && move_uploaded_file($photoTmpPath,$photodestination)) {
-$stmt = $conn->prepare("INSERT INTO req_query_table (first_name, middle_name, last_name, email_id, phone_number, other_number, country, state, city, id_proof_type, id_proof_number,id_proof, attending, total_people_attending, staying, arrival_date, departure_date, photo,address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?)");
-$stmt->bind_param("sssssssssssssssssss", $firstname, $middlename, $lastname, $senderEmail, $userPhone, $altuserphone, $country, $state, $city, $idprooftype, $idno, $iddestination, $attend, $guest, $stay,$arrivaldate, $departuredate, $photodestination, $address);
+$stmt = $conn->prepare("INSERT INTO req_query_table (first_name, middle_name, last_name, email_id, country_code, phone_number, gender, age, country, state, city, id_proof_type, id_proof_number,id_proof, total_people_attending, arrival_date, departure_date, photo,address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?)");
+$stmt->bind_param("sssssssssssssssssss", $firstname, $middlename, $lastname, $senderEmail, $countryCode, $userPhone, $gender, $age, $country, $state, $city, $idprooftype, $idno, $iddestination, $guest,$arrivaldate, $departuredate, $photodestination, $address);
 
 
 if ($stmt->execute()) {
@@ -110,39 +109,44 @@ if ($stmt->execute()) {
 
 
 $request_id = $conn->insert_id;
+$no_of_guest= isset($_POST['first_name']) ? count($_POST['first_name']) : 0;
+if($no_of_guest!=null){
 
-for ($i = 0; $i < count($_POST['full_name']); $i++) {
-
-  $guestfirstname = $_POST['first_name'][$i];
-  $guestmiddlename = $_POST['middle_name'][$i];
-  $guestlastname = $_POST['last_name'][$i];
-  $guestage = $_POST['age'][$i];
-  $guestgender=$_POST['gender'][$i];
-  $idType = $_POST['id_proof_type'][$i];
-  $idNo = $_POST['id_proof_no'][$i];
-
-
-  // insert person
-  $stmt2 = $conn->prepare("
-    INSERT INTO req_people
-    (request_id, full_name, email, phone, id_proof_type, id_proof_number, id_proof_file, photo)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-  ");
-
-  $stmt2->bind_param(
-    "isssssss",
-    $request_id,
-    $name,
-    $email,
-    $phone,
-    $idType,
-    $idNo,
-    $idFileName,
-    $photoFileName
-  );
-
-
-  $stmt2->execute();
+  for ($i = 0; $i <$no_of_guest; $i++) {
+  
+    $guestfirstname = $_POST['first_name'][$i];
+    $guestmiddlename = $_POST['middle_name'][$i];
+    $guestlastname = $_POST['last_name'][$i];
+    $guestage = $_POST['age'][$i];
+    $guestgender=$_POST['gender'][$i];
+    $idType = $_POST['id_proof_type'][$i];
+    $idNo = $_POST['id_proof_no'][$i];
+  
+  
+    // insert person
+    $stmt2 = $conn->prepare("
+      INSERT INTO req_people
+      (request_id, first_name, middle_name, last_name, gender, age, id_proof_type, id_proof_number, id_proof_file, photo)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?,?,?)
+    ");
+  
+    $stmt2->bind_param(
+      "isssssssss",
+      $request_id,
+      $guestfirstname,
+      $guestmiddlename,
+      $guestlastname,
+      $guestgender,
+      $guestage,
+      $idType,
+      $idNo,
+      $idFileName,
+      $photoFileName
+    );
+  
+  
+    $stmt2->execute();
+  }
 }
 
 
@@ -172,17 +176,17 @@ $conn->close();
         "<h3> New Registration of {$firstname}</h3>
         <h3>{$firstname} information</h3>
         <p><b>Name:</b> {$firstname} {$middlename} {$lastname}</p>
+        <p><b>Country Code:</b> {$countryCode}</p>
         <p><b>Phone Number:</b> {$userPhone}</p>
-        <p><b>Alternat Phone Number:</b> {$altuserphone}</p>
         <p><b>Email Id:</b> {$senderEmail}</p>
+        <p><b>Age:</b> {$age}</p>
+        <p><b>Gender:</b> {$gender}</p>
         <p><b>Country:</b> {$country}</p>
         <p><b>State:</b> {$state}</p>
         <p><b>City:</b> {$city}</p>
         <p><b>Id Proof Submitted:</b> {$idprooftype}</p>
         <p><b>Id No:</b> {$idno}</p>
-        <p><b>Attending(yes/no):</b> {$attend }</p>
         <p><b>Total People Attending:</b> {$guest }</p>
-        <p><b>Staying(yes/no):</b> {$stay }</p>
         <p><b>Arrival Date:</b> {$arrivaldate}</p>
         <p><b>Departure Date:</b> {$departuredate}</p>
         <p><b>Address:</b> {$address}</p>
@@ -192,51 +196,54 @@ $conn->close();
 
         $peopleIdFiles = [];
         $peoplePhotoFiles = [];
-
-        for ($i = 0; $i < count($_POST['full_name']); $i++) {
-
-          $idFileName = time().'_'.$i.'_'.$_FILES['id_proof']['name'][$i];
-          $idPath = "uploads/id/".$idFileName;
-
-          move_uploaded_file($_FILES['id_proof']['tmp_name'][$i], $idPath);
-
-          $photoFileName = time().'_'.$i.'_'.$_FILES['photo']['name'][$i];
-          $photoPath = "uploads/photo/".$photoFileName;
-
-          move_uploaded_file($_FILES['photo']['tmp_name'][$i], $photoPath);
-
-          // save paths
-          $peopleIdFiles[] = $idPath;
-          $peoplePhotoFiles[] = $photoPath;
-        }
-
         $peopleInfo = "<h3>Attending People</h3>";
+        if($no_of_guest!=null){
 
-        for ($i = 0; $i < count($_POST['full_name']); $i++) {
-
-          $peopleInfo .= "
-            <hr>
-            <p><b>Name:</b> {$_POST['full_name'][$i]}</p>
-            <p><b>Email:</b> {$_POST['email_id'][$i]}</p>
-            <p><b>Phone:</b> {$_POST['phone_number'][$i]}</p>
-            <p><b>Id Proof:</b> {$_POST['id_proof_type'][$i]}</p>
-            <p><b>Id number:</b> {$_POST['id_proof_no'][$i]}</p>
-          ";
-          if (!empty($peopleIdFiles[$i]) && file_exists($peopleIdFiles[$i])) {
-            $mail->addAttachment(
-              $peopleIdFiles[$i],
-              $_POST['full_name'][$i] . "_ID_" . $_POST['id_proof_type'][$i] . ".pdf"
-            );
+          for ($i = 0; $i < $no_of_guest; $i++) {
+  
+            $idFileName = time().'_'.$i.'_'.$_FILES['id_proof']['name'][$i];
+            $idPath = "uploads/id/".$idFileName;
+  
+            move_uploaded_file($_FILES['id_proof']['tmp_name'][$i], $idPath);
+  
+            $photoFileName = time().'_'.$i.'_'.$_FILES['photo']['name'][$i];
+            $photoPath = "uploads/photo/".$photoFileName;
+  
+            move_uploaded_file($_FILES['photo']['tmp_name'][$i], $photoPath);
+  
+            // save paths
+            $peopleIdFiles[] = $idPath;
+            $peoplePhotoFiles[] = $photoPath;
           }
-
-          if (!empty($peoplePhotoFiles[$i]) && file_exists($peoplePhotoFiles[$i])) {
-            $mail->addAttachment(
-              $peoplePhotoFiles[$i],
-              $_POST['full_name'][$i] . "_Photo.jpg"
-            );
-          }
-
+          
+          
+                  for ($i = 0; $i < $no_of_guest; $i++) {
+          
+                    $peopleInfo .= "
+                      <hr>
+                      <p><b>Name:</b> {$_POST['first_name'][$i]} {$_POST['middle_name'][$i]} {$_POST['last_name'][$i]}</p>
+                      <p><b>Age: </b>{$_POST['age'][$i]}</p>
+                      <p><b>Gender: </b>{$_POST['gender'][$i]}</p>
+                      <p><b>Id Proof:</b> {$_POST['id_proof_type'][$i]}</p>
+                      <p><b>Id number:</b> {$_POST['id_proof_no'][$i]}</p>
+                    ";
+                    if (!empty($peopleIdFiles[$i]) && file_exists($peopleIdFiles[$i])) {
+                      $mail->addAttachment(
+                        $peopleIdFiles[$i],
+                        $_POST['first_name'][$i]. $_POST['last_name'][$i] . "_ID_" . $_POST['id_proof_type'][$i] . ".pdf"
+                      );
+                    }
+          
+                    if (!empty($peoplePhotoFiles[$i]) && file_exists($peoplePhotoFiles[$i])) {
+                      $mail->addAttachment(
+                        $peoplePhotoFiles[$i],
+                        $_POST['first_name'][$i]. $_POST['last_name'][$i] . "_Photo.jpg"
+                      );
+                    }
+          
+                  }
         }
+
 
 
       $mail->setFrom('emails@crmwala.com', "Ram Katha Samiti, Delhi");
