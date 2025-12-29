@@ -103,7 +103,7 @@ $stmt->bind_param("sssssssssssssssssss", $firstname, $middlename, $lastname, $se
 
 
 if ($stmt->execute()) {
-    echo "Data savsed to database successfully<br>";
+    echo " ";
 } else {
     echo "Database Error: " . $stmt->error;
 }
@@ -309,7 +309,7 @@ $conn->close();
 
 // Send message to Whatsapp Code End
 
-echo "<script>alert('Thank you! Your message has been sent successfully.'); window.location='index.html';</script>";
+echo "<script>alert('Thank you! Your message has been sent successfully.'); window.location='registration.html';</script>";
         // echo 'Message has been sent';
 } catch (Exception $e) { // handle error.
         echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
