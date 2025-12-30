@@ -174,7 +174,7 @@ background-color: #f5e5e1!important;
 background-color: #f74f22!important;
  }
 .bg_back{
-background-color: rgba(0,0,0,.4)!important;
+background-color: rgba(0,0,0,.01)!important;
 }
 .bg_backo {
     padding-top: 80px;
@@ -641,7 +641,7 @@ z-index:3;
     padding-bottom: 120px;
 }
 .center_o1l p{
-   border-left:3px solid #f74f22;
+   border-left:1px solid #e6bfb500;
  }
 .center_o1r{
 margin-top:50px; 
