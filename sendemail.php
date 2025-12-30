@@ -308,15 +308,20 @@ $conn->close();
       }
       $otp=rand(1000,9999);
       $thanks_message="Dear ${firstname} ${middlename} ${lastname},
-Your registration to attend Ram Katha in Delhi from ${arrivaldate} to ${departuredate} has been successfully completed. We welcome you to visit the Ram Katha Office for hotel confirmation.
+Your registration to attend Ram Katha in Delhi from ${arrivaldate} to ${departuredate} has been successfully completed. 
+
+We welcome you to visit the Ram Katha Office for hotel confirmation.
 👉 Hotel allotment will be done on a first come, first basis.
+
 Please note:
   • Accommodation will be provided on a sharing basis.
   • Accommodation is subject to availability.
   • The Ram Katha Samiti will try its best to accommodate maximum devotees.
   • This registration is only for participation.
   • Final accommodation allotment will be confirmed only after your arrival.
+
 We look forward to your presence and blessings.
+
 Jai Shri Ram 🙏
 Ram Katha Samiti, Delhi.";
       
