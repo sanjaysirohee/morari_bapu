@@ -157,7 +157,7 @@ include_once ('header.php');
                                                <?= $res_blog['submitted_on'];?>
                                             </td>
                                             <td>
-                                                <a href="manage-small-queries.php?id=<?=$res_blog['id'];?>" target="_blank" class="btn btn-danger">button</a>
+                                                <a href="manage-small-queries.php?id=<?=$res_blog['id'];?>" target="_blank" class="btn btn-danger">Other Guests</a>
                                             </td>
                                         </tr>
                                     <?php  } ?>

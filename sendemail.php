@@ -280,7 +280,7 @@ $conn->close();
             ]
         ];
         $userMessage=
-          "<p><b>Dear Devotee</b>,</p>
+          "<p><b>Dear ${firstname} ${middlename} ${lastname}</b>,</p>
             <p>Your registration to attend Ram Katha in Delhi from ${arrivaldate} to ${departuredate} has been successfully completed.</p>
             <p>We welcome you to visit the Ram Katha Office for hotel confirmation.
             👉 Hotel allotment will be done on a first come, first basis.<br></p>
@@ -306,7 +306,33 @@ $conn->close();
             echo "User Mailer Error: " . $userMail->ErrorInfo;
         }
       }
+      $otp=rand(1000,9999);
+      $thanks_message="Dear ${firstname} ${middlename} ${lastname},
+Your registration to attend Ram Katha in Delhi from ${arrivaldate} to ${departuredate} has been successfully completed. We welcome you to visit the Ram Katha Office for hotel confirmation.
+👉 Hotel allotment will be done on a first come, first basis.
+Please note:
+  • Accommodation will be provided on a sharing basis.
+  • Accommodation is subject to availability.
+  • The Ram Katha Samiti will try its best to accommodate maximum devotees.
+  • This registration is only for participation.
+  • Final accommodation allotment will be confirmed only after your arrival.
+We look forward to your presence and blessings.
+Jai Shri Ram 🙏
+Ram Katha Samiti, Delhi.";
+      
+      $Message = "&type=text&message=".urlencode($thanks_message);
 
+      $url="https://chatbot.veloxn.com/api/send?number=91".$userPhone. $Message ."&instance_id=6943E3FD002E8&access_token=692585a17ff0c";
+      // $url = 'https://chatbot.veloxn.com/api/send?number=919315516129' . $Message . '&instance_id=6793404B6D5FB&access_token=6784c9e23c264';
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_URL, $url);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+      //curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+      $result = curl_exec($ch);
+      if (curl_errno($ch)) {
+        echo 'Error: ' . curl_error($ch);
+      }
+      curl_close($ch);
 
 // Send message to Whatsapp Code End
 

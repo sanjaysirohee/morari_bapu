@@ -196,11 +196,11 @@ include ('config.php');
                         <li>
                             <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
                                 aria-expanded="false"><i class="fas fa-blog"></i>
-                                <span class="hide-menu">Queries</span></a>
+                                <span class="hide-menu">Registration</span></a>
 
                             <ul aria-expanded="false" class="collapse">
 
-                                <li><a href="manage-queries.php">Main Person Queries</a></li>
+                                <li><a href="manage-queries.php">Registration Forms</a></li>
                                 <!-- <li><a href="manage-small-queries.php">Attending Guests Queries</a></li> -->
 								<!-- <li><a href="junk-queries.php">Junk Queries</a></li> -->
 								<!-- <li><a href="website-cost-queries.php">Website Cost Queries</a></li> -->
