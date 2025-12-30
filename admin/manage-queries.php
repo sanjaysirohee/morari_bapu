@@ -134,7 +134,7 @@ include_once ('header.php');
                                                 <?= $res_blog['id_proof_number']; ?>
                                             </td>
 											<td>
-                                                <?= $res_blog['id_proof']; ?>
+                                                <a href="<?php echo BASE_URL; ?>/<?= $res_blog['id_proof'];?>" target="_blank" class="btn btn-danger">Id Proof</a>
                                             </td>
 											
 											<td>
@@ -148,7 +148,7 @@ include_once ('header.php');
                                                 <?= $res_blog['departure_date']; ?>
                                             </td>
 											<td>
-                                                <?= $res_blog['photo']; ?>
+                                                <a href="<?php echo BASE_URL; ?>/<?= $res_blog['photo'];?>" target="_blank" class="btn btn-danger">Photo</a>
                                             </td>
 											<td>
                                                 <?= $res_blog['address']; ?>
@@ -157,7 +157,7 @@ include_once ('header.php');
                                                <?= $res_blog['submitted_on'];?>
                                             </td>
                                             <td>
-                                                <a href="manage-small-queries.php?id=<?=$res_blog['id'];?>" class="btn btn-danger">button</a>
+                                                <a href="manage-small-queries.php?id=<?=$res_blog['id'];?>" target="_blank" class="btn btn-danger">button</a>
                                             </td>
                                         </tr>
                                     <?php  } ?>

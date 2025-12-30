@@ -70,11 +70,11 @@ include_once ('header.php');
                                     <?php
                                     if(isset($_GET['id'])){
                                         $main_id=$_GET['id'];
-                                        echo $main_id;
+                                        
                                         $fetch_blog = mysqli_query($con, "select * from req_people where request_id=$main_id");
                                     }
                                     else{
-                                        echo "hii";
+                                        
                                         $fetch_blog = mysqli_query($con, "select * from req_people order by id desc");
                                     }
                                         $i = 1;
@@ -116,11 +116,11 @@ include_once ('header.php');
                                                 <?= $res_blog['id_proof_number']; ?>
                                             </td>
 											<td>
-                                                <?= $res_blog['id_proof_file']; ?>
+                                                <a href="<?php echo BASE_URL; ?>/<?= $res_blog['id_proof_file'];?>" target="_blank" class="btn btn-danger">Id Proof</a>
                                             </td>
 											
 											<td>
-                                                <?= $res_blog['photo']; ?>
+                                                <a href="<?php echo BASE_URL; ?>/<?= $res_blog['photo'];?>" target="_blank" class="btn btn-danger">Photo</a>
                                             </td>
 
                                         </tr>

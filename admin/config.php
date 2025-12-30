@@ -6,11 +6,17 @@
 	define('APP_NAME','AdoPremium');
 	define('PROJECT_FOLDER_NAME','/');
 	define('ROOT', $_SERVER['DOCUMENT_ROOT']. PROJECT_FOLDER_NAME) ;  // document path while upload on server
-	define("BASE_URL","https://" . $_SERVER['HTTP_HOST'].PROJECT_FOLDER_NAME);  // base url for front
+	// define("BASE_URL","https://" . $_SERVER['HTTP_HOST'].PROJECT_FOLDER_NAME);  // base url for front
+	// define("BASE_URL","http://localhost/morari_bapu/");  // base url for front
 
+	if ($_SERVER['HTTP_HOST'] == 'localhost') {
+    define('BASE_URL', 'http://'.$_SERVER['HTTP_HOST'].'/morari_bapu');
+	} else {
+		define('BASE_URL', "https://" . $_SERVER['HTTP_HOST'].PROJECT_FOLDER_NAME);
+	}
 	define('BASE_ADMIN_URL', BASE_URL.'admin/');
 
-	define('LOGO', BASE_URL.'assets/images/logo.png');
+	define('LOGO', BASE_URL.'/img/logo.png');
 
 	/* Server  */
 	define('DB_DATABASE','sarojk7j_saroj');

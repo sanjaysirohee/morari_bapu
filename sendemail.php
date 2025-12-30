@@ -113,7 +113,25 @@ if ($stmt->execute()) {
 
 $request_id = $conn->insert_id;
 $no_of_guest= isset($_POST['first_name']) ? count($_POST['first_name']) : 0;
+$peopleIdFiles = [];
+$peoplePhotoFiles = [];
 if($no_of_guest!=null){
+   for ($i = 0; $i < $no_of_guest; $i++) {
+  
+            $guestidFileName = time().'_'.$i.'_'.$_FILES['id_proof']['name'][$i];
+            $guestidPath = "uploads/id/".$guestidFileName;
+  
+            move_uploaded_file($_FILES['id_proof']['tmp_name'][$i], $guestidPath);
+  
+            $guestphotoFileName = time().'_'.$i.'_'.$_FILES['photo']['name'][$i];
+            $guestphotoPath = "uploads/photo/".$guestphotoFileName;
+  
+            move_uploaded_file($_FILES['photo']['tmp_name'][$i], $guestphotoPath);
+  
+            // save paths
+            $peopleIdFiles[$i] = $guestidPath;
+            $peoplePhotoFiles[$i] = $guestphotoPath;
+          }
 
   for ($i = 0; $i <$no_of_guest; $i++) {
   
@@ -143,8 +161,8 @@ if($no_of_guest!=null){
       $guestage,
       $idType,
       $idNo,
-      $idFileName,
-      $photoFileName
+      $peopleIdFiles[$i],  
+      $peoplePhotoFiles[$i] 
     );
   
   
@@ -197,29 +215,10 @@ $conn->close();
         "
         ;
 
-        $peopleIdFiles = [];
-        $peoplePhotoFiles = [];
+
         $peopleInfo = "<h3>Attending People</h3>";
         if($no_of_guest!=null){
 
-          for ($i = 0; $i < $no_of_guest; $i++) {
-  
-            $idFileName = time().'_'.$i.'_'.$_FILES['id_proof']['name'][$i];
-            $idPath = "uploads/id/".$idFileName;
-  
-            move_uploaded_file($_FILES['id_proof']['tmp_name'][$i], $idPath);
-  
-            $photoFileName = time().'_'.$i.'_'.$_FILES['photo']['name'][$i];
-            $photoPath = "uploads/photo/".$photoFileName;
-  
-            move_uploaded_file($_FILES['photo']['tmp_name'][$i], $photoPath);
-  
-            // save paths
-            $peopleIdFiles[] = $idPath;
-            $peoplePhotoFiles[] = $photoPath;
-          }
-          
-          
                   for ($i = 0; $i < $no_of_guest; $i++) {
           
                     $peopleInfo .= "

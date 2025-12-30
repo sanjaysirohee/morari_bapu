@@ -43,7 +43,7 @@ include ('config.php');
 
     <meta name="author" content="">
 
-    <link rel="icon" type="image/png" sizes="16x16" href="https://morari_bapu.com/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo BASE_URL;?>/img/logo.png">
 
     <title>Ram Katha Samiti</title>
 
@@ -86,10 +86,10 @@ include ('config.php');
 
                     <a class="navbar-brand" href="#">
 
-                        <img src="<?php echo BASE_URL; ?>img/logo.png" alt="homepage"
+                        <img src="<?php echo BASE_URL; ?>/img/logo1.png" alt="homepage"
                             class="dark-logo" />
 
-                        <img src="<?php echo BASE_URL; ?>img/logo.png" alt="homepage"
+                        <img src="<?php echo BASE_URL; ?>/img/logo1.png" alt="homepage"
                             class="light-logo" />
 
                         </b>
