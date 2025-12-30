@@ -68,7 +68,15 @@ include_once ('header.php');
 
                                 <tbody>
                                     <?php
-                                    $fetch_blog = mysqli_query($con, "select * from req_people order by id desc");
+                                    if(isset($_GET['id'])){
+                                        $main_id=$_GET['id'];
+                                        echo $main_id;
+                                        $fetch_blog = mysqli_query($con, "select * from req_people where request_id=$main_id");
+                                    }
+                                    else{
+                                        echo "hii";
+                                        $fetch_blog = mysqli_query($con, "select * from req_people order by id desc");
+                                    }
                                         $i = 1;
                                     while ($res_blog = mysqli_fetch_array($fetch_blog)) {
                                         

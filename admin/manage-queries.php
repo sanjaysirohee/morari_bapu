@@ -72,6 +72,7 @@ include_once ('header.php');
 										<th>Photo</th>
 										<th>Address</th>
 										<th>Date and Time of Submission</th>
+                                        <th>Attendees</th>
                                     </tr>
                                 </thead>
 
@@ -79,6 +80,7 @@ include_once ('header.php');
                                     <?php
                                     $fetch_blog = mysqli_query($con, "select * from req_query_table order by id desc");
                                         $i = 1;
+
                                     while ($res_blog = mysqli_fetch_array($fetch_blog)) {
                                         
                                         ?>
@@ -116,8 +118,6 @@ include_once ('header.php');
                                             <td>
                                                 <?= $res_blog['age']; ?>
                                             </td>
-
-
                                             <td>
                                                 <?= $res_blog['country']; ?>
                                             </td>
@@ -155,6 +155,9 @@ include_once ('header.php');
                                             </td>
                                            <td>
                                                <?= $res_blog['submitted_on'];?>
+                                            </td>
+                                            <td>
+                                                <a href="manage-small-queries.php?id=<?=$res_blog['id'];?>" class="btn btn-danger">button</a>
                                             </td>
                                         </tr>
                                     <?php  } ?>
