@@ -165,7 +165,7 @@ color:#09356a!important;
 color: #f74f22!important;
  }
 .bg_blue{
-background-color: #022147!important;
+background-color: #ffffff!important;
  }
 .bg_light{
 background-color: #f5e5e1!important;
@@ -766,7 +766,7 @@ transition: 0.3s;
 
 /*********************footer****************/
 #footer_b{
-border-top:1px solid #063b7c; 
+border-top:1px solid white; 
  }
 .footer_b1m h3{
 font-size:26px;
@@ -802,7 +802,7 @@ top:-19%;
  }
 
 #footer{
-padding-top:140px!important; 
+padding-top:50px!important; 
  }
 /*********************footer_end****************/
 
