@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
       countries = data;
       country.innerHTML = `<option value="">Select Country</option>`;
       data.forEach(c => {
-        country.innerHTML += `<option value="${c.name}" data-id="${c.id}">${c.name}</option>`;
+        country.innerHTML += `<option value="${c.name}" data-id="${c.id}" ${c.name=="India"?"selected":""}>${c.name}</option>`;
       });
     });
 

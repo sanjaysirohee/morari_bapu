@@ -467,13 +467,11 @@
 					  <h6>Number of Guests: (Maximum 4 guests are allowed) <strong class="text-danger">*</strong></h6>
 					  <div class="input-group overflow-hidden rounded_20 border-0 bg_light font_14">
 							  <i class="bi bi-dash-square-fill btn btn-danger" id="sub"></i>
-	  
 						  <input
 							  type="number"
 							  class="form-control border-0 bg_light font_14"
 							  placeholder="Number of Guests"
-							  name="total_people" id="total_people" ;
-						  >
+							  name="total_people" id="total_people" min="1" max="4" style="z-index: 0;" readonly>
 						  
 							  <i class="bi bi-plus-square-fill btn btn-danger" id="add"></i>
 							  
@@ -492,7 +490,7 @@
 							  if (guest.value === '') {
 								  guest.value = 0;
 								}
-								if(guest.value<5){
+								if(guest.value<4){
 									guest.value=Number(guest.value)+1;
 								}
 							  triggerInput(); 
@@ -655,14 +653,14 @@
 				  </div>
 				  <div class="col-md-4">
 					 <div class="donate_dt1l2i1l">
-					   <h6>Select State<strong class="text-danger">*</strong></h6>
+					   <h6>Select State (Not Mandatory)</h6>
 				<select class="form-control rounded_20 border-0 bg_light font_14" name="state" id="state" >
 				</select>
 					 </div>
 					 </div>
 					 <div class="col-md-4">
 					 <div class="donate_dt1l2i1l">
-					   <h6>Select City</h6>
+					   <h6>Select City (Not Mandatory)</h6>
 				<select class="form-control rounded_20 border-0 bg_light font_14" name="city" id="city">
 				</select>
 					 </div>
@@ -757,7 +755,7 @@ New Delhi – 110060 </font>
 
 <script src="js/common.js"></script>
 <script src="js/template.js"></script>
-<script src="js/cities.js"></script>
+<script src="js/cities.js?v=1"></script>
 <script src="js/country-code.js"></script>
 <script src="js/validation.js"></script>
 

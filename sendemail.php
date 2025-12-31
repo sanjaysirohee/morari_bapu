@@ -44,6 +44,7 @@ $address = isset($_POST['address']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/",
 // $userPage = isset($_POST['userPage']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['userPage']) : "";
 // $requirements = isset($_POST['requirements']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['requirements']) : "";
 
+// $id=mysqli_query($conn,"select id from req_query_table where phone_number=${userPhone}");
  $isValidEmail = !empty($senderEmail) && filter_var($senderEmail, FILTER_VALIDATE_EMAIL);
 if (!isset($_FILES['main_id_proof']) || !isset($_FILES['main_photo'])) {
     die("Main ID or Photo not uploaded!");
@@ -57,20 +58,25 @@ $idError = $_FILES['main_id_proof']['error'];
 $photoTmpPath = $_FILES['main_photo']['tmp_name'];
 $photoName = $_FILES['main_photo']['name'];
 $photoError = $_FILES['main_photo']['error'];
-$allowedTypes = [
+$idallowedTypes = [
   'image/jpeg',
   'image/png',
   'application/pdf'
+];
+$photoallowedTypes = [
+  'image/jpg',
+  'image/jpeg',
+  'image/png',
 ];
 
 $idType = $_FILES['main_id_proof']['type'];
 $photoType = $_FILES['main_photo']['type'];
 
-if (!in_array($idType, $allowedTypes)) {
+if (!in_array($idType, $idallowedTypes)) {
     die("<script>alert('Invalid ID file type'); history.back();</script>");
 }
 
-if (!in_array($photoType, $allowedTypes)) {
+if (!in_array($photoType, $photoallowedTypes)) {
     die("<script>alert('Invalid photo file type'); history.back();</script>");
 }
 
@@ -171,7 +177,13 @@ if($no_of_guest!=null){
 }
 
 
+$nid = mysqli_query(
+  $conn,
+  "SELECT id FROM req_query_table WHERE phone_number = '$userPhone'"
+);
 
+$row = mysqli_fetch_assoc($nid);
+$id = $row['id'];
 $stmt->close();
 $conn->close();
 
@@ -279,9 +291,10 @@ $conn->close();
                 'allow_self_signed' => true
             ]
         ];
+        
         $userMessage=
           "<p><b>Dear ${firstname} ${middlename} ${lastname}</b>,</p>
-            <p>Your registration to attend Ram Katha in Delhi from ${arrivaldate} to ${departuredate} has been successfully completed.</p>
+            <p>Your registration no. ${id} to attend Ram Katha in Delhi from ${arrivaldate} to ${departuredate} has been successfully completed.</p>
             <p>We welcome you to visit the Ram Katha Office for hotel confirmation.
             👉 Hotel allotment will be done on a first come, first basis.<br></p>
             <b>Please note:</b>
@@ -308,7 +321,7 @@ $conn->close();
       }
       $otp=rand(1000,9999);
       $thanks_message="Dear ${firstname} ${middlename} ${lastname},
-Your registration to attend Ram Katha in Delhi from ${arrivaldate} to ${departuredate} has been successfully completed. 
+Your registration no. ${id} to attend Ram Katha in Delhi from ${arrivaldate} to ${departuredate} has been successfully completed. 
 
 We welcome you to visit the Ram Katha Office for hotel confirmation.
 👉 Hotel allotment will be done on a first come, first basis.
@@ -353,5 +366,6 @@ echo "<script>alert('Thank you! Your message has been sent successfully.'); wind
 }else {
     echo "File upload error!";
 }
+
 
 ?>
