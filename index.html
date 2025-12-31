@@ -251,11 +251,17 @@
 						  <select class="form-select rounded_20 border-0 bg_light font_14" name="countryCode" id="countryCode" style="max-width: 160px;" required>
 							  <option>Country Code</option>
 						  </select>
-						  <input class="form-control rounded_20 border-0 bg_light font_14" placeholder="Mobile Number (Whatsapp)" type="tel" name="main_phone_no" pattern="[0-9]{10}" id="phoneno" maxlength="10" required>
+						  <input class="form-control rounded_20 border-0 bg_light font_14" placeholder="Mobile Number (Whatsapp)" type="tel" name="main_phone_no" pattern="[0-9]{10}" id="phoneno" maxlength="10" style="z-index:0" required>
 						<script>
 							const number=document.querySelector('#phoneno');
 							number.addEventListener('invalid',(e)=>{
-								e.target.setCustomValidity('Mobile number should be a 10 digit number');
+								 if(e.target.value==''){
+									e.target.setCustomValidity('Mobile number is mandatory');
+								} 
+								else{
+									e.target.setCustomValidity('Mobile number should be a 10 digit number');
+
+								}
 							})
 							number.addEventListener('input',(e)=>{
 								e.target.setCustomValidity('');
@@ -422,7 +428,9 @@
 							  if (guest.value === '') {
 								  guest.value = 0;
 								}
-							  guest.value=Number(guest.value)+1;
+								if(guest.value<5){
+									guest.value=Number(guest.value)+1;
+								}
 							  triggerInput(); 
 						  });
 						  

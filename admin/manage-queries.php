@@ -46,7 +46,10 @@ include_once ('header.php');
                         ?>
                         <h4 class="card-title">Manage Queries</h4>
                         <h6 class="card-subtitle"></h6>
-                        <div class="table-responsive m-t-40">
+                        <div class="table-responsive mt-40">
+                            <div>
+                                <input type=text name="search" class="px-4 py-2" placeholder="Search">
+                            </div>
                             <table id="example23" class="display nowrap table table-hover table-striped table-bordered"
                                 cellspacing="0" width="100%">
                                 <thead>
@@ -73,6 +76,7 @@ include_once ('header.php');
 										<th>Address</th>
 										<th>Date and Time of Submission</th>
                                         <th>Attendees</th>
+                                        <th>ID Card</th>
                                     </tr>
                                 </thead>
 
@@ -158,6 +162,9 @@ include_once ('header.php');
                                             </td>
                                             <td>
                                                 <a href="manage-small-queries.php?id=<?=$res_blog['id'];?>" target="_blank" class="btn btn-danger">Other Guests</a>
+                                            </td>
+                                            <td>
+                                                <a href="id-card.php?id=<?=$res_blog['id'];?>" target="_blank" class="btn btn-danger">ID Card</a>
                                             </td>
                                         </tr>
                                     <?php  } ?>
