@@ -246,31 +246,54 @@
 					
 				  <div class="col-md-6">
 					 <div class="donate_dt1l2i1l">
-						 <h6>Select Country Code and Write Mobile no</h6>
-					  <div class="input-group overflow-hidden rounded_20 border-0 bg_light font_14">
-						  <select class="form-select rounded_20 border-0 bg_light font_14" name="countryCode" id="countryCode" style="max-width: 160px;" required>
-							  <option>Country Code</option>
-						  </select>
-						  <input class="form-control rounded_20 border-0 bg_light font_14" placeholder="Mobile Number (Whatsapp)" type="tel" name="main_phone_no" pattern="[0-9]{10}" id="phoneno" maxlength="10" style="z-index:0" required>
-						  
-						<script>
-							const number=document.querySelector('#phoneno');
-							number.addEventListener('invalid',(e)=>{
-								 if(e.target.value==''){
-									e.target.setCustomValidity('Mobile number is mandatory');
-								} 
-								else{
-									e.target.setCustomValidity('Mobile number should be a 10 digit number');
+					<h6>Select Country Code and Write Mobile no</h6>
 
-								}
-							})
-							number.addEventListener('input',(e)=>{
-								e.target.setCustomValidity('');
-							})
-						</script>
+					<div class="input-group overflow-hidden rounded_20 bg_light font_14">
+						<select
+						class="form-select rounded_20 border-0 bg_light font_14"
+						name="countryCode"
+						id="countryCode"
+						style="max-width: 160px;"
+						required
+						>
+						<option value="">Country Code</option>
+						</select>
+
+						<input
+						type="tel"
+						class="form-control rounded_20 border-0 bg_light font_14"
+						placeholder="Mobile Number (Whatsapp)"
+						name="main_phone_no"
+						id="phoneno"
+						pattern="[0-9]{10}"
+						maxlength="10"
+						required
+						>
 					</div>
-					
-					 </div>
+
+					<!-- ✅ OUTSIDE input-group -->
+					<div id="phoneError" class="invalid-feedback">
+						Enter the valid Mobile number
+					</div>
+
+					</div>
+					<script>
+					const phone = document.getElementById('phoneno');
+					const error = document.getElementById('phoneError');
+
+					phone.addEventListener('invalid', function () {
+						phone.classList.add('is-invalid');
+						error.style.display = 'block';
+					});
+
+					phone.addEventListener('input', function () {
+						phone.classList.remove('is-invalid');
+						error.style.display = 'none';
+					});
+					</script>
+
+
+
 					 </div>
 					 <div class="col-md-6">
 						 <div class="donate_dt1l2i1l">
@@ -375,6 +398,9 @@
 								  <option>Voter ID</option>
 								  <option>Passport</option>
 							  </select>
+							  <div class="invalid-feedback">
+								Please select an option.
+								</div>
 						  </div>
 					  </div>
 					  <div class="col-md-4">
@@ -411,6 +437,9 @@
 						  <option value="23 January 2026">23 January 2026</option>
 						  <option value="24 January 2026">24 January 2026</option>
 					  </select>
+					  <div class="invalid-feedback">
+								Please select an option.
+								</div>
 					 </div>
 					</div>
 					<div class="col-md-6">
@@ -427,6 +456,9 @@
 						  <option value="24 January 2026">24 January 2026</option>
 						  <option value="24 January 2026">25 January 2026</option>
 					  </select>
+					  <div class="invalid-feedback">
+								Please select an option.
+								</div>
 					  </div>
 					</div>
 				   <div class="donate_dt1l2i1 mt-3">
@@ -575,6 +607,9 @@
 								  <option>Voter ID</option>
 								  <option>Passport</option>
 							  </select>
+							  <div class="invalid-feedback">
+								Please select an option.
+								</div>
 						  </div>
 					  </div>
 					  <div class="col-md-4">
@@ -612,6 +647,9 @@
 				<select class="form-control rounded_20 border-0 bg_light font_14" name="country" id="country" required>
 				 
 				</select>
+				<div class="invalid-feedback">
+								Please select a Country.
+								</div>
 	  
 					 </div>
 				  </div>
@@ -619,7 +657,6 @@
 					 <div class="donate_dt1l2i1l">
 					   <h6>Select State</h6>
 				<select class="form-control rounded_20 border-0 bg_light font_14" name="state" id="state" >
-				  
 				</select>
 					 </div>
 					 </div>
@@ -627,7 +664,6 @@
 					 <div class="donate_dt1l2i1l">
 					   <h6>Select City</h6>
 				<select class="form-control rounded_20 border-0 bg_light font_14" name="city" id="city">
-				  
 				</select>
 					 </div>
 					 </div>

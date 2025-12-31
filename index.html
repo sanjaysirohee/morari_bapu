@@ -231,7 +231,7 @@
 <p class="text-blck p-3 mt-3 mb-0" style="text-align:center"></p>
 <div style="text-align:center">
 <h5>Welcome to Ramkatha by Morari Bapu, Delhi - 17th to 25th January 2026.</h5>
-<h5>Please register here</h5>
+<h5>Please register here for accommodation</h5>
 </div>
 <section id="donate_dt" class="p_4 pb-0 w-75 mx-auto">
     <div class="container-xl">
@@ -239,41 +239,69 @@
 	     <div class="col-md-12">
 		   <div class="donate_dt1l rounded_20 p-4 border_1">
 		     
-			   <form action="sendemail.php" method="post" enctype="multipart/form-data">
-				   <div class="donate_dt1l2 mt-3">
+			   <form action="sendemail.php" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+				    <div class="donate_dt1l2 mt-3">
 					 <h5 class="mt-4">Personal info</h5>
 					 <div class="donate_dt1l2i1 row mt-3">
 					
 				  <div class="col-md-6">
 					 <div class="donate_dt1l2i1l">
-						 <h6>Select Country Code and Write Mobile no</h6>
-					  <div class="input-group overflow-hidden rounded_20 border-0 bg_light font_14">
-						  <select class="form-select rounded_20 border-0 bg_light font_14" name="countryCode" id="countryCode" style="max-width: 160px;" required>
-							  <option>Country Code</option>
-						  </select>
-						  <input class="form-control rounded_20 border-0 bg_light font_14" placeholder="Mobile Number (Whatsapp)" type="tel" name="main_phone_no" pattern="[0-9]{10}" id="phoneno" maxlength="10" style="z-index:0" required>
-						<script>
-							const number=document.querySelector('#phoneno');
-							number.addEventListener('invalid',(e)=>{
-								 if(e.target.value==''){
-									e.target.setCustomValidity('Mobile number is mandatory');
-								} 
-								else{
-									e.target.setCustomValidity('Mobile number should be a 10 digit number');
+					<h6>Select Country Code and Write Mobile no</h6>
 
-								}
-							})
-							number.addEventListener('input',(e)=>{
-								e.target.setCustomValidity('');
-							})
-						</script>
-					  </div>
-					 </div>
+					<div class="input-group overflow-hidden rounded_20 bg_light font_14">
+						<select
+						class="form-select rounded_20 border-0 bg_light font_14"
+						name="countryCode"
+						id="countryCode"
+						style="max-width: 160px;"
+						required
+						>
+						<option value="">Country Code</option>
+						</select>
+
+						<input
+						type="tel"
+						class="form-control rounded_20 border-0 bg_light font_14"
+						placeholder="Mobile Number (Whatsapp)"
+						name="main_phone_no"
+						id="phoneno"
+						pattern="[0-9]{10}"
+						maxlength="10"
+						required
+						>
+					</div>
+
+					<!-- ✅ OUTSIDE input-group -->
+					<div id="phoneError" class="invalid-feedback">
+						Enter the valid Mobile number
+					</div>
+
+					</div>
+					<script>
+					const phone = document.getElementById('phoneno');
+					const error = document.getElementById('phoneError');
+
+					phone.addEventListener('invalid', function () {
+						phone.classList.add('is-invalid');
+						error.style.display = 'block';
+					});
+
+					phone.addEventListener('input', function () {
+						phone.classList.remove('is-invalid');
+						error.style.display = 'none';
+					});
+					</script>
+
+
+
 					 </div>
 					 <div class="col-md-6">
 						 <div class="donate_dt1l2i1l">
 						  <label>Email Address</label>
 						  <input class="form-control rounded_20 border-0 bg_light font_14" placeholder="Email Address" name="main_email_id"  type="email" >
+						  <div class="valid-feedback">
+	  							fill if data is available
+							</div>
 						 </div>
 						</div>
 						
@@ -284,18 +312,28 @@
 						  <div class="donate_dt1l2i1l">
 							  <label>First Name</label>
 							  <input type="text" class="form-control rounded_20 border-0 bg_light font_14" name="main_first_name" placeholder="First Name" maxlength="25" required>
+							  <div class="invalid-feedback">
+	  							Please enter first name.
+							</div>
 						  </div>
-					  </div>
+						</div>
+						
 					  <div class="col-md-4">
 						  <div class="donate_dt1l2i1l">
 							  <label>Middle Name</label>
 							  <input type="text" class="form-control rounded_20 border-0 bg_light font_14" name="main_middle_name" placeholder="Middle Name" maxlength="25" >
+							  <div class="valid-feedback">
+	  							fill if data is available
+							</div>
 						  </div>
 					  </div>
 					  <div class="col-md-4">
 						  <div class="donate_dt1l2i1l">
 							  <label>Last Name</label>
 							  <input type="text" class="form-control rounded_20 border-0 bg_light font_14" name="main_last_name" placeholder="last Name" maxlength="25" required>
+							  <div class="invalid-feedback">
+	  							Please enter last name.
+							</div>
 						  </div>
 					  </div>
 					  </div>
@@ -305,6 +343,7 @@
 							<label class="d-block">Sex</label>
 
 							<div class="d-flex flex-column flex-md-row flex-wrap gap-3 mt-2">
+								
 							
 							<div class="form-check">
 								<input type="radio" value="Male" class="form-check-input" name="main_gender" required>
@@ -320,6 +359,7 @@
 								<input type="radio" value="Other" class="form-check-input" name="main_gender" required>
 								<label class="form-check-label">Other</label>
 							</div>
+							
 
 							</div>
 						</div>
@@ -328,12 +368,19 @@
 								<div class="donate_dt1l2i1l">
 									<label>Age</label>
 									<input type="text" name="main_age" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Age" pattern="[0-9]{1,2}" maxlength="2" required>
+									<div class="invalid-feedback">
+										Please enter a valid age.
+									</div>
+									
 								</div>
 							</div>
 							<div class="col-md-4">
 						  <div class="donate_dt1l2i1l">
 							  <label>Photo (file size upto 5MB and only (.jpg, .png) allowed)</label>
 							  <input type="file" name="main_photo" accept=".jpg,.jpeg,.png" class="form-control rounded_20 border-0 bg_light font_14" required>
+							  <div class="invalid-feedback">
+										Please choose a Valid Photo.
+									</div>
 						  </div>
 					  </div>
 
@@ -351,18 +398,27 @@
 								  <option>Voter ID</option>
 								  <option>Passport</option>
 							  </select>
+							  <div class="invalid-feedback">
+								Please select an option.
+								</div>
 						  </div>
 					  </div>
 					  <div class="col-md-4">
 						  <div class="donate_dt1l2i1l">
 							  <label>ID Proof Number</label>
 							  <input type="text" name="main_id_proof_no" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Enter ID Number" required>
+							  <div class="invalid-feedback">
+										Please enter valid Id Number.
+									</div>
 						  </div>
 					  </div>
 					  <div class="col-md-4">
 						  <div class="donate_dt1l2i1l">
 							  <label>ID Proof File (file size upto 5MB and only (.jpg, .png) allowed)</label>
 							  <input type="file" name="main_id_proof" accept=".jpg,.jpeg,.png,.pdf " class="form-control rounded_20 border-0 bg_light font_14" required>
+							  <div class="invalid-feedback">
+										Please choose a Valid Id Proof.
+									</div>
 						  </div>
 					  </div>
 					  </div>
@@ -381,6 +437,9 @@
 						  <option value="23 January 2026">23 January 2026</option>
 						  <option value="24 January 2026">24 January 2026</option>
 					  </select>
+					  <div class="invalid-feedback">
+								Please select an option.
+								</div>
 					 </div>
 					</div>
 					<div class="col-md-6">
@@ -397,6 +456,9 @@
 						  <option value="24 January 2026">24 January 2026</option>
 						  <option value="24 January 2026">25 January 2026</option>
 					  </select>
+					  <div class="invalid-feedback">
+								Please select an option.
+								</div>
 					  </div>
 					</div>
 				   <div class="donate_dt1l2i1 mt-3">
@@ -412,7 +474,9 @@
 							  placeholder="Number of Guests"
 							  name="total_people" id="total_people" ;
 						  >
+						  
 							  <i class="bi bi-plus-square-fill btn btn-danger" id="add"></i>
+							  
 	  
 						  </div>
 					  </div>
@@ -462,18 +526,27 @@
 						  <div class="donate_dt1l2i1l">
 							  <label>First Name</label>
 							  <input type="text" name="first_name[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="First Name" required>
+							  <div class="invalid-feedback">
+										Please enter Guest's First Name.
+									</div>
 						  </div>
 					  </div>
 					  <div class="col-md-4 mb-3">
 						  <div class="donate_dt1l2i1l ">
 							  <label>Middle Name</label>
 							  <input type="text" name="middle_name[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Middle Name" >
+							  <div class="valid-feedback">
+										fill if data is available
+									</div>
 						  </div>
 					  </div>
 					  <div class="col-md-4 mb-3">
 						  <div class="donate_dt1l2i1l ">
 							  <label>Last Name</label>
 							  <input type="text" name="last_name[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Last Name" required>
+							  <div class="invalid-feedback">
+										Please enter Guest's Last Name.
+									</div>
 						  </div>
 					  </div>
 					 
@@ -482,6 +555,9 @@
 							  <div class="donate_dt1l2i1l">
 								  <label>Age</label>
 								  <input type="text" name="age[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="Age" pattern="[0-9]{1,2}" maxlength="2" required>
+								  <div class="invalid-feedback">
+										Please enter a valid Age.
+									</div>
 							  </div>
 						  </div>
 			  
@@ -512,6 +588,9 @@
 						  <div class="donate_dt1l2i1l mb-3">
 							  <label>Photo (file size upto 5MB and only (.jpg, .png) allowed)</label>
 							  <input type="file" name="photo[]" accept=".jpg,.jpeg,.png" class="form-control rounded_20 border-0 bg_light font_14" required>
+							  <div class="invalid-feedback">
+										Please choose a Valid Photo.
+									</div>
 						  </div>
 					  </div>
 					  
@@ -528,18 +607,27 @@
 								  <option>Voter ID</option>
 								  <option>Passport</option>
 							  </select>
+							  <div class="invalid-feedback">
+								Please select an option.
+								</div>
 						  </div>
 					  </div>
 					  <div class="col-md-4">
 						  <div class="donate_dt1l2i1l mb-3">
 							  <label>ID Proof Number</label>
 							  <input type="text" name="id_proof_no[]" class="form-control rounded_20 border-0 bg_light font_14" placeholder="ID Number" required>
+							  <div class="invalid-feedback">
+										Please enter valid Id Number.
+									</div>
 						  </div>
 					  </div>
 					  <div class="col-md-4">
 						  <div class="donate_dt1l2i1l mb-3">
 							  <label>ID Proof File (file size upto 5MB and only (.jpg, .png) allowed)</label>
 							  <input type="file" name="id_proof[]" accept=".jpg,.jpeg,.png,.pdf " class="form-control rounded_20 border-0 bg_light font_14" required>
+							  <div class="invalid-feedback">
+										Please choose a Valid Id Proof.
+									</div>
 						  </div>
 					  </div>  
 		  
@@ -556,17 +644,19 @@
 					<div class="col-md-4">
 					 <div class="donate_dt1l2i1l">
 								<h6>Select Country</h6>
-				<select class="form-control rounded_20 border-0 bg_light font_14" name="country" id="country">
+				<select class="form-control rounded_20 border-0 bg_light font_14" name="country" id="country" required>
 				 
 				</select>
+				<div class="invalid-feedback">
+								Please select a Country.
+								</div>
 	  
 					 </div>
 				  </div>
 				  <div class="col-md-4">
 					 <div class="donate_dt1l2i1l">
 					   <h6>Select State</h6>
-				<select class="form-control rounded_20 border-0 bg_light font_14" name="state" id="state">
-				  
+				<select class="form-control rounded_20 border-0 bg_light font_14" name="state" id="state" >
 				</select>
 					 </div>
 					 </div>
@@ -574,7 +664,6 @@
 					 <div class="donate_dt1l2i1l">
 					   <h6>Select City</h6>
 				<select class="form-control rounded_20 border-0 bg_light font_14" name="city" id="city">
-				  
 				</select>
 					 </div>
 					 </div>
@@ -586,7 +675,10 @@
 					<div class="col-md-12">
 					 <div class="donate_dt1l2i1l">
 					  <h6>Address</h6>
-					  <textarea placeholder="Write your Address" class="form-control rounded_20 border-0 bg_light font_14 form_text" name="address"></textarea>
+					  <textarea placeholder="Write your Address" class="form-control rounded_20 border-0 bg_light font_14 form_text" name="address" required></textarea>
+					  <div class="invalid-feedback">
+										Please enter Address.
+									</div>
 					  <h6 class="mb-0 mt-4 center_sm">
 							<input type="submit" class="button" value="Register Now" style="border:0 !important">
 
@@ -659,9 +751,10 @@ New Delhi – 110060 </li>
 
 
 <script src="js/common.js"></script>
-<script src="js/template.js?v=1"></script>
+<script src="js/template.js"></script>
 <script src="js/cities.js"></script>
 <script src="js/country-code.js"></script>
+<script src="js/validation.js"></script>
 
 </body>
 

@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
   /* COUNTRY CHANGE */
   country.addEventListener("change", function () {
   state.innerHTML = `<option value="">Select State</option>`;
-  city.innerHTML = `<option value="">Select City</option>`;
+  city.innerHTML = `<option value="other" selected >Select City</option>`;
 
   if (!this.value) return;
 
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* STATE CHANGE */
   state.addEventListener("change", function () {
-  city.innerHTML = `<option value="">Select City</option>`;
+  city.innerHTML = `<option value="other" selected >Select City</option>`;
 
   if (!this.value) return;
 
