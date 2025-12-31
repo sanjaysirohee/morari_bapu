@@ -46,6 +46,16 @@ padding-bottom:150px!important;
 
 
 @media screen and (max-width : 767px){
+ .center_count {
+  background-image: url("../img/ramkatha_banner2.png");
+  background-size: contain;   /* image fits inside screen */
+  background-position:center center;
+  background-repeat: no-repeat;
+
+  width: 100%;
+  height: 30vh;  /* full screen height */
+}
+
 .contact_1l {
 text-align:center; 
  }
