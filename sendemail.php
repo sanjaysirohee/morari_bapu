@@ -44,7 +44,13 @@ $address = isset($_POST['address']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/",
 // $userPage = isset($_POST['userPage']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['userPage']) : "";
 // $requirements = isset($_POST['requirements']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/", "", $_POST['requirements']) : "";
 
-// $id=mysqli_query($conn,"select id from req_query_table where phone_number=${userPhone}");
+$phonenumber=mysqli_query($conn,"select id from req_query_table where phone_number=${userPhone}");
+$phonerow=mysqli_fetch_assoc($phonenumber);
+
+if($phonerow!=null){
+  echo "<script>alert('This Mobile number already exist. Try to register from different number'); window.location='warning.html';</script>";
+  exit();
+}
  $isValidEmail = !empty($senderEmail) && filter_var($senderEmail, FILTER_VALIDATE_EMAIL);
 if (!isset($_FILES['main_id_proof']) || !isset($_FILES['main_photo'])) {
     die("Main ID or Photo not uploaded!");

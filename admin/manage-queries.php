@@ -55,6 +55,7 @@ include_once ('header.php');
                                 <thead>
                                     <tr>
                                         <th>S.No</th>
+                                        <th>Registration number</th>
                                         <th>First Name</th>
                                         <th>Middle Name</th>
                                         <th>Last Name</th>
@@ -93,6 +94,9 @@ include_once ('header.php');
 
                                             <td>
                                                 <?= $i++; ?>
+                                            </td>
+                                            <td>
+                                                <?= $res_blog['id']; ?>
                                             </td>
 
                                             <td>
