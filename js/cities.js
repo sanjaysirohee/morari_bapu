@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   selectedCountry.states.forEach(s => {
     state.innerHTML += `
-      <option value="${s.name}" data-id="${s.id}" ${s.name=='Delhi'?'selected':''}>
+      <option value="${s.name}" data-id="${s.id}">
         ${s.name}
       </option>`;
   });
