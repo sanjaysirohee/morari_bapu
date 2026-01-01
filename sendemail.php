@@ -346,7 +346,7 @@ Ram Katha Samiti, Delhi.";
       
       $Message = "&type=text&message=".urlencode($thanks_message);
 
-      $url="https://chatbot.veloxn.com/api/send?number=91".$userPhone. $Message ."&instance_id=6943E3FD002E8&access_token=692585a17ff0c";
+      $url="https://chatbot.veloxn.com/api/send?number=91".$userPhone. $Message ."&instance_id=69562E7599185&access_token=6953c68f4d469";
       // $url = 'https://chatbot.veloxn.com/api/send?number=919315516129' . $Message . '&instance_id=6793404B6D5FB&access_token=6784c9e23c264';
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_URL, $url);
