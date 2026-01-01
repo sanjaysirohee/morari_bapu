@@ -14,24 +14,27 @@ document.addEventListener("DOMContentLoaded", function () {
       data.forEach(c => {
         country.innerHTML += `<option value="${c.name}" data-id="${c.id}" ${c.name=="India"?"selected":""}>${c.name}</option>`;
       });
+      country.dispatchEvent(new Event("change"));
     });
 
   /* COUNTRY CHANGE */
   country.addEventListener("change", function () {
   state.innerHTML = `<option value="">Select State</option>`;
-  city.innerHTML = `<option value="other" selected >Select City</option>`;
+  city.innerHTML = `<option value="">Select City</option>`;
+  
 
   if (!this.value) return;
 
   const countryId =
     this.options[this.selectedIndex].dataset.id;
+    console.log(countryId);
 
   const selectedCountry =
     countries.find(c => c.id == countryId);
 
   selectedCountry.states.forEach(s => {
     state.innerHTML += `
-      <option value="${s.name}" data-id="${s.id}">
+      <option value="${s.name}" data-id="${s.id}" ${s.name=='Delhi'?'selected':''}>
         ${s.name}
       </option>`;
   });
