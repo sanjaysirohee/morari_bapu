@@ -24,8 +24,10 @@
      // Date Picker
      jQuery('.mydatepicker').datepicker();
  </script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
- <script src="assets/node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+ <script src="assets/node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
  <script src="cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
  <script src="cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
  <script src="cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>

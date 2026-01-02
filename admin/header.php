@@ -64,6 +64,9 @@ include ('config.php');
 
     <link rel="stylesheet" type="text/css" href="assets/node_modules/summernote/dist/summernote-bs4.css">
 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+
 
 
 
@@ -201,7 +204,7 @@ include ('config.php');
                             <ul aria-expanded="false" class="collapse">
 
                                 <li><a href="manage-queries.php">Registration Forms</a></li>
-                                <li><a href="id-card.php">id</a></li>
+                                <!-- <li><a href="id-card.php">id</a></li> -->
 								<!-- <li><a href="junk-queries.php">Junk Queries</a></li> -->
 								<!-- <li><a href="website-cost-queries.php">Website Cost Queries</a></li> -->
 								<!-- <li><a href="subscriber-queries.php">Subscriber Queries</a></li> -->

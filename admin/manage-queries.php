@@ -47,9 +47,9 @@ include_once ('header.php');
                         <h4 class="card-title">Manage Queries</h4>
                         <h6 class="card-subtitle"></h6>
                         <div class="table-responsive mt-40">
-                            <div>
+                            <!-- <div>
                                 <input type=text name="search" class="px-4 py-2" placeholder="Search">
-                            </div>
+                            </div> -->
                             <table id="example23" class="display nowrap table table-hover table-striped table-bordered"
                                 cellspacing="0" width="100%">
                                 <thead>
@@ -168,7 +168,7 @@ include_once ('header.php');
                                                 <a href="manage-small-queries.php?id=<?=$res_blog['id'];?>" target="_blank" class="btn btn-danger">Other Guests</a>
                                             </td>
                                             <td>
-                                                <a href="id-card.php?id=<?=$res_blog['id'];?>" target="_blank" class="btn btn-danger">ID Card</a>
+                                                <a href="main-id-card.php?id=<?=$res_blog['id'];?>" target="_blank" class="btn btn-danger">ID Card</a>
                                             </td>
                                         </tr>
                                     <?php  } ?>
@@ -264,6 +264,14 @@ include_once ('header.php');
     <!-- End Container fluid  -->
     <!-- ============================================================== -->
 </div>
+<script>
+$(document).ready(function () {
+    $('#example23').DataTable({
+         pageLength: 5;
+    });
+
+});
+</script>
 <?php
 include_once ('footer.php');
 ?>

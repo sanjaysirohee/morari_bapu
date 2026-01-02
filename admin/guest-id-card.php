@@ -47,12 +47,11 @@ include_once ('header.php');
                         <h4 class="card-title">Manage Queries</h4>
                         <h6 class="card-subtitle"></h6>
                         <div class="table-responsive m-t-40">
-                            <table id="example23" class="display nowrap table table-hover table-striped table-bordered"
+                            <!-- <table id="example23" class="display nowrap table table-hover table-striped table-bordered"
                                 cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
                                         <th>S.No</th>
-                                        <th>Registration Number</th>
                                         <th>Coming with</th>
                                         <th>First Name</th>
                                         <th>Middle Name</th>
@@ -63,18 +62,16 @@ include_once ('header.php');
 										<th>ID Proof Number</th>
 										<th>Uploaded ID Proof</th>
 										<th>Photo</th>
-                                        <th>ID Card</th>
-										
 										
                                     </tr>
-                                </thead>
+                                </thead> -->
 
-                                <tbody>
+                                <!-- <tbody> -->
                                     <?php
                                     if(isset($_GET['id'])){
                                         $main_id=$_GET['id'];
                                         
-                                        $fetch_blog = mysqli_query($con, "select * from req_people where request_id=$main_id");
+                                        $fetch_blog = mysqli_query($con, "select * from req_people where id=$main_id");
                                     }
                                     else{
                                         
@@ -84,59 +81,100 @@ include_once ('header.php');
                                     while ($res_blog = mysqli_fetch_array($fetch_blog)) {
                                         
                                         ?>
+                                         
+                                        <div class="container mt-3">
+                                            
+        <div class="row justify-content-center">
+        <div class="col-auto">
 
-                                        <tr>
+            <!-- ID CARD -->
+            <div class="id-card p-2"  
+            style="width: 360px;
+        border: 2px solid black;
+        background: white;">
 
-                                            <td>
-                                                <?= $i++; ?>
-                                            </td>
-                                            <td>
-                                                <?= $res_blog['request_id']; ?>_<?= $res_blog['id']?>
-                                            </td>
+            <!-- Header -->
+            <div class="text-center fw-bold border-bottom border-dark ">
+                <img 
+                    src="<?php echo BASE_URL?>/img/logo.png"
+                    width="100"
+                    height="35"
+                    class=" m-3"
+                    alt="Image"
+                >
+            </div>
 
-                                            <td>
-                                                <?= $res_blog['request_id']; ?>
-                                            </td>
-                        
-                                            <td>
-                                                <?= $res_blog['first_name']; ?>
-                                            </td>
-                                            <td>
-                                                <?= $res_blog['middle_name']; ?>
-                                            </td>
-                                            <td>
-                                                <?= $res_blog['last_name']; ?>
-                                            </td>
+          <!-- Organization -->
+          <div class="d-flex align-items-center justify-content-center mt-1 gap-5">
 
-                                            <td>
-                                                <?= $res_blog['gender']; ?>
-                                            </td>
-                                            <td>
-                                                <?= $res_blog['age']; ?>
-                                            </td>
-                                            <td>
+            <!-- Circular Image -->
+            <img 
+                src="<?php echo BASE_URL?>/img/morari_bapu1.png"
+                width="80"
+                height="80"
+                class="rounded-circle border m-3"
+                alt="Image"
+            >
 
-                                                <?= $res_blog['id_proof_type']; ?>
-                                            </td>
-											<td>
-                                                <?= $res_blog['id_proof_number']; ?>
-                                            </td>
-											<td>
-                                                <a href="<?php echo BASE_URL; ?>/<?= $res_blog['id_proof_file'];?>" target="_blank" class="btn btn-danger">Id Proof</a>
-                                            </td>
-											
-											<td>
-                                                <a href="<?php echo BASE_URL; ?>/<?= $res_blog['photo'];?>" target="_blank" class="btn btn-danger">Photo</a>
-                                            </td>
-											<td>
-                                                <a href="guest-id-card.php?id=<?=$res_blog['id'];?>" target="_blank" class="btn btn-danger">ID Card</a>
-                                            </td>
+            <!-- Text -->
+            <div class="text-start">
+                <strong>Ram Katha – Delhi</strong><br>
+                Manas Sanatandharam<br>
+                (17 Jan 2026 to 25 Jan 2026)
+            </div>
 
-                                        </tr>
-                                    <?php  } ?>
+</div>
 
-                                </tbody>
-                            </table>
+
+          <!-- Photo + Details -->
+          <div class="row mt-3">
+            <div class="col-4">
+              <div class="photo-box"
+               style="width: 100%;
+      height: 120px;
+      border: 2px solid black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;">
+                <img 
+                src="<?php echo BASE_URL?>/<?=$res_blog['photo']?>"
+                width="120"
+                height="120"
+                class="border m-3"
+                alt="Image"
+            >
+              </div>
+            </div>
+
+            <div class="col-8 small">
+              <div>Name : <?=$res_blog['first_name']?></div>
+              <div>Mobile : <?=$res_blog['id']?></div>
+              <div>Reg No : <?=$res_blog['id']?>_<?=$res_blog['request_id']?></div>
+              <div>Mode : <?=$res_blog['first_name']?></div>
+            </div>
+          </div>
+
+          <!-- Valid -->
+          <div class="valid-box text-center mt-3 p-1 small" 
+          style="border: 2px solid black;
+      font-weight: bold;">
+            Valid Till 25 Jan 2026
+          </div>
+
+        </div>
+        <!-- END CARD -->
+
+      </div>
+    </div>
+
+                                        
+                                    <?php  
+                                    }
+                                     ?>
+
+                                <!-- </tbody> -->
+                            <!-- </table> -->
                         </div>
                     </div>
                 </div>
