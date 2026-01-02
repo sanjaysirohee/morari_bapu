@@ -68,6 +68,7 @@ include_once ('header.php');
 
                                 <!-- <tbody> -->
                                     <?php
+                                    
                                     if(isset($_GET['id'])){
                                         $main_id=$_GET['id'];
                                         
@@ -79,24 +80,24 @@ include_once ('header.php');
                                     }
                                         $i = 1;
                                     while ($res_blog = mysqli_fetch_array($fetch_blog)) {
-                                        
+                                        $main_phone=$_GET['phone'];
+                                        $main_email=$_GET['email'];
                                         ?>
                                          
                                         <div class="container mt-3">
                                             
         <div class="row justify-content-center">
-        <div class="col-auto">
-
-            <!-- ID CARD -->
-            <div class="id-card p-2"  
-            style="width: 360px;
+        <div class="col-auto"style="width: 400px;
         border: 2px solid black;
         background: white;">
+
+            <!-- ID CARD -->
+            <div class="id-card p-2"  >
 
             <!-- Header -->
             <div class="text-center fw-bold border-bottom border-dark ">
                 <img 
-                    src="<?php echo BASE_URL?>/img/logo.png"
+                    src="<?php echo BASE_URL?>/img/logo1.png"
                     width="100"
                     height="35"
                     class=" m-3"
@@ -120,6 +121,7 @@ include_once ('header.php');
             <div class="text-start">
                 <strong>Ram Katha – Delhi</strong><br>
                 Manas Sanatandharam<br>
+                Hotel Alloted : <?=$_GET['hotel']?>
                 (17 Jan 2026 to 25 Jan 2026)
             </div>
 
@@ -127,7 +129,7 @@ include_once ('header.php');
 
 
           <!-- Photo + Details -->
-          <div class="row mt-3">
+          <div class="row mt-3 gap-4">
             <div class="col-4">
               <div class="photo-box"
                style="width: 100%;
@@ -148,10 +150,10 @@ include_once ('header.php');
             </div>
 
             <div class="col-8 small">
-              <div>Name : <?=$res_blog['first_name']?></div>
-              <div>Mobile : <?=$res_blog['id']?></div>
-              <div>Reg No : <?=$res_blog['id']?>_<?=$res_blog['request_id']?></div>
-              <div>Mode : <?=$res_blog['first_name']?></div>
+              <div class="text-wrap">Name : <?=$res_blog['first_name']?></div>
+              <div class="text-wrap">Mobile : <?=$_GET['phone']?></div>
+              <div class="text-wrap">Reg No : <?=$res_blog['id']?>_<?=$res_blog['request_id']?></div>
+              <div class="text-wrap">Email id : <?=$_GET['email']?></div>
             </div>
           </div>
 

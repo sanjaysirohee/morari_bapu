@@ -85,18 +85,18 @@ include_once ('header.php');
                                         <div class="container mt-3">
                                             
         <div class="row justify-content-center">
-        <div class="col-auto">
+        <div class="col-auto"style="width: 400px;
+        border: 2px solid black;
+        background: white;">
 
             <!-- ID CARD -->
             <div class="id-card p-2"  
-            style="width: 360px;
-        border: 2px solid black;
-        background: white;">
+            >
 
             <!-- Header -->
             <div class="text-center fw-bold border-bottom border-dark ">
                 <img 
-                    src="<?php echo BASE_URL?>/img/logo.png"
+                    src="<?php echo BASE_URL?>/img/logo1.png"
                     width="100"
                     height="35"
                     class=" m-3"
@@ -120,6 +120,7 @@ include_once ('header.php');
             <div class="text-start">
                 <strong>Ram Katha – Delhi</strong><br>
                 Manas Sanatandharam<br>
+                Hotel Alloted : <?=$res_blog['hotel']?>
                 (17 Jan 2026 to 25 Jan 2026)
             </div>
 
@@ -132,7 +133,6 @@ include_once ('header.php');
               <div class="photo-box"
                style="width: 100%;
       height: 120px;
-      border: 2px solid black;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -150,8 +150,8 @@ include_once ('header.php');
             <div class="col-8 small">
               <div>Name : <?=$res_blog['first_name']?></div>
               <div>Mobile : <?=$res_blog['phone_number']?></div>
-              <div>Reg No : <?=$res_blog['first_name']?></div>
-              <div>Mode : <?=$res_blog['first_name']?></div>
+              <div>Reg No : <?=$res_blog['id']?></div>
+              <div>Email id : <?=$res_blog['email_id']?></div>
             </div>
           </div>
 

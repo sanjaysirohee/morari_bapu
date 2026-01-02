@@ -71,8 +71,13 @@ include_once ('header.php');
 
                                 <tbody>
                                     <?php
+                                     $phoneno=$_GET['phone'];
+                                    $email=$_GET['email'];
+                                    $hotel=$_GET['hotel'];
+                                    echo $hotel;
                                     if(isset($_GET['id'])){
                                         $main_id=$_GET['id'];
+                                        
                                         
                                         $fetch_blog = mysqli_query($con, "select * from req_people where request_id=$main_id");
                                     }
@@ -82,6 +87,7 @@ include_once ('header.php');
                                     }
                                         $i = 1;
                                     while ($res_blog = mysqli_fetch_array($fetch_blog)) {
+                                       
                                         
                                         ?>
 
@@ -129,7 +135,7 @@ include_once ('header.php');
                                                 <a href="<?php echo BASE_URL; ?>/<?= $res_blog['photo'];?>" target="_blank" class="btn btn-danger">Photo</a>
                                             </td>
 											<td>
-                                                <a href="guest-id-card.php?id=<?=$res_blog['id'];?>" target="_blank" class="btn btn-danger">ID Card</a>
+                                                <a href="guest-id-card.php?id=<?=$res_blog['id'];?>&phone=<?=$phoneno?>&email=<?=$email?>&hotel=<?=$hotel?>" target="_blank" class="btn btn-danger">ID Card</a>
                                             </td>
 
                                         </tr>

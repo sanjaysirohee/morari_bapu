@@ -50,6 +50,39 @@ include_once ('header.php');
                             <!-- <div>
                                 <input type=text name="search" class="px-4 py-2" placeholder="Search">
                             </div> -->
+                            <?php
+                                                   if(isset($_POST['hotel'],$_POST['row_id'])){
+                                                        $hotel=$_POST['hotel'];
+                                                        $id=$_POST['row_id'];
+                                                        mysqli_query($con,"UPDATE req_query_table SET hotel='$hotel' WHERE id='$id'");
+                                                   }
+                                                   if(isset($_POST['first_name'],$_POST['row_id'])){
+                                                        $first_name=$_POST['first_name'];
+                                                        $id=$_POST['row_id'];
+                                                        mysqli_query($con,"UPDATE req_query_table SET first_name='$first_name' WHERE id='$id'");
+                                                   }
+                                                   if(isset($_POST['middle_name'],$_POST['row_id'])){
+                                                        $middle_name=$_POST['middle_name'];
+                                                        $id=$_POST['row_id'];
+                                                        mysqli_query($con,"UPDATE req_query_table SET middle_name='$middle_name' WHERE id='$id'");
+                                                   }
+                                                   if(isset($_POST['last_name'],$_POST['row_id'])){
+                                                        $last_name=$_POST['last_name'];
+                                                        $id=$_POST['row_id'];
+                                                        mysqli_query($con,"UPDATE req_query_table SET last_name='$last_name' WHERE id='$id'");
+                                                   }
+                                                   if(isset($_POST['arrival_date'],$_POST['row_id'])){
+                                                        $arrival_date=$_POST['arrival_date'];
+                                                        $id=$_POST['row_id'];
+                                                        mysqli_query($con,"UPDATE req_query_table SET arrival_date='$arrival_date' WHERE id='$id'");
+                                                   }
+                                                   if(isset($_POST['departure_date'],$_POST['row_id'])){
+                                                        $departure_date=$_POST['departure_date'];
+                                                        $id=$_POST['row_id'];
+                                                        mysqli_query($con,"UPDATE req_query_table SET departure_date='$departure_date' WHERE id='$id'");
+                                                   }
+
+                                                   ?>
                             <table id="example23" class="display nowrap table table-hover table-striped table-bordered"
                                 cellspacing="0" width="100%">
                                 <thead>
@@ -75,9 +108,10 @@ include_once ('header.php');
 										<th>Departure Date</th>
 										<th>Photo</th>
 										<th>Address</th>
-										<th>Date and Time of Submission</th>
+                                        <th>Hotel</th>
                                         <th>Attendees</th>
                                         <th>ID Card</th>
+										<th>Date and Time of Submission</th>
                                     </tr>
                                 </thead>
 
@@ -100,15 +134,27 @@ include_once ('header.php');
                                             </td>
 
                                             <td>
-                                                <?= $res_blog['first_name']; ?>
+                                                <form method="Post">
+                                                <input type="hidden" name="first_name" id="first_name"/>
+                                                <input type="hidden" name="row_id" value="<?=$res_blog['id']?>">
+                                                </form>
+                                                <?= $res_blog['first_name']; ?><i class="bi bi-pencil-square p-4 cursor-pointer edit"></i>
                                             </td>
                         
                                             <td>
-                                                <?= $res_blog['middle_name']; ?>
+                                                <form method="Post">
+                                                <input type="hidden" name="middle_name" id="middle_name"/>
+                                                <input type="hidden" name="row_id" value="<?=$res_blog['id']?>">
+                                    </form>
+                                                <?= $res_blog['middle_name']; ?><i class="bi bi-pencil-square p-4 cursor-pointer edit"></i>
                                             </td>
 
                                              <td>
-                                                <?= $res_blog['last_name']; ?>
+                                                <form method="Post">
+                                                <input type="hidden" name="last_name" id="last_name"/>
+                                                <input type="hidden" name="row_id" value="<?=$res_blog['id']?>">
+                                    </form>
+                                                <?= $res_blog['last_name']; ?><i class="bi bi-pencil-square p-4 cursor-pointer edit"></i>
                                             </td>
 
                                             <td>
@@ -150,10 +196,18 @@ include_once ('header.php');
                                             </td>
 											
 											<td>
-                                                <?= $res_blog['arrival_date']; ?>
+                                                <form method="Post">
+                                                <input type="hidden" name="arrival_date" id="arrival_date"/>
+                                                <input type="hidden" name="row_id" value="<?=$res_blog['id']?>">
+                                    </form>
+                                                <?= $res_blog['arrival_date']; ?><i class="bi bi-pencil-square p-4 cursor-pointer edit"></i>
                                             </td>
 											<td>
-                                                <?= $res_blog['departure_date']; ?>
+                                                <form method="Post">
+                                                <input type="hidden" name="departure_date" id="departure_date"/>
+                                                <input type="hidden" name="row_id" value="<?=$res_blog['id']?>">
+                                    </form>
+                                                <?= $res_blog['departure_date']; ?><i class="bi bi-pencil-square p-4 cursor-pointer edit"></i>
                                             </td>
 											<td>
                                                 <a href="<?php echo BASE_URL; ?>/<?= $res_blog['photo'];?>" target="_blank" class="btn btn-danger">Photo</a>
@@ -162,13 +216,30 @@ include_once ('header.php');
                                                 <?= $res_blog['address']; ?>
                                             </td>
                                            <td>
-                                               <?= $res_blog['submitted_on'];?>
+                                                <form method="POST">
+                                                    <input type="hidden" name="row_id" value="<?=$res_blog['id']?>">
+
+                                                <select name="hotel" id="hotel" onchange="this.form.submit()">
+                                                    <option>Select Hotel</option>
+                                                    <option value="Banglasaheb Gurudwara"<?= $res_blog['hotel']=='Banglasaheb Gurudwara'?"selected":""?>>Banglasaheb Gurudwara</option>
+                                                    <option value="Seeshganjsaheb Gurudwara"<?= $res_blog['hotel']=='Seeshganjsaheb Gurudwara'?"selected":""?>>Seeshganjsaheb Gurudwara</option>
+                                                    <option value="Rakabganj Gurudwara"<?= $res_blog['hotel']=='Rakabganj Gurudwara'?"selected":""?>>Rakabganj Gurudwara</option>
+                                                    <option value="Balasaheb Gurudwara"<?= $res_blog['hotel']=='Balasaheb Gurudwara'?"selected":""?>>Balasaheb Gurudwara</option>
+                                                    <option value="Gujrati Bhavan"<?= $res_blog['hotel']=='Gujrati Bhavan'?"selected":""?>>Gujrati Bhavan</option>
+                                                </select>
+                                    </form> 
+                                                   
                                             </td>
+                                            
                                             <td>
-                                                <a href="manage-small-queries.php?id=<?=$res_blog['id'];?>" target="_blank" class="btn btn-danger">Other Guests</a>
+                                                <a href="manage-small-queries.php?id=<?=$res_blog['id']?>&phone=<?=urlencode($res_blog['phone_number']); ?>&email=<?= urlencode($res_blog['email_id']);?>&hotel=<?=urlencode($res_blog['hotel']);?>" target="_blank" class="btn btn-danger">Other Guests</a>
                                             </td>
                                             <td>
                                                 <a href="main-id-card.php?id=<?=$res_blog['id'];?>" target="_blank" class="btn btn-danger">ID Card</a>
+                                            </td>
+                                            
+                                            <td>
+                                               <?= $res_blog['submitted_on'];?>
                                             </td>
                                         </tr>
                                     <?php  } ?>
@@ -265,9 +336,17 @@ include_once ('header.php');
     <!-- ============================================================== -->
 </div>
 <script>
+document.querySelectorAll('.edit').forEach((btn)=>{
+    btn.addEventListener('click',(event)=>{
+        const td=event.target.closest('td');
+        console.log(td);
+        const input=td.querySelector('input');
+        input.type='text';
+    });
+})
 $(document).ready(function () {
     $('#example23').DataTable({
-         pageLength: 5;
+         pageLength: 5
     });
 
 });
