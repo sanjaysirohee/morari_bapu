@@ -121,7 +121,7 @@ include_once ('header.php');
             <div class="text-start">
                 <strong>Ram Katha – Delhi</strong><br>
                 Manas Sanatandharam<br>
-                Hotel Alloted : <?=$_GET['hotel']?>
+                Hotel Alloted : <?=$_GET['hotel']?><br>
                 (17 Jan 2026 to 25 Jan 2026)
             </div>
 
@@ -150,10 +150,12 @@ include_once ('header.php');
             </div>
 
             <div class="col-8 small">
-              <div class="text-wrap">Name : <?=$res_blog['first_name']?></div>
+              <div class="text-wrap">Name : <?=$res_blog['first_name']?> <?=$res_blog['middle_name']?> <?=$res_blog['last_name']?></div>
               <div class="text-wrap">Mobile : <?=$_GET['phone']?></div>
-              <div class="text-wrap">Reg No : <?=$res_blog['id']?>_<?=$res_blog['request_id']?></div>
+              <div class="text-wrap">Reg No : <?=$res_blog['request_id']?>_<?=$res_blog['id']?></div>
               <div class="text-wrap">Email id : <?=$_GET['email']?></div>
+              <div class="text-wrap">Arrival date: <?=$_GET['arrival']?></div>
+              <div class="text-wrap">Departure date: <?=$_GET['departure']?></div>
             </div>
           </div>
 

@@ -120,7 +120,7 @@ include_once ('header.php');
             <div class="text-start">
                 <strong>Ram Katha – Delhi</strong><br>
                 Manas Sanatandharam<br>
-                Hotel Alloted : <?=$res_blog['hotel']?>
+                Hotel Alloted : <?=$res_blog['hotel']?><br>
                 (17 Jan 2026 to 25 Jan 2026)
             </div>
 
@@ -148,10 +148,12 @@ include_once ('header.php');
             </div>
 
             <div class="col-8 small">
-              <div>Name : <?=$res_blog['first_name']?></div>
+              <div>Name : <?=$res_blog['first_name']?> <?=$res_blog['middle_name']?> <?=$res_blog['last_name']?></div>
               <div>Mobile : <?=$res_blog['phone_number']?></div>
               <div>Reg No : <?=$res_blog['id']?></div>
               <div>Email id : <?=$res_blog['email_id']?></div>
+              <div>Arrival date: <?=$res_blog['arrival_date']?></div>
+              <div>Departure date: <?=$res_blog['departure_date']?></div>
             </div>
           </div>
 

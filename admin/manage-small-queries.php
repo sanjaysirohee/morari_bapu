@@ -71,10 +71,27 @@ include_once ('header.php');
 
                                 <tbody>
                                     <?php
+                                    if(isset($_POST['first_name'],$_POST['row_id'])){
+                                                        $first_name=$_POST['first_name'];
+                                                        $id=$_POST['row_id'];
+                                                        mysqli_query($con,"UPDATE req_people SET first_name='$first_name' WHERE id='$id'");
+                                                   }
+                                    if(isset($_POST['middle_name'],$_POST['row_id'])){
+                                                        $middle_name=$_POST['middle_name'];
+                                                        $id=$_POST['row_id'];
+                                                        mysqli_query($con,"UPDATE req_people SET middle_name='$middle_name' WHERE id='$id'");
+                                                   }
+                                    if(isset($_POST['last_name'],$_POST['row_id'])){
+                                                        $last_name=$_POST['last_name'];
+                                                        $id=$_POST['row_id'];
+                                                        mysqli_query($con,"UPDATE req_people SET last_name='$last_name' WHERE id='$id'");
+                                                   }
+
                                      $phoneno=$_GET['phone'];
                                     $email=$_GET['email'];
                                     $hotel=$_GET['hotel'];
-                                    echo $hotel;
+                                    $arrival=$_GET['arrival'];
+                                    $departure=$_GET['departure'];
                                     if(isset($_GET['id'])){
                                         $main_id=$_GET['id'];
                                         
@@ -105,13 +122,25 @@ include_once ('header.php');
                                             </td>
                         
                                             <td>
-                                                <?= $res_blog['first_name']; ?>
+                                                <form method="Post">
+                                                <input type="hidden" name="first_name" id="first_name"/>
+                                                <input type="hidden" name="row_id" value="<?=$res_blog['id']?>">
+                                                </form>
+                                                <?= $res_blog['first_name']; ?><i class="bi bi-pencil-square p-4 cursor-pointer edit"></i>
                                             </td>
                                             <td>
-                                                <?= $res_blog['middle_name']; ?>
+                                                <form method="Post">
+                                                <input type="hidden" name="middle_name" id="middle_name"/>
+                                                <input type="hidden" name="row_id" value="<?=$res_blog['id']?>">
+                                    </form>
+                                                <?= $res_blog['middle_name']; ?><i class="bi bi-pencil-square p-4 cursor-pointer edit"></i>
                                             </td>
                                             <td>
-                                                <?= $res_blog['last_name']; ?>
+                                                <form method="Post">
+                                                <input type="hidden" name="last_name" id="last_name"/>
+                                                <input type="hidden" name="row_id" value="<?=$res_blog['id']?>">
+                                    </form>
+                                                <?= $res_blog['last_name']; ?><i class="bi bi-pencil-square p-4 cursor-pointer edit"></i>
                                             </td>
 
                                             <td>
@@ -135,7 +164,7 @@ include_once ('header.php');
                                                 <a href="<?php echo BASE_URL; ?>/<?= $res_blog['photo'];?>" target="_blank" class="btn btn-danger">Photo</a>
                                             </td>
 											<td>
-                                                <a href="guest-id-card.php?id=<?=$res_blog['id'];?>&phone=<?=$phoneno?>&email=<?=$email?>&hotel=<?=$hotel?>" target="_blank" class="btn btn-danger">ID Card</a>
+                                                <a href="guest-id-card.php?id=<?=$res_blog['id'];?>&phone=<?=$phoneno?>&email=<?=$email?>&hotel=<?=$hotel?>&arrival=<?=$arrival?>&departure=<?=$departure?>" target="_blank" class="btn btn-danger">ID Card</a>
                                             </td>
 
                                         </tr>
@@ -232,6 +261,16 @@ include_once ('header.php');
     <!-- End Container fluid  -->
     <!-- ============================================================== -->
 </div>
+<script>
+document.querySelectorAll('.edit').forEach((btn)=>{
+    btn.addEventListener('click',(event)=>{
+        const td=event.target.closest('td');
+        console.log(td);
+        const input=td.querySelector('input');
+        input.type='text';
+    });
+})
+</script>
 <?php
 include_once ('footer.php');
 ?>
