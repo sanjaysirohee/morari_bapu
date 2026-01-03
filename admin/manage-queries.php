@@ -346,6 +346,7 @@ document.querySelectorAll('.edit').forEach((btn)=>{
 })
 $(document).ready(function () {
     $('#example23').DataTable({
+        "lengthMenu": [[10, 25, 50, 100, 250], [10, 25, 50, 100, 250]],
          pageLength: 250
     });
 
