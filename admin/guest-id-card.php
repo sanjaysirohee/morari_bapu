@@ -44,6 +44,9 @@ include_once ('header.php');
                             unset($_SESSION['del_location']);
                         }
                         ?>
+                        <div style="position:relative !important;">
+                        <a  class="btn btn-danger absolute " style="position:absolute; right:0; cursor:pointer;z-index:10" href="#" onclick="history.back();" class="color:white">Back</a>
+                        <div>
                         <h4 class="card-title">Manage Queries</h4>
                         <h6 class="card-subtitle"></h6>
                         <div class="table-responsive m-t-40">
@@ -121,8 +124,8 @@ include_once ('header.php');
             <div class="text-start">
                 <strong>Ram Katha – Delhi</strong><br>
                 Manas Sanatandharam<br>
-                (17 Jan 2026 to 25 Jan 2026)<br>
-                Hotel Alloted : <?=$_GET['hotel']?><br>
+                Room/Hall No.______<br>
+                <strong>Hotel Alloted : </strong><?=$_GET['hotel']?><br>
             </div>
 
 </div>
@@ -149,13 +152,12 @@ include_once ('header.php');
               </div>
             </div>
 
-            <div class="col-8 small">
-              <div class="text-wrap">Name : <?=$res_blog['first_name']?> <?=$res_blog['middle_name']?> <?=$res_blog['last_name']?></div>
-              <div class="text-wrap">Mobile : <?=$_GET['phone']?></div>
-              <div class="text-wrap">Reg No : <?=$res_blog['request_id']?>_<?=$res_blog['id']?></div>
-              <div class="text-wrap">Email id : <?=$_GET['email']?></div>
-              <div class="text-wrap">Arrival date: <?=$_GET['arrival']?></div>
-              <div class="text-wrap">Departure date: <?=$_GET['departure']?></div>
+            <div class="col-8">
+              <div class="text-wrap"><strong>Name : </strong><?=$res_blog['first_name']?> <?=$res_blog['middle_name']?> <?=$res_blog['last_name']?></div>
+              <div class="text-wrap"><strong>Mobile : </strong><?=$_GET['phone']?></div>
+              <div class="text-wrap"><strong>Reg No : </strong><?=$res_blog['request_id']?>_<?=$res_blog['id']?></div>
+              <div class="text-wrap"><strong>Arrival date: </strong><?=$_GET['arrival']?></div>
+              <div class="text-wrap"><strong>Departure date: </strong><?=$_GET['departure']?></div>
             </div>
           </div>
 

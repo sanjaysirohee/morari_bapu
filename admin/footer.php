@@ -78,11 +78,11 @@
          });
      });
      $('#example23').DataTable({
-         dom: 'Bfrtip',
-         buttons: [
-             'copy', 'csv', 'excel', 'pdf', 'print'
-         ]
-     });
+    dom: 'lBfrtip',  
+    lengthMenu: [10, 25, 50, 100,150,200 , 250],
+    pageLength: 200,
+    buttons: ['copy','csv','excel','pdf','print']
+});
      $('.buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel').addClass('btn btn-primary mr-1');
  </script>
 

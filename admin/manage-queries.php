@@ -1,5 +1,7 @@
 <?php
+
 include_once ('header.php');
+
 ?>
 
 <div class="page-wrapper">
@@ -51,6 +53,7 @@ include_once ('header.php');
                                 <input type=text name="search" class="px-4 py-2" placeholder="Search">
                             </div> -->
                             <?php
+                            
                                                    if(isset($_POST['hotel'],$_POST['row_id'])){
                                                         $hotel=$_POST['hotel'];
                                                         $id=$_POST['row_id'];
@@ -81,7 +84,48 @@ include_once ('header.php');
                                                         $id=$_POST['row_id'];
                                                         mysqli_query($con,"UPDATE req_query_table SET departure_date='$departure_date' WHERE id='$id'");
                                                    }
+                                                   if (isset($_FILES['photo']) && isset($_POST['row_id'])) {
 
+                                                        $id = $_POST['row_id'];
+
+                                                        if ($_FILES['photo']['error'] == 0) {
+
+                                                            $name = $_FILES['photo']['name'];
+                                                            $tmp  = $_FILES['photo']['tmp_name'];
+
+                                                            $photoname = time() . "_" . basename($name);
+
+                                                            $uploadDir ="../uploads/photo/";
+                                                            $serverPath = $uploadDir . $photoname;
+                                                            $dbPath = "uploads/photo/" . $photoname;
+
+                                                            if (!is_dir($uploadDir)) {
+                                                                mkdir($uploadDir, 0777, true);
+                                                            }
+
+                                                            if (move_uploaded_file($tmp, $serverPath)) {
+
+                                                                mysqli_query($con,
+                                                                    "UPDATE req_query_table SET photo='$dbPath' WHERE id='$id'"
+                                                                );
+
+                                                            } else {
+                                                                echo "❌ move_uploaded_file failed";
+                                                            }
+
+                                                        } else {
+                                                            echo "❌ File error";
+                                                        }
+                                                    }
+
+
+                                                   $totalguest=0;
+                                                   $fetch_blog = mysqli_query($con, "select * from req_query_table order by id desc");
+                                        
+
+                                                    while ($res_blog = mysqli_fetch_array($fetch_blog)) {
+                                                        $totalguest+=$res_blog['total_people_attending']+1;
+                                                    }
                                                    ?>
                             <table id="example23" class="display nowrap table table-hover table-striped table-bordered"
                                 cellspacing="0" width="100%">
@@ -89,6 +133,7 @@ include_once ('header.php');
                                     <tr>
                                         <th>S.No</th>
                                         <th>Registration number</th>
+                                        <th>Total Guests (<?=$totalguest?>)</th>
                                         <th>First Name</th>
                                         <th>Middle Name</th>
                                         <th>Last Name</th>
@@ -103,7 +148,7 @@ include_once ('header.php');
 										<th>ID Proof Type</th>
 										<th>ID Proof Number</th>
 										<th>Uploaded ID Proof</th>
-										<th>Total Guests</th>
+										
 										<th>Arrival Date</th>
 										<th>Departure Date</th>
 										<th>Photo</th>
@@ -119,8 +164,10 @@ include_once ('header.php');
                                     <?php
                                     $fetch_blog = mysqli_query($con, "select * from req_query_table order by id desc");
                                         $i = 1;
+                                        
 
                                     while ($res_blog = mysqli_fetch_array($fetch_blog)) {
+                                        $totalguest+=$res_blog['total_people_attending']+1;
                                         
                                         ?>
 
@@ -131,6 +178,9 @@ include_once ('header.php');
                                             </td>
                                             <td>
                                                 <?= $res_blog['id']; ?>
+                                            </td>
+                                            <td>
+                                                <?= $res_blog['total_people_attending']+1; ?>
                                             </td>
 
                                             <td>
@@ -188,12 +238,10 @@ include_once ('header.php');
                                                 <?= $res_blog['id_proof_number']; ?>
                                             </td>
 											<td>
-                                                <a href="<?php echo BASE_URL; ?>/<?= $res_blog['id_proof'];?>" target="_blank" class="btn btn-danger">Id Proof</a>
+                                                <a href="<?php echo BASE_URL; ?>/<?= $res_blog['id_proof'];?>" class="btn btn-danger">Id Proof</a>
                                             </td>
 											
-											<td>
-                                                <?= $res_blog['total_people_attending']; ?>
-                                            </td>
+											
 											
 											<td>
                                                 <form method="Post">
@@ -210,8 +258,16 @@ include_once ('header.php');
                                                 <?= $res_blog['departure_date']; ?><i class="bi bi-pencil-square p-4 cursor-pointer edit"></i>
                                             </td>
 											<td>
-                                                <a href="<?php echo BASE_URL; ?>/<?= $res_blog['photo'];?>" target="_blank" class="btn btn-danger">Photo</a>
+                                                <form method="POST" enctype="multipart/form-data" class="photoForm">
+                                                    <input type="file" name="photo" class="photoInput" style="display:none;">
+                                                    <input type="hidden" name="row_id" value="<?=$res_blog['id']?>">
+                                                    <button type="submit" class="submitBtn" style="display:none;">Save</button>
+                                                </form>
+
+                                                <a href="<?= BASE_URL ?>/<?= $res_blog['photo'] ?>" target="_blank" class="btn btn-danger">Photo</a>
+                                                <i class="bi bi-pencil-square p-4 cursor-pointer editphoto"></i>
                                             </td>
+
 											<td>
                                                 <?= $res_blog['address']; ?>
                                             </td>
@@ -232,7 +288,7 @@ include_once ('header.php');
                                             </td>
                                             
                                             <td>
-                                                <a href="manage-small-queries.php?id=<?=$res_blog['id']?>&phone=<?=urlencode($res_blog['phone_number']); ?>&email=<?= urlencode($res_blog['email_id']);?>&hotel=<?=urlencode($res_blog['hotel']);?>&arrival=<?=urlencode($res_blog['arrival_date']);?>&departure=<?=urlencode($res_blog['departure_date']);?>" target="_blank" class="btn btn-danger">Other Guests</a>
+                                                <a href="manage-small-queries.php?id=<?=$res_blog['id']?>&phone=<?=urlencode($res_blog['phone_number']); ?>&email=<?= urlencode($res_blog['email_id']);?>&hotel=<?=urlencode($res_blog['hotel']);?>&arrival=<?=urlencode($res_blog['arrival_date']);?>&departure=<?=urlencode($res_blog['departure_date']);?>" class="btn btn-danger">Other Guests</a>
                                             </td>
                                             <td>
                                                 <a href="main-id-card.php?id=<?=$res_blog['id'];?>" target="_blank" class="btn btn-danger">ID Card</a>
@@ -339,17 +395,23 @@ include_once ('header.php');
 document.querySelectorAll('.edit').forEach((btn)=>{
     btn.addEventListener('click',(event)=>{
         const td=event.target.closest('td');
-        console.log(td);
+        
         const input=td.querySelector('input');
         input.type='text';
     });
 })
-$(document).ready(function () {
-    $('#example23').DataTable({
-        lengthMenu: [10, 25, 50, 100, 250],
-        pageLength: 150
-    });
+document.querySelectorAll('.editphoto').forEach((icon) => {
+    icon.addEventListener('click', function () {
 
+        const td = this.closest('td');              // same row
+        const fileInput = td.querySelector('.photoInput');
+        const submitBtn = td.querySelector('.submitBtn');
+
+        fileInput.style.display = 'block';
+        submitBtn.style.display = 'block';
+
+        fileInput.click(); // auto open file picker
+    });
 });
 </script>
 <?php

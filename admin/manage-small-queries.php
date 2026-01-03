@@ -44,9 +44,12 @@ include_once ('header.php');
                             unset($_SESSION['del_location']);
                         }
                         ?>
+                        <div style="position:relative !important;">
+                        <a  class="btn btn-danger absolute " style="position:absolute; right:0; cursor:pointer;z-index:10" href="manage-queries.php" class="color:white">Back</a>
+                        <div>
                         <h4 class="card-title">Manage Queries</h4>
                         <h6 class="card-subtitle"></h6>
-                        <div class="table-responsive m-t-40">
+                        <div class="table-responsive m-t-40 relative">
                             <table id="example23" class="display nowrap table table-hover table-striped table-bordered"
                                 cellspacing="0" width="100%">
                                 <thead>
@@ -86,6 +89,39 @@ include_once ('header.php');
                                                         $id=$_POST['row_id'];
                                                         mysqli_query($con,"UPDATE req_people SET last_name='$last_name' WHERE id='$id'");
                                                    }
+                                    if (isset($_FILES['photo']) && isset($_POST['row_id'])) {
+
+                                                        $id = $_POST['row_id'];
+
+                                                        if ($_FILES['photo']['error'] == 0) {
+
+                                                            $name = $_FILES['photo']['name'];
+                                                            $tmp  = $_FILES['photo']['tmp_name'];
+
+                                                            $photoname = time() . "_" . basename($name);
+
+                                                            $uploadDir ="../uploads/photo/";
+                                                            $serverPath = $uploadDir . $photoname;
+                                                            $dbPath = "uploads/photo/" . $photoname;
+
+                                                            if (!is_dir($uploadDir)) {
+                                                                mkdir($uploadDir, 0777, true);
+                                                            }
+
+                                                            if (move_uploaded_file($tmp, $serverPath)) {
+
+                                                                mysqli_query($con,
+                                                                    "UPDATE req_people SET photo='$dbPath' WHERE id='$id'"
+                                                                );
+
+                                                            } else {
+                                                                echo "❌ move_uploaded_file failed";
+                                                            }
+
+                                                        } else {
+                                                            echo "❌ File error";
+                                                        }
+                                                    }
 
                                      $phoneno=$_GET['phone'];
                                     $email=$_GET['email'];
@@ -161,10 +197,15 @@ include_once ('header.php');
                                             </td>
 											
 											<td>
-                                                <a href="<?php echo BASE_URL; ?>/<?= $res_blog['photo'];?>" target="_blank" class="btn btn-danger">Photo</a>
+                                                <form method="POST" enctype="multipart/form-data" class="photoForm">
+                                                    <input type="file" name="photo" class="photoInput" style="display:none;">
+                                                    <input type="hidden" name="row_id" value="<?=$res_blog['id']?>">
+                                                    <button type="submit" class="submitBtn" style="display:none;">Save</button>
+                                                </form>
+                                                <a href="<?php echo BASE_URL; ?>/<?= $res_blog['photo'];?>" target="_blank"  class="btn btn-danger">Photo</a><i class="bi bi-pencil-square p-4 cursor-pointer editphoto"></i>
                                             </td>
 											<td>
-                                                <a href="guest-id-card.php?id=<?=$res_blog['id'];?>&phone=<?=$phoneno?>&email=<?=$email?>&hotel=<?=$hotel?>&arrival=<?=$arrival?>&departure=<?=$departure?>" target="_blank" class="btn btn-danger">ID Card</a>
+                                                <a href="guest-id-card.php?id=<?=$res_blog['id'];?>&phone=<?=$phoneno?>&email=<?=$email?>&hotel=<?=$hotel?>&arrival=<?=$arrival?>&departure=<?=$departure?>"  class="btn btn-danger">ID Card</a>
                                             </td>
 
                                         </tr>
@@ -269,7 +310,20 @@ document.querySelectorAll('.edit').forEach((btn)=>{
         const input=td.querySelector('input');
         input.type='text';
     });
-})
+});
+document.querySelectorAll('.editphoto').forEach((icon) => {
+    icon.addEventListener('click', function () {
+
+        const td = this.closest('td');              // same row
+        const fileInput = td.querySelector('.photoInput');
+        const submitBtn = td.querySelector('.submitBtn');
+
+        fileInput.style.display = 'block';
+        submitBtn.style.display = 'block';
+
+        fileInput.click(); // auto open file picker
+    });
+});
 </script>
 <?php
 include_once ('footer.php');

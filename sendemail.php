@@ -108,8 +108,6 @@ if ($idError === 0 && $photoError === 0 ) {
     $photodestination = $photouploadDir . $photoFileName;
 
 
-
-
 // Save data to database
 if (move_uploaded_file($idTmpPath, $iddestination) && move_uploaded_file($photoTmpPath,$photodestination)) {
 $stmt = $conn->prepare("INSERT INTO req_query_table (first_name, middle_name, last_name, email_id, country_code, phone_number, gender, age, country, state, city, id_proof_type, id_proof_number,id_proof, total_people_attending, arrival_date, departure_date, photo,address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?)");
@@ -360,7 +358,7 @@ Ram Katha Samiti, Delhi.";
 
 // Send message to Whatsapp Code End
 
-echo "<script>alert('Thank you! Your message has been sent successfully.'); window.location='thankyou.html';</script>";
+// echo "<script>alert('Thank you! Your message has been sent successfully.'); window.location='thankyou.html';</script>";
         // echo 'Message has been sent';
 } catch (Exception $e) { // handle error.
         echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;

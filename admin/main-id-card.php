@@ -44,6 +44,9 @@ include_once ('header.php');
                             unset($_SESSION['del_location']);
                         }
                         ?>
+                        <div style="position:relative !important;">
+                        <a  class="btn btn-danger absolute " style="position:absolute; right:0; cursor:pointer;z-index:10" href="#" onclick="history.back();" class="color:white">Back</a>
+                        <div>
                         <h4 class="card-title">Manage Queries</h4>
                         <h6 class="card-subtitle"></h6>
                         <div class="table-responsive m-t-40">
@@ -120,8 +123,8 @@ include_once ('header.php');
             <div class="text-start">
                 <strong>Ram Katha – Delhi</strong><br>
                 Manas Sanatandharam<br>
-                (17 Jan 2026 to 25 Jan 2026)<br>
-                Hotel Alloted : <?=$res_blog['hotel']?><br>
+                Room/Hall No._____<br>
+                <strong>Hotel Alloted : </strong><?=$res_blog['hotel']?><br>
             </div>
 
 </div>
@@ -147,13 +150,12 @@ include_once ('header.php');
               </div>
             </div>
 
-            <div class="col-8 small">
-              <div>Name : <?=$res_blog['first_name']?> <?=$res_blog['middle_name']?> <?=$res_blog['last_name']?></div>
-              <div>Mobile : <?=$res_blog['phone_number']?></div>
-              <div>Reg No : <?=$res_blog['id']?></div>
-              <div>Email id : <?=$res_blog['email_id']?></div>
-              <div>Arrival date: <?=$res_blog['arrival_date']?></div>
-              <div>Departure date: <?=$res_blog['departure_date']?></div>
+            <div class="col-8">
+              <div><strong>Name : </strong><?=$res_blog['first_name']?> <?=$res_blog['middle_name']?> <?=$res_blog['last_name']?></div>
+              <div><strong>Mobile : </strong><?=$res_blog['phone_number']?></div>
+              <div><strong>Reg No : </strong><?=$res_blog['id']?></div>
+              <div><strong>Arrival date: </strong><?=$res_blog['arrival_date']?></div>
+              <div><strong>Departure date: </strong><?=$res_blog['departure_date']?></div>
             </div>
           </div>
 
