@@ -121,8 +121,8 @@ include_once ('header.php');
             <div class="text-start">
                 <strong>Ram Katha – Delhi</strong><br>
                 Manas Sanatandharam<br>
+                (17 Jan 2026 to 25 Jan 2026)<br>
                 Hotel Alloted : <?=$_GET['hotel']?><br>
-                (17 Jan 2026 to 25 Jan 2026)
             </div>
 
 </div>
