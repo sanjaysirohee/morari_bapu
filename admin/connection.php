@@ -5,3 +5,4 @@
 #################################################
 
 $con = mysqli_connect('localhost', DB_USERNAME, DB_PASSWORD, DB_DATABASE) or die('MySQL connect failed. ' . mysqli_error());
+?>

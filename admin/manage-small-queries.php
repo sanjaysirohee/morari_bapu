@@ -43,10 +43,13 @@ include_once ('header.php');
                             <?php
                             unset($_SESSION['del_location']);
                         }
+                        $main_id=$_GET['id'];
                         ?>
                         <div style="position:relative !important;">
-                        <a  class="btn btn-danger absolute " style="position:absolute; right:0; cursor:pointer;z-index:10" href="manage-queries.php" class="color:white">Back</a>
-                        <div>
+                        <a  class="btn btn-danger absolute " style="position:absolute; right:0; cursor:pointer;z-index:10" href="#" onclick="history.back()" class="color:white">Back</a>
+                        
+                        <a  class="btn btn-danger absolute " style="position:absolute; right:70;cursor:pointer;z-index:10" href="download-via-excel.php?id=<?=$main_id?>" class="color:white">Download Via Excel</a>
+                    </div>
                         <h4 class="card-title">Manage Queries</h4>
                         <h6 class="card-subtitle"></h6>
                         <div class="table-responsive m-t-40 relative">
@@ -67,6 +70,7 @@ include_once ('header.php');
 										<th>Uploaded ID Proof</th>
 										<th>Photo</th>
                                         <th>ID Card</th>
+                                        <th>Attendance</th>
 										
 										
                                     </tr>
@@ -74,6 +78,11 @@ include_once ('header.php');
 
                                 <tbody>
                                     <?php
+                                    if(isset($_POST['attendance'],$_POST['row_id'])){
+                                                        $attendance=$_POST['attendance'];
+                                                        $id=$_POST['row_id'];
+                                                        mysqli_query($con,"UPDATE req_people SET attendance='$attendance' WHERE id='$id'");
+                                                   }
                                     if(isset($_POST['first_name'],$_POST['row_id'])){
                                                         $first_name=$_POST['first_name'];
                                                         $id=$_POST['row_id'];
@@ -207,6 +216,16 @@ include_once ('header.php');
 											<td>
                                                 <a href="guest-id-card.php?id=<?=$res_blog['id'];?>&phone=<?=$phoneno?>&email=<?=$email?>&hotel=<?=$hotel?>&arrival=<?=$arrival?>&departure=<?=$departure?>"  class="btn btn-danger">ID Card</a>
                                             </td>
+                                            <td>
+                                                 <form method="POST">
+                                                    <input type="hidden" name="row_id" value="<?=$res_blog['id']?>">
+
+                                                <select name="attendance" id="attendance" onchange="this.form.submit()">
+                                                    <option value="Present"<?= $res_blog['attendance']=='Present'?"selected":""?>>Present</option>
+                                                    <option value="Absent"<?= $res_blog['attendance']=='Absent'?"selected":""?>>Absent</option>
+                                                </select>
+                                            </form> 
+                                        </td>
 
                                         </tr>
                                     <?php  } ?>

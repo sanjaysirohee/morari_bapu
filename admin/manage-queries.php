@@ -46,6 +46,9 @@ include_once ('header.php');
                             unset($_SESSION['del_location']);
                         }
                         ?>
+                        <div style="position:relative !important;">
+                        <a  class="btn btn-danger absolute " style="position:absolute; right:0; cursor:pointer;z-index:10" href="download-via-excel.php" class="color:white">Download Via Excel</a>
+                        <div>
                         <h4 class="card-title">Manage Queries</h4>
                         <h6 class="card-subtitle"></h6>
                         <div class="table-responsive mt-40">
@@ -58,6 +61,11 @@ include_once ('header.php');
                                                         $hotel=$_POST['hotel'];
                                                         $id=$_POST['row_id'];
                                                         mysqli_query($con,"UPDATE req_query_table SET hotel='$hotel' WHERE id='$id'");
+                                                   }
+                                                   if(isset($_POST['attendance'],$_POST['row_id'])){
+                                                        $attendance=$_POST['attendance'];
+                                                        $id=$_POST['row_id'];
+                                                        mysqli_query($con,"UPDATE req_query_table SET attendance='$attendance' WHERE id='$id'");
                                                    }
                                                    if(isset($_POST['first_name'],$_POST['row_id'])){
                                                         $first_name=$_POST['first_name'];
@@ -129,34 +137,36 @@ include_once ('header.php');
                                                    ?>
                             <table id="example23" class="display nowrap table table-hover table-striped table-bordered"
                                 cellspacing="0" width="100%">
-                                <thead>
-                                    <tr>
-                                        <th>S.No</th>
-                                        <th>Registration number</th>
-                                        <th>Total Guests (<?=$totalguest?>)</th>
-                                        <th>First Name</th>
-                                        <th>Middle Name</th>
-                                        <th>Last Name</th>
-                                        <th>Email Id</th>
-                                        <th>Country Code</th>
-                                        <th>Phone Number</th>
-										<th>Gender</th>
-                                        <th>Age</th>
-                                        <th>Country</th>
-                                        <th>State</th>
-                                        <th>City</th>
-										<th>ID Proof Type</th>
-										<th>ID Proof Number</th>
-										<th>Uploaded ID Proof</th>
-										
-										<th>Arrival Date</th>
-										<th>Departure Date</th>
-										<th>Photo</th>
-										<th>Address</th>
-                                        <th>Hotel</th>
-                                        <th>Attendees</th>
-                                        <th>ID Card</th>
-										<th>Date and Time of Submission</th>
+                                <thead class="table-light">
+                                    <tr >
+                                        <th class="sticky-top">S.No</th>
+                                        <th class="sticky-top">Registration number</th>
+                                        <th class="sticky-top">Total Guests (<?=$totalguest?>)</th>
+                                        <th class="sticky-top">First Name</th>
+                                        <th class="sticky-top">Middle Name</th>
+                                        <th class="sticky-top">Last Name</th>
+                                        <th class="sticky-top">Email Id</th>
+                                        <th class="sticky-top">Country Code</th>
+                                        <th class="sticky-top">Phone Number</th>
+										<th class="sticky-top">Gender</th>
+                                        <th class="sticky-top">Age</th>
+                                        <th class="sticky-top">Country</th>
+                                        <th class="sticky-top">State</th>
+                                        <th class="sticky-top">City</th>
+										<th class="sticky-top">ID Proof Type</th>
+										<th class="sticky-top">ID Proof Number</th>
+										<th class="sticky-top">Uploaded ID Proof</th>	
+										<th class="sticky-top">Arrival Date</th>
+										<th class="sticky-top">Departure Date</th>
+										<th class="sticky-top">Photo</th>
+										<th class="sticky-top">Address</th>
+                                        <th class="sticky-top">Hotel</th>
+                                        <th class="sticky-top">Attendees</th>
+                                        <th class="sticky-top">ID Card</th>
+										<th class="sticky-top">Date and Time of Submission</th>
+                                        <th class="sticky-top">Attendance</th>
+                                        <th class="sticky-top">Delete</th>
+                                     
                                     </tr>
                                 </thead>
 
@@ -296,6 +306,19 @@ include_once ('header.php');
                                             
                                             <td>
                                                <?= $res_blog['submitted_on'];?>
+                                            </td>
+                                            <td>
+                                                 <form method="POST">
+                                                    <input type="hidden" name="row_id" value="<?=$res_blog['id']?>">
+
+                                                <select name="attendance" id="attendance" onchange="this.form.submit()">
+                                                    <option value="Present"<?= $res_blog['attendance']=='Present'?"selected":""?>>Present</option>
+                                                    <option value="Absent"<?= $res_blog['attendance']=='Absent'?"selected":""?>>Absent</option>
+                                                </select>
+                                    </form> 
+                                        </td>
+                                        <td>
+                                                <a href="delete-entry.php?id=<?=$res_blog["id"]?>" class="btn btn-danger" id="delete">Delete</a>
                                             </td>
                                         </tr>
                                     <?php  } ?>

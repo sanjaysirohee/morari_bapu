@@ -358,7 +358,7 @@ Ram Katha Samiti, Delhi.";
 
 // Send message to Whatsapp Code End
 
-// echo "<script>alert('Thank you! Your message has been sent successfully.'); window.location='thankyou.html';</script>";
+echo "<script>alert('Thank you! Your message has been sent successfully.'); window.location='thankyou.html';</script>";
         // echo 'Message has been sent';
 } catch (Exception $e) { // handle error.
         echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
