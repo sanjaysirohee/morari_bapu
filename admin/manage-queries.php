@@ -318,7 +318,7 @@ include_once ('header.php');
                                     </form> 
                                         </td>
                                         <td>
-                                                <a href="delete-entry.php?id=<?=$res_blog["id"]?>" class="btn btn-danger" id="delete">Delete</a>
+                                                <a href="delete-entry.php?id=<?=$res_blog["id"]?>" onclick="return confirm('Do you want to delete this entry?')" class="btn btn-danger" id="delete">Delete</a>
                                             </td>
                                         </tr>
                                     <?php  } ?>

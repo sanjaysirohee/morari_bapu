@@ -1,4 +1,5 @@
- <footer class="footer">Copyright © 2025 Ram Katha Samiti. All Rights Reserved.</footer>
+ <div class="footer m-0">
+ <footer >Copyright © 2025 Ram Katha Samiti. All Rights Reserved.</footer>
  </div>
 
  <script src="assets/node_modules/jquery/jquery-3.2.1.min.js"></script>
@@ -86,9 +87,6 @@
      $('.buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel').addClass('btn btn-primary mr-1');
  </script>
 
-
-
- ` n
 
  <script>
      $(function() {
