@@ -102,27 +102,15 @@ include ('config.php');
 
 
 
-                <div class="navbar-collapse">
-
-                    <ul class="navbar-nav mr-auto">
-
-                        <li class="nav-item"><a class="nav-link nav-toggler d-block d-md-none waves-effect waves-dark"
-                                href="javascript:void(0)"><i class="ti-menu"></i></a></li>
-
-                        <li class="nav-item"><a
-                                class="nav-link sidebartoggler d-none d-lg-block d-md-block waves-effect waves-dark"
-                                href="javascript:void(0)">
-
-                                <i class="icon-menu"></i></a> </li>
-                    </ul>
 
 
 
-                    <ul class="navbar-nav my-lg-0">
+
+                    <!-- <ul class="navbar-nav my-lg-0">
 
 
 
-                        <li class="nav-item dropdown u-pro">
+                        <li class="">
 
                             <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
@@ -136,89 +124,13 @@ include ('config.php');
                             </div>
                         </li>
 
-                    </ul>
+                    </ul> -->
                 </div>
             </nav>
 
         </header>
 
 
-
-
-
-        <aside class="left-sidebar">
-
-            <div class="scroll-sidebar">
-
-                <nav class="sidebar-nav">
-
-                    <ul id="sidebarnav">
-					<!--
-                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                aria-expanded="false"><i class="fas fa-blog"></i>
-
-                                <span class="hide-menu">Blog</span></a>
-
-                            <ul aria-expanded="false" class="collapse">
-
-                                <li><a href="add-blog.php">Add Blog</a></li>
-
-                                <li><a href="manage-blog.php">Manage Blog</a></li>
-
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                aria-expanded="false"><i class="fas fa-blog"></i>
-                                <span class="hide-menu">Cities</span></a>
-
-                            <ul aria-expanded="false" class="collapse">
-
-
-                                <li><a href="manage-cities.php">Manage Cities</a></li>
-
-
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                aria-expanded="false"><i class="fas fa-blog"></i>
-                                <span class="hide-menu">Location</span></a>
-
-                            <ul aria-expanded="false" class="collapse">
-
-                                <li><a href="manage-locations.php">Manage Location</a></li>
-
-                            </ul>
-                        </li>
-						-->
-
-
-                        <li>
-                            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                aria-expanded="false"><i class="fas fa-blog"></i>
-                                <span class="hide-menu">Registration</span></a>
-
-                            <ul aria-expanded="false" class="collapse">
-
-                                <li><a href="manage-queries.php">Registration Forms</a></li>
-                                <!-- <li><a href="id-card.php">id</a></li> -->
-								<!-- <li><a href="junk-queries.php">Junk Queries</a></li> -->
-								<!-- <li><a href="website-cost-queries.php">Website Cost Queries</a></li> -->
-								<!-- <li><a href="subscriber-queries.php">Subscriber Queries</a></li> -->
-								<!-- <li><a href="career-queries.php">Career Queries</a></li> -->
-
-                            </ul>
-                        </li>
-
-
-                    </ul>
-                </nav>
-            </div>
-
-        </aside>
 
         <script>
             $("#success_alert").fadeTo(2000, 1000).slideUp(1000, function () {

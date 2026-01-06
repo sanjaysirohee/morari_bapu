@@ -2,7 +2,7 @@
 include_once ('header.php');
 ?>
 
-<div class="page-wrapper">
+<div class="">
     <!-- ============================================================== -->
     <!-- Container fluid  -->
     <!-- ============================================================== -->
@@ -72,6 +72,7 @@ include_once ('header.php');
                                         <th>ID Card</th>
                                         <th>Hotel</th>
                                         <th>Attendance</th>
+                                        <th>Delete</th>
 										
 										
                                     </tr>
@@ -246,7 +247,9 @@ include_once ('header.php');
                                                 </select>
                                             </form> 
                                         </td>
-
+                                        <td>
+                                                <a href="delete-entry.php?guest_id=<?= $res_blog['id'] ?>&request_id=<?= $res_blog['request_id']?>" onclick="return confirm('Do you want to delete this entry?')" class="btn btn-danger" id="delete">Delete</a>
+                                            </td>
                                         </tr>
                                     <?php  } ?>
 
