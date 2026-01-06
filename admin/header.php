@@ -87,7 +87,7 @@ include ('config.php');
 
                 <div class="navbar-header">
 
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="manage-queries.php">
 
                         <img src="<?php echo BASE_URL; ?>/img/logo1.png" alt="homepage"
                             class="dark-logo" />
