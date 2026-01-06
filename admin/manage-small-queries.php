@@ -70,6 +70,7 @@ include_once ('header.php');
 										<th>Uploaded ID Proof</th>
 										<th>Photo</th>
                                         <th>ID Card</th>
+                                        <th>Hotel</th>
                                         <th>Attendance</th>
 										
 										
@@ -78,6 +79,11 @@ include_once ('header.php');
 
                                 <tbody>
                                     <?php
+                                    if(isset($_POST['hotel'],$_POST['row_id'])){
+                                                        $hotel=$_POST['hotel'];
+                                                        $id=$_POST['row_id'];
+                                                        mysqli_query($con,"UPDATE req_people SET hotel='$hotel' WHERE id='$id'");
+                                                   }
                                     if(isset($_POST['attendance'],$_POST['row_id'])){
                                                         $attendance=$_POST['attendance'];
                                                         $id=$_POST['row_id'];
@@ -134,7 +140,7 @@ include_once ('header.php');
 
                                      $phoneno=$_GET['phone'];
                                     $email=$_GET['email'];
-                                    $hotel=$_GET['hotel'];
+                                    $hotel=$_POST['hotel'];
                                     $arrival=$_GET['arrival'];
                                     $departure=$_GET['departure'];
                                     if(isset($_GET['id'])){
@@ -216,6 +222,20 @@ include_once ('header.php');
 											<td>
                                                 <a href="guest-id-card.php?id=<?=$res_blog['id'];?>&phone=<?=$phoneno?>&email=<?=$email?>&hotel=<?=$hotel?>&arrival=<?=$arrival?>&departure=<?=$departure?>"  class="btn btn-danger">ID Card</a>
                                             </td>
+                                            <td>
+                                                 <form method="POST">
+                                                    <input type="hidden" name="row_id" value="<?=$res_blog['id']?>">
+
+                                                <select name="hotel" id="hotel" onchange="this.form.submit()">
+                                                    <option>Select Hotel</option>
+                                                    <option value="Banglasaheb Gurudwara"<?= $res_blog['hotel']=='Banglasaheb Gurudwara'?"selected":""?>>Banglasaheb Gurudwara</option>
+                                                    <option value="Seeshganjsaheb Gurudwara"<?= $res_blog['hotel']=='Seeshganjsaheb Gurudwara'?"selected":""?>>Seeshganjsaheb Gurudwara</option>
+                                                    <option value="Rakabganj Gurudwara"<?= $res_blog['hotel']=='Rakabganj Gurudwara'?"selected":""?>>Rakabganj Gurudwara</option>
+                                                    <option value="Balasaheb Gurudwara"<?= $res_blog['hotel']=='Balasaheb Gurudwara'?"selected":""?>>Balasaheb Gurudwara</option>
+                                                    <option value="Gujrati Bhavan"<?= $res_blog['hotel']=='Gujrati Bhavan'?"selected":""?>>Gujrati Bhavan</option>
+                                                </select>
+                                    </form> 
+                                    </td>
                                             <td>
                                                  <form method="POST">
                                                     <input type="hidden" name="row_id" value="<?=$res_blog['id']?>">

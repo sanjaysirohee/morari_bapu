@@ -45,7 +45,7 @@ include_once ('header.php');
                         }
                         ?>
                         <div style="position:relative !important;">
-                        <a  class="btn btn-danger absolute " style="position:absolute; right:0; cursor:pointer;z-index:10" href="#" onclick="history.back();" class="color:white">Back</a>
+                        <a  class="btn btn-danger absolute " style="position:absolute; right:0; cursor:pointer;z-index:10" href="#" onclick="history.back()" class="color:white">Back</a>
                         <div>
                         <h4 class="card-title">Manage Queries</h4>
                         <h6 class="card-subtitle"></h6>
