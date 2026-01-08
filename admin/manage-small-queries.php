@@ -58,7 +58,7 @@ include_once ('header.php');
                                 <thead>
                                     <tr>
                                         <th>S.No</th>
-                                        <th>Registration Number</th>
+                                        <th>Reg No.</th>
                                         <th>Coming with</th>
                                         <th>First Name</th>
                                         <th>Middle Name</th>
@@ -67,7 +67,7 @@ include_once ('header.php');
                                         <th>Age</th>
 										<th>ID Proof Type</th>
 										<th>ID Proof Number</th>
-										<th>Uploaded ID Proof</th>
+										<th>ID Proof</th>
 										<th>Photo</th>
                                         <th>ID Card</th>
                                         <th>Hotel</th>

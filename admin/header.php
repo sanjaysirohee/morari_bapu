@@ -23,6 +23,7 @@ include ('config.php');
     .topbar .top-navbar .navbar-header {
         padding-left: 0 !important;
     }
+    
 </style>
 
 

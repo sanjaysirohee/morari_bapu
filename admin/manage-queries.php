@@ -140,14 +140,14 @@ include_once ('header.php');
                                 <thead class="table-light">
                                     <tr >
                                         <th class="sticky-top">S.No</th>
-                                        <th class="sticky-top">Registration number</th>
-                                        <th class="sticky-top">Total Guests (<?=$totalguest?>)</th>
+                                        <th class="sticky-top">Reg no.</th>
+                                        <th class="sticky-top">T.G. (<?=$totalguest?>)</th>
                                         <th class="sticky-top">First Name</th>
                                         <th class="sticky-top">Middle Name</th>
                                         <th class="sticky-top">Last Name</th>
                                         <th class="sticky-top">Email Id</th>
                                         <th class="sticky-top">Country Code</th>
-                                        <th class="sticky-top">Phone Number</th>
+                                        <th class="sticky-top">Phone No.</th>
 										<th class="sticky-top">Gender</th>
                                         <th class="sticky-top">Age</th>
                                         <th class="sticky-top">Country</th>
@@ -155,7 +155,7 @@ include_once ('header.php');
                                         <th class="sticky-top">City</th>
 										<th class="sticky-top">ID Proof Type</th>
 										<th class="sticky-top">ID Proof Number</th>
-										<th class="sticky-top">Uploaded ID Proof</th>	
+										<th class="sticky-top">ID Proof</th>	
 										<th class="sticky-top">Arrival Date</th>
 										<th class="sticky-top">Departure Date</th>
 										<th class="sticky-top">Photo</th>
@@ -163,7 +163,7 @@ include_once ('header.php');
                                         <th class="sticky-top">Hotel</th>
                                         <th class="sticky-top">Attendees</th>
                                         <th class="sticky-top">ID Card</th>
-										<th class="sticky-top">Date and Time of Submission</th>
+										<th class="sticky-top">Date/Time Submission</th>
                                         <th class="sticky-top">Attendance</th>
                                         <th class="sticky-top">Delete</th>
                                      
@@ -204,16 +204,16 @@ include_once ('header.php');
                                             <td>
                                                 <form method="Post">
                                                 <input type="hidden" name="middle_name" id="middle_name"/>
-                                                <input type="hidden" name="row_id" value="<?=$res_blog['id']?>">
-                                    </form>
+                                                <input type="hidden" name="row_id" value="<?=$res_blog['id']?>"/>
+                                                </form>
                                                 <?= $res_blog['middle_name']; ?><i class="bi bi-pencil-square p-4 cursor-pointer edit"></i>
                                             </td>
 
                                              <td>
                                                 <form method="Post">
                                                 <input type="hidden" name="last_name" id="last_name"/>
-                                                <input type="hidden" name="row_id" value="<?=$res_blog['id']?>">
-                                    </form>
+                                                <input type="hidden" name="row_id" value="<?=$res_blog['id']?>"/>
+                                                </form>
                                                 <?= $res_blog['last_name']; ?><i class="bi bi-pencil-square p-4 cursor-pointer edit"></i>
                                             </td>
 
@@ -256,15 +256,15 @@ include_once ('header.php');
 											<td>
                                                 <form method="Post">
                                                 <input type="hidden" name="arrival_date" id="arrival_date"/>
-                                                <input type="hidden" name="row_id" value="<?=$res_blog['id']?>">
-                                    </form>
+                                                <input type="hidden" name="row_id" value="<?=$res_blog['id']?>"/>
+                                                </form>
                                                 <?= $res_blog['arrival_date']; ?><i class="bi bi-pencil-square p-4 cursor-pointer edit"></i>
                                             </td>
 											<td>
                                                 <form method="Post">
                                                 <input type="hidden" name="departure_date" id="departure_date"/>
                                                 <input type="hidden" name="row_id" value="<?=$res_blog['id']?>">
-                                    </form>
+                                                </form>
                                                 <?= $res_blog['departure_date']; ?><i class="bi bi-pencil-square p-4 cursor-pointer edit"></i>
                                             </td>
 											<td>
@@ -279,25 +279,47 @@ include_once ('header.php');
                                             </td>
 
 											<td>
-                                                <?= $res_blog['address']; ?>
-                                            </td>
+                                            <?= substr($res_blog['address'], 0, 20); ?>...
+                                            <button 
+                                                class="btn btn-sm btn-danger"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#addressModal<?= $res_blog['id']; ?>">
+                                                Full
+                                            </button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="addressModal<?= $res_blog['id']; ?>" tabindex="-1">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Full Address</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <?= $res_blog['address']; ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+
                                            <td>
                                                 <form method="POST">
-                                                    <input type="hidden" name="row_id" value="<?=$res_blog['id']?>">
+                                                    <input type="hidden" name="row_id" value="<?=$res_blog['id']?>"/>
 
-                                                <select name="hotel" id="hotel" onchange="this.form.submit()">
-                                                    <option>Select Hotel</option>
-                                                    <option value="Banglasaheb Gurudwara"<?= $res_blog['hotel']=='Banglasaheb Gurudwara'?"selected":""?>>Banglasaheb Gurudwara</option>
-                                                    <option value="Seeshganjsaheb Gurudwara"<?= $res_blog['hotel']=='Seeshganjsaheb Gurudwara'?"selected":""?>>Seeshganjsaheb Gurudwara</option>
-                                                    <option value="Rakabganj Gurudwara"<?= $res_blog['hotel']=='Rakabganj Gurudwara'?"selected":""?>>Rakabganj Gurudwara</option>
-                                                    <option value="Balasaheb Gurudwara"<?= $res_blog['hotel']=='Balasaheb Gurudwara'?"selected":""?>>Balasaheb Gurudwara</option>
-                                                    <option value="Gujrati Bhavan"<?= $res_blog['hotel']=='Gujrati Bhavan'?"selected":""?>>Gujrati Bhavan</option>
-                                                </select>
-                                    </form> 
+                                                    <select name="hotel" id="hotel" onchange="this.form.submit()">
+                                                        <option>Select Hotel</option>
+                                                        <option value="Banglasaheb Gurudwara"<?= $res_blog['hotel']=='Banglasaheb Gurudwara'?"selected":""?>>Banglasaheb Gurudwara</option>
+                                                        <option value="Seeshganjsaheb Gurudwara"<?= $res_blog['hotel']=='Seeshganjsaheb Gurudwara'?"selected":""?>>Seeshganjsaheb Gurudwara</option>
+                                                        <option value="Rakabganj Gurudwara"<?= $res_blog['hotel']=='Rakabganj Gurudwara'?"selected":""?>>Rakabganj Gurudwara</option>
+                                                        <option value="Balasaheb Gurudwara"<?= $res_blog['hotel']=='Balasaheb Gurudwara'?"selected":""?>>Balasaheb Gurudwara</option>
+                                                        <option value="Gujrati Bhavan"<?= $res_blog['hotel']=='Gujrati Bhavan'?"selected":""?>>Gujrati Bhavan</option>
+                                                    </select>
+                                                </form> 
                                                    
-                                            </td>
+                                          </td>
                                             
-                                            <td>
+                                        <td>
                                                 <a href="manage-small-queries.php?id=<?=$res_blog['id']?>&phone=<?=urlencode($res_blog['phone_number']); ?>&email=<?= urlencode($res_blog['email_id']);?>&arrival=<?=urlencode($res_blog['arrival_date']);?>&departure=<?=urlencode($res_blog['departure_date']);?>" class="btn btn-danger">Other Guests</a>
                                             </td>
                                             <td>
@@ -315,11 +337,11 @@ include_once ('header.php');
                                                     <option value="Present"<?= $res_blog['attendance']=='Present'?"selected":""?>>Present</option>
                                                     <option value="Absent"<?= $res_blog['attendance']=='Absent'?"selected":""?>>Absent</option>
                                                 </select>
-                                    </form> 
+                                                </form> 
                                         </td>
                                         <td>
                                                 <a href="delete-entry.php?request_id=<?=$res_blog["id"]?>" onclick="return confirm('Do you want to delete this entry?')" class="btn btn-danger" id="delete">Delete</a>
-                                            </td>
+                                        </td>
                                         </tr>
                                     <?php  } ?>
 
