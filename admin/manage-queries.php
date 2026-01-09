@@ -288,19 +288,19 @@ include_once ('header.php');
                                             </button>
 
                                             <!-- Modal -->
-                                            <div class="modal fade" id="addressModal<?= $res_blog['id']; ?>" tabindex="-1">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Full Address</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <?= $res_blog['address']; ?>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <div class="modal fade auto-width-modal" id="addressModal<?= $res_blog['id']; ?>" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Full Address</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <?= $res_blog['address']; ?>
+      </div>
+    </div>
+  </div>
+</div>
                                         </td>
 
                                            <td>

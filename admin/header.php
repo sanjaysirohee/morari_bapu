@@ -23,7 +23,15 @@ include ('config.php');
     .topbar .top-navbar .navbar-header {
         padding-left: 0 !important;
     }
-    
+    .auto-width-modal .modal-dialog {
+    max-width: fit-content;
+    width: auto;
+  }
+
+  .auto-width-modal .modal-body {
+    white-space: normal;
+    word-break: break-word;
+  }
 </style>
 
 
