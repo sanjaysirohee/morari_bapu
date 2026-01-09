@@ -59,6 +59,7 @@ while ($row = mysqli_fetch_assoc($query)) {
         $row['submitted_on']
     ]);
 }
+fputcsv($output,["\n"]);
     fputcsv($output,["This is the Coming Guest List"]);
     fputcsv($output, [
         'S.No',
@@ -140,6 +141,37 @@ while ($row = mysqli_fetch_assoc($query)) {
         $row['address'],
         $row['hotel'],
         $row['submitted_on']
+    ]);
+}
+fputcsv($output,["\n"]);
+fputcsv($output,["This is the Coming Guest List"]);
+    fputcsv($output, [
+        'S.No',
+        'Registration No',
+        'Coming With',
+        'First Name',
+        'Middle Name',
+        'Last Name',
+        'Gender',
+        'Age',
+        'ID Proof Type',
+        'ID Proof Number',
+    ]);
+    $guestquery=mysqli_query($con, "select * from req_people order by id desc");
+    $i=1;
+    while ($row = mysqli_fetch_assoc($guestquery)) {
+
+    fputcsv($output, [
+        $i++,
+        $row['request_id']."_".$row['id'],
+        $row['request_id'],
+        $row['first_name'],
+        $row['middle_name'],
+        $row['last_name'],
+        $row['gender'],
+        $row['age'],
+        $row['id_proof_type'],
+        $row['id_proof_number']
     ]);
 }
 }
