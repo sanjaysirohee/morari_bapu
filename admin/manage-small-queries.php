@@ -46,9 +46,9 @@ include_once ('header.php');
                         $main_id=$_GET['id'];
                         ?>
                         <div style="position:relative !important;">
-                        <a  class="btn btn-danger absolute " style="position:absolute; right:0; cursor:pointer;z-index:10" href="#" onclick="history.back()" class="color:white">Back</a>
+                        <a  class="btn btn-danger absolute " style="position:absolute; right:0; cursor:pointer;z-index:10" href="manage-queries.php" class="color:white">Back</a>
                         
-                        <a  class="btn btn-danger absolute " style="position:absolute; right:70;cursor:pointer;z-index:10" href="download-via-excel.php?id=<?=$main_id?>" class="color:white">Download Via Excel</a>
+                        <!-- <a  class="btn btn-danger absolute " style="position:absolute; right:70;cursor:pointer;z-index:10" href="download-via-excel.php?id=<?=$main_id?>" class="color:white">Download Via Excel</a> -->
                     </div>
                         <h4 class="card-title">Manage Queries</h4>
                         <h6 class="card-subtitle"></h6>
