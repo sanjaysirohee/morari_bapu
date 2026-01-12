@@ -323,7 +323,7 @@ include_once ('header.php');
                                                 <a href="manage-small-queries.php?id=<?=$res_blog['id']?>&phone=<?=urlencode($res_blog['phone_number']); ?>&email=<?= urlencode($res_blog['email_id']);?>&arrival=<?=urlencode($res_blog['arrival_date']);?>&departure=<?=urlencode($res_blog['departure_date']);?>" class="btn btn-danger">Other Guests</a>
                                             </td>
                                             <td>
-                                                <a href="main-id-card.php?id=<?=$res_blog['id'];?>" target="_blank" class="btn btn-danger">ID Card</a>
+                                                <a href="main-id-card.php?id=<?=$res_blog['id'];?>" class="btn btn-danger">ID Card</a>
                                             </td>
                                             
                                             <td>

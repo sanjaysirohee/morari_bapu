@@ -47,8 +47,17 @@ $address = isset($_POST['address']) ? preg_replace("/[^\s\S\.\-\_\@a-zA-Z0-9]/",
 $phonenumber=mysqli_query($conn,"select id from req_query_table where phone_number=${userPhone}");
 $phonerow=mysqli_fetch_assoc($phonenumber);
 
+
 if($phonerow!=null){
   echo "<script>alert('This Mobile number already exist. Try to register from different number'); window.location='warning.html';</script>";
+  exit();
+}
+
+$identity=mysqli_query($conn,"select id from req_query_table where id_proof_number='${idno}'");
+$identityrow=mysqli_fetch_assoc($identity);
+
+if($identityrow!=null){
+  echo "<script>alert('This ID number already exist. Try to register from different Id'); window.location='warningid.html';</script>";
   exit();
 }
  $isValidEmail = !empty($senderEmail) && filter_var($senderEmail, FILTER_VALIDATE_EMAIL);
