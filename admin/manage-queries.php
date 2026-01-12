@@ -135,9 +135,9 @@ include_once ('header.php');
                                                         $totalguest+=$res_blog['total_people_attending']+1;
                                                     }
                                                    ?>
-                            <table id="example23" class="display nowrap table table-hover table-striped table-bordered"
+                            <table id="example23" class="display nowrap table table-hover table-striped table-bordered" 
                                 cellspacing="0" width="100%">
-                                <thead class="table-light">
+                                <thead class="table-light" style="z-index: index 0;">
                                     <tr >
                                         <th class="sticky-top">S.No</th>
                                         <th class="sticky-top">Reg no.</th>
