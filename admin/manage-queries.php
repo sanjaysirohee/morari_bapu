@@ -163,6 +163,7 @@ include_once ('header.php');
                                         <th class="sticky-top">Hotel</th>
                                         <th class="sticky-top">Attendees</th>
                                         <th class="sticky-top">ID Card</th>
+                                        <th class="sticky-top">ID Card Back</th>
 										<th class="sticky-top">Date/Time Submission</th>
                                         <th class="sticky-top">Attendance</th>
                                         <th class="sticky-top">Delete</th>
@@ -324,6 +325,9 @@ include_once ('header.php');
                                             </td>
                                             <td>
                                                 <a href="main-id-card.php?id=<?=$res_blog['id'];?>" class="btn btn-danger">ID Card</a>
+                                            </td>
+                                            <td>
+                                                <a href="id-card-back.php" class="btn btn-danger">ID Card Back</a>
                                             </td>
                                             
                                             <td>

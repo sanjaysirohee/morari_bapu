@@ -70,6 +70,7 @@ include_once ('header.php');
 										<th>ID Proof</th>
 										<th>Photo</th>
                                         <th>ID Card</th>
+                                        <th>ID Card Back</th>
                                         <th>Hotel</th>
                                         <th>Attendance</th>
                                         <th>Delete</th>
@@ -222,6 +223,9 @@ include_once ('header.php');
                                             </td>
 											<td>
                                                 <a href="guest-id-card.php?id=<?=$res_blog['id'];?>&phone=<?=$phoneno?>&email=<?=$email?>&hotel=<?=$hotel?>&arrival=<?=$arrival?>&departure=<?=$departure?>"  class="btn btn-danger">ID Card</a>
+                                            </td>
+                                             <td>
+                                                <a href="id-card-back.php" class="btn btn-danger">ID Card Back</a>
                                             </td>
                                             <td>
                                                  <form method="POST">

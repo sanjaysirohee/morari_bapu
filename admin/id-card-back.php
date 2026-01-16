@@ -70,112 +70,48 @@ include_once ('header.php');
                                 </thead> -->
 
                                 <!-- <tbody> -->
-                                    <?php
-                                    if(isset($_GET['id'])){
-                                        $main_id=$_GET['id'];
-                                        
-                                        $fetch_blog = mysqli_query($con, "select * from req_query_table where id=$main_id");
-                                    }
-                                    else{
-                                        
-                                        $fetch_blog = mysqli_query($con, "select * from req_people order by id desc");
-                                    }
-                                        $i = 1;
-                                    while ($res_blog = mysqli_fetch_array($fetch_blog)) {
-                                        
-                                        ?>
+                                    
                                          
-                                        <div class="container id-card mt-3">
-                                            
-        <div class="row justify-content-center">
+                                        <div class="container p-3 mt-3 d-flex align-items-center justify-content-center">
+                                            <div class="row justify-content-center">
         <div class="col-auto"style="width: 400px;
         border: 2px solid black;
         background: white;">
-
-            <!-- ID CARD -->
-            <div class="id-card p-2"  
+        <div class="id-card p-2 align-item-center"  
             >
 
-            <!-- Header -->
-            <div class="text-center fw-bold border-bottom border-dark ">
-                <img 
-                    src="<?php echo BASE_URL?>/img/logo1.png"
-                    width="100"
-                    height="35"
-                    class=" m-3"
-                    alt="Image"
-                >
-            </div>
+    <h6 class="text-center fw-bold mb-2">आवश्यक सूचना</h6>
 
-          <!-- Organization -->
-          <div class="d-flex align-items-center justify-content-center mt-1 gap-5">
+    <div style="font-size: 12px; line-height: 1.4;">
+        गुरुद्वारा परिसर एवं यात्री निवास की पवित्रता बनाए रखने हेतु सभी श्रद्धालुओं से विनम्र अनुरोध है कि वे निम्नलिखित नियमों का सख्ती से पालन करें —
 
-            <!-- Circular Image -->
-            <img 
-                src="<?php echo BASE_URL?>/img/morari_bapu1.png"
-                width="80"
-                height="80"
-                class="rounded-circle border m-3"
-                alt="Image"
-            >
+        <ul style="padding-left: 15px; margin-top: 5px;">
+            <li>बीड़ी, सिगरेट, गुटखा, तंबाकू, शराब या नशा लाना वर्जित है।</li>
+            <li>चेकिंग में आपत्तिजनक वस्तु मिलने पर कड़ी कार्रवाई होगी।</li>
+            <li>परिसर में सिर ढककर रखें, बिना सिर ढके प्रवेश वर्जित है।</li>
+            <li>कपड़े सुखाना सख्त मना है।</li>
+            <li>सिलाई-कटिंग, शेविंग या बाल काटना प्रतिबंधित है।</li>
+            <li>साफ-सफाई रखें, कचरा न फैलाएँ।</li>
+            <li>मोबाइल साइलेंट मोड पर रखें।</li>
+            <li>शोर-शराबा एवं अशोभनीय गतिविधि न करें।</li>
+            <li>किसी अन्य के कमरे या सामान का उपयोग न करें।</li>
+            <li>विवाद या अनुशासनहीनता पर कार्रवाई होगी।</li>
+        </ul>
 
-            <!-- Text -->
-            <div class="text-start">
-                <strong>Ram Katha – Delhi</strong><br>
-                Manas Sanatandharam<br>
-                Room/Hall No._____<br>
-                <strong>Hotel Alloted : </strong><?=$res_blog['hotel']?><br>
-            </div>
-
+        <strong>❗ नोट:</strong><br>
+        कोई भी अतिथि अन्य व्यक्तियों के कमरे या बिस्तरों पर न जाए।
+        सभी श्रद्धालु गुरुद्वारा मर्यादा का पूर्ण रूप से पालन करें।
 </div>
-
-
-          <!-- Photo + Details -->
-          <div class="row mt-3">
-            <div class="col-4">
-              <div class="photo-box"
-               style="width: 100%;
-      height: 120px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;">
-                <img 
-                src="<?php echo BASE_URL?>/<?=$res_blog['photo']?>"
-                width="120"
-                height="120"
-                class="border m-3"
-                alt="Image"
-            >
-              </div>
-            </div>
-
-            <div class="col-8">
-              <div><strong>Name : </strong><?=$res_blog['first_name']?> <?=$res_blog['middle_name']?> <?=$res_blog['last_name']?></div>
-              <div><strong>Mobile : </strong><?=$res_blog['phone_number']?></div>
-              <div><strong>Reg No : </strong><?=$res_blog['id']?></div>
-              <div><strong>Arrival date: </strong><?=$res_blog['arrival_date']?></div>
-              <div><strong>Departure date: </strong><?=$res_blog['departure_date']?></div>
-            </div>
-          </div>
-
-          <!-- Valid -->
-          <div class="valid-box text-center mt-3 p-1 small" 
-          style="border: 2px solid black;
-      font-weight: bold;">
-            Valid Till 25 Jan 2026
-          </div>
-
-        </div>
-        <!-- END CARD -->
-
-      </div>
+</div>
+</div>
     </div>
+
 </div>
+
 
                                         
                                     <?php  
-                                    }
+
                                      ?>
 
                                 <!-- </tbody> -->

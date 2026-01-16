@@ -11,6 +11,10 @@ include ('config.php');
 ?>
 
 <style>
+.id-card {
+    width: 350px;
+    height: 400px;   /* same height for front & back */
+}
     .skin-megna .topbar .top-navbar .navbar-header .navbar-brand .light-logo {
         width: 86%;
     }
