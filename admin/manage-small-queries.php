@@ -231,7 +231,7 @@ include_once ('header.php');
                                                         <option>Select Hotel</option>
                                                         <option value="Banglasaheb Gurudwara - VISHWAJEET - 6307600942"<?= $res_blog['hotel']=='Banglasaheb Gurudwara - VISHWAJEET - 6307600942'?"selected":""?>>Banglasaheb Gurudwara - VISHWAJEET - 6307600942</option>
                                                         <option value="Seeshganjsaheb Gurudwara - SHANI - 6392340455"<?= $res_blog['hotel']=='Seeshganjsaheb Gurudwara - SHANI - 6392340455'?"selected":""?>>Seeshganjsaheb Gurudwara - SHANI - 6392340455</option>
-                                                        <option value="Rakabganj Gurudwara - ALOK CHAUDHARY- 70526 86938"<?= $res_blog['hotel']=='Rakabganj Gurudwara - ALOK CHAUDHARY- 70526 86938'?"selected":""?>>Rakabganj Gurudwara - ALOK CHAUDHARY- 70526 86938</option>
+                                                        <option value="Rakabganj Gurudwara - ALOK CHAUDHARY- 7052686938"<?= $res_blog['hotel']=='Rakabganj Gurudwara - ALOK CHAUDHARY- 70526 86938'?"selected":""?>>Rakabganj Gurudwara - ALOK CHAUDHARY- 7052686938</option>
                                                         <option value="Balasaheb Gurudwara - VAISHNAV - 8604696676"<?= $res_blog['hotel']=='Balasaheb Gurudwara - VAISHNAV - 8604696676'?"selected":""?>>Balasaheb Gurudwara - VAISHNAV - 8604696676</option>
                                                         <option value="Gujrati Bhavan - CHIRANJEEVI - 8565899772"<?= $res_blog['hotel']=='Gujrati Bhavan - CHIRANJEEVI - 8565899772'?"selected":""?>>Gujrati Bhavan - CHIRANJEEVI - 8565899772</option>
                                                     </select>
