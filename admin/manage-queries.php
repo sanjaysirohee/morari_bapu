@@ -57,10 +57,32 @@ include_once ('header.php');
                             </div> -->
                             <?php
                             
-                                                   if(isset($_POST['hotel'],$_POST['row_id'])){
+                                                   if(isset($_POST['hotel'],$_POST['row_id'])){ 
+                                                     
+                                                    
                                                         $hotel=$_POST['hotel'];
                                                         $id=$_POST['row_id'];
                                                         mysqli_query($con,"UPDATE req_query_table SET hotel='$hotel' WHERE id='$id'");
+                                                        if($hotel=='Banglasaheb Gurudwara'){
+                                                            mysqli_query($con,"UPDATE req_query_table SET incharge_name='VISHWAJEET' WHERE id='$id'");
+                                                            mysqli_query($con,"UPDATE req_query_table SET incharge_phoneno='6307600942' WHERE id='$id'");
+                                                        }
+                                                        if($hotel=='Seeshganjsaheb Gurudwara'){
+                                                            mysqli_query($con,"UPDATE req_query_table SET incharge_name='SHANI' WHERE id='$id'");
+                                                            mysqli_query($con,"UPDATE req_query_table SET incharge_phoneno='6392340455' WHERE id='$id'");
+                                                        }
+                                                        if($hotel=='Rakabganj Gurudwara'){
+                                                            mysqli_query($con,"UPDATE req_query_table SET incharge_name='ALOK CHAUDHARY' WHERE id='$id'");
+                                                            mysqli_query($con,"UPDATE req_query_table SET incharge_phoneno='7052686938' WHERE id='$id'");
+                                                        }
+                                                        if($hotel=='Balasaheb Gurudwara'){
+                                                            mysqli_query($con,"UPDATE req_query_table SET incharge_name='VAISHNAV' WHERE id='$id'");
+                                                            mysqli_query($con,"UPDATE req_query_table SET incharge_phoneno='8604696676' WHERE id='$id'");
+                                                        }
+                                                        if($hotel=='Gujrati Bhavan'){
+                                                            mysqli_query($con,"UPDATE req_query_table SET incharge_name='CHIRANJEEVI' WHERE id='$id'");
+                                                            mysqli_query($con,"UPDATE req_query_table SET incharge_phoneno='8565899772' WHERE id='$id'");
+                                                        }
                                                    }
                                                    if(isset($_POST['attendance'],$_POST['row_id'])){
                                                         $attendance=$_POST['attendance'];
@@ -129,16 +151,18 @@ include_once ('header.php');
 
                                                    $totalguest=0;
                                                    $fetch_blog = mysqli_query($con, "select * from req_query_table order by id desc");
-                                        
+                                                    
 
                                                     while ($res_blog = mysqli_fetch_array($fetch_blog)) {
                                                         $totalguest+=$res_blog['total_people_attending']+1;
                                                     }
                                                    ?>
+                            
                             <table id="example23" class="display nowrap table table-hover table-striped table-bordered" 
                                 cellspacing="0" width="100%">
                                 <thead class="table-light" style="z-index: index 0;">
                                     <tr >
+                                        
                                         <th class="sticky-top">S.No</th>
                                         <th class="sticky-top">Reg no.</th>
                                         <th class="sticky-top">T.G. (<?=$totalguest?>)</th>
@@ -161,6 +185,8 @@ include_once ('header.php');
 										<th class="sticky-top">Photo</th>
 										<th class="sticky-top">Address</th>
                                         <th class="sticky-top">Hotel</th>
+                                        <th class="sticky-top">Person Incharge</th>
+                                        <th class="sticky-top">Incharge Phoneno.</th>
                                         <th class="sticky-top">Attendees</th>
                                         <th class="sticky-top">ID Card</th>
                                         <th class="sticky-top">ID Card Back</th>
@@ -310,15 +336,23 @@ include_once ('header.php');
 
                                                     <select name="hotel" id="hotel" onchange="this.form.submit()">
                                                         <option>Select Hotel</option>
-                                                        <option value="Banglasaheb Gurudwara - VISHWAJEET - 6307600942"<?= $res_blog['hotel']=='Banglasaheb Gurudwara - VISHWAJEET - 6307600942'?"selected":""?>>Banglasaheb Gurudwara - VISHWAJEET - 6307600942</option>
-                                                        <option value="Seeshganjsaheb Gurudwara - SHANI - 6392340455"<?= $res_blog['hotel']=='Seeshganjsaheb Gurudwara - SHANI - 6392340455'?"selected":""?>>Seeshganjsaheb Gurudwara - SHANI - 6392340455</option>
-                                                        <option value="Rakabganj Gurudwara - ALOK CHAUDHARY- 70526 86938"<?= $res_blog['hotel']=='Rakabganj Gurudwara - ALOK CHAUDHARY- 70526 86938'?"selected":""?>>Rakabganj Gurudwara - ALOK CHAUDHARY- 70526 86938</option>
-                                                        <option value="Balasaheb Gurudwara - VAISHNAV - 8604696676"<?= $res_blog['hotel']=='Balasaheb Gurudwara - VAISHNAV - 8604696676'?"selected":""?>>Balasaheb Gurudwara - VAISHNAV - 8604696676</option>
-                                                        <option value="Gujrati Bhavan - CHIRANJEEVI - 8565899772"<?= $res_blog['hotel']=='Gujrati Bhavan - CHIRANJEEVI - 8565899772'?"selected":""?>>Gujrati Bhavan - CHIRANJEEVI - 8565899772</option>
+                                                        <option value="Banglasaheb Gurudwara"<?= $res_blog['hotel']=='Banglasaheb Gurudwara'?"selected":""?>>Banglasaheb Gurudwara</option>
+                                                        <option value="Seeshganjsaheb Gurudwara"<?= $res_blog['hotel']=='Seeshganjsaheb Gurudwara'?"selected":""?>>Seeshganjsaheb Gurudwara</option>
+                                                        <option value="Rakabganj Gurudwara"<?= $res_blog['hotel']=='Rakabganj Gurudwara'?"selected":""?>>Rakabganj Gurudwara</option>
+                                                        <option value="Balasaheb Gurudwara"<?= $res_blog['hotel']=='Balasaheb Gurudwara'?"selected":""?>>Balasaheb Gurudwara</option>
+                                                        <option value="Gujrati Bhavan"<?= $res_blog['hotel']=='Gujrati Bhavan'?"selected":""?>>Gujrati Bhavan</option>
                                                     </select>
                                                 </form> 
                                                    
                                           </td>
+                                        <td>
+                                            
+                                             <div id="incharge-name"><?= $res_blog['incharge_name'];?></div>
+                                        </td>
+                                        <td>
+                                           
+                                            <div id="incharge-phoneno" ><?= $res_blog['incharge_phoneno'];?></div>
+                                        </td>
                                             
                                         <td>
                                                 <a href="manage-small-queries.php?id=<?=$res_blog['id']?>&phone=<?=urlencode($res_blog['phone_number']); ?>&email=<?= urlencode($res_blog['email_id']);?>&arrival=<?=urlencode($res_blog['arrival_date']);?>&departure=<?=urlencode($res_blog['departure_date']);?>" class="btn btn-danger">Other Guests</a>
@@ -462,6 +496,19 @@ document.querySelectorAll('.editphoto').forEach((icon) => {
         fileInput.click(); // auto open file picker
     });
 });
+
+// .addEventListener('change',()=>{
+//     console.log("hello");
+//     const incharge=document.querySelector('#incharge-name');
+//     const incharge_phoneno=document.querySelector('#incharge-phoneno');
+//     if (document.querySelector('#hotel').value !== "") {
+//         incharge.style.display = 'block';
+//         phone.style.display = 'block';
+//     } else {
+//         incharge.style.display = 'none';
+//         phone.style.display = 'none';
+//     }
+// })
 </script>
 <?php
 include_once ('footer.php');

@@ -72,6 +72,8 @@ include_once ('header.php');
                                         <th>ID Card</th>
                                         <th>ID Card Back</th>
                                         <th>Hotel</th>
+                                        <th>Person Incharge</th>
+                                        <th>Incharge Phoneno.</th>
                                         <th>Attendance</th>
                                         <th>Delete</th>
 										
@@ -81,10 +83,32 @@ include_once ('header.php');
 
                                 <tbody>
                                     <?php
-                                    if(isset($_POST['hotel'],$_POST['row_id'])){
+                                    if(isset($_POST['hotel'],$_POST['row_id'])){ 
+                                                     
+                                                    
                                                         $hotel=$_POST['hotel'];
                                                         $id=$_POST['row_id'];
                                                         mysqli_query($con,"UPDATE req_people SET hotel='$hotel' WHERE id='$id'");
+                                                        if($hotel=='Banglasaheb Gurudwara'){
+                                                            mysqli_query($con,"UPDATE req_people SET incharge_name='VISHWAJEET' WHERE id='$id'");
+                                                            mysqli_query($con,"UPDATE req_people SET incharge_phoneno='6307600942' WHERE id='$id'");
+                                                        }
+                                                        if($hotel=='Seeshganjsaheb Gurudwara'){
+                                                            mysqli_query($con,"UPDATE req_people SET incharge_name='SHANI' WHERE id='$id'");
+                                                            mysqli_query($con,"UPDATE req_people SET incharge_phoneno='6392340455' WHERE id='$id'");
+                                                        }
+                                                        if($hotel=='Rakabganj Gurudwara'){
+                                                            mysqli_query($con,"UPDATE req_people SET incharge_name='ALOK CHAUDHARY' WHERE id='$id'");
+                                                            mysqli_query($con,"UPDATE req_people SET incharge_phoneno='7052686938' WHERE id='$id'");
+                                                        }
+                                                        if($hotel=='Balasaheb Gurudwara'){
+                                                            mysqli_query($con,"UPDATE req_people SET incharge_name='VAISHNAV' WHERE id='$id'");
+                                                            mysqli_query($con,"UPDATE req_people SET incharge_phoneno='8604696676' WHERE id='$id'");
+                                                        }
+                                                        if($hotel=='Gujrati Bhavan'){
+                                                            mysqli_query($con,"UPDATE req_people SET incharge_name='CHIRANJEEVI' WHERE id='$id'");
+                                                            mysqli_query($con,"UPDATE req_people SET incharge_phoneno='8565899772' WHERE id='$id'");
+                                                        }
                                                    }
                                     if(isset($_POST['attendance'],$_POST['row_id'])){
                                                         $attendance=$_POST['attendance'];
@@ -233,14 +257,22 @@ include_once ('header.php');
 
                                                 <select name="hotel" id="hotel" onchange="this.form.submit()">
                                                         <option>Select Hotel</option>
-                                                        <option value="Banglasaheb Gurudwara - VISHWAJEET - 6307600942"<?= $res_blog['hotel']=='Banglasaheb Gurudwara - VISHWAJEET - 6307600942'?"selected":""?>>Banglasaheb Gurudwara - VISHWAJEET - 6307600942</option>
-                                                        <option value="Seeshganjsaheb Gurudwara - SHANI - 6392340455"<?= $res_blog['hotel']=='Seeshganjsaheb Gurudwara - SHANI - 6392340455'?"selected":""?>>Seeshganjsaheb Gurudwara - SHANI - 6392340455</option>
-                                                        <option value="Rakabganj Gurudwara - ALOK CHAUDHARY- 7052686938"<?= $res_blog['hotel']=='Rakabganj Gurudwara - ALOK CHAUDHARY- 70526 86938'?"selected":""?>>Rakabganj Gurudwara - ALOK CHAUDHARY- 7052686938</option>
-                                                        <option value="Balasaheb Gurudwara - VAISHNAV - 8604696676"<?= $res_blog['hotel']=='Balasaheb Gurudwara - VAISHNAV - 8604696676'?"selected":""?>>Balasaheb Gurudwara - VAISHNAV - 8604696676</option>
-                                                        <option value="Gujrati Bhavan - CHIRANJEEVI - 8565899772"<?= $res_blog['hotel']=='Gujrati Bhavan - CHIRANJEEVI - 8565899772'?"selected":""?>>Gujrati Bhavan - CHIRANJEEVI - 8565899772</option>
+                                                        <option value="Banglasaheb Gurudwara"<?= $res_blog['hotel']=='Banglasaheb Gurudwara'?"selected":""?>>Banglasaheb Gurudwara</option>
+                                                        <option value="Seeshganjsaheb Gurudwara"<?= $res_blog['hotel']=='Seeshganjsaheb Gurudwara'?"selected":""?>>Seeshganjsaheb Gurudwara</option>
+                                                        <option value="Rakabganj Gurudwara"<?= $res_blog['hotel']=='Rakabganj Gurudwara'?"selected":""?>>Rakabganj Gurudwara</option>
+                                                        <option value="Balasaheb Gurudwara"<?= $res_blog['hotel']=='Balasaheb Gurudwara'?"selected":""?>>Balasaheb Gurudwara</option>
+                                                        <option value="Gujrati Bhavan"<?= $res_blog['hotel']=='Gujrati Bhavan'?"selected":""?>>Gujrati Bhavan</option>
                                                     </select>
                                     </form> 
                                     </td>
+                                    <td>
+                                            
+                                             <div id="incharge-name"><?= $res_blog['incharge_name'];?></div>
+                                        </td>
+                                        <td>
+                                           
+                                            <div id="incharge-phoneno" ><?= $res_blog['incharge_phoneno'];?></div>
+                                        </td>
                                             <td>
                                                  <form method="POST">
                                                     <input type="hidden" name="row_id" value="<?=$res_blog['id']?>">

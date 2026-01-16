@@ -121,7 +121,7 @@ include_once ('header.php');
 
             <!-- Text -->
             <div class="text-start">
-                <strong>Ram Katha – Delhi</strong><br>
+                <strong>Ram Katha - Delhi</strong><br>
                 Manas Sanatandharam<br>
                 Room/Hall No._____<br>
                 <strong>Hotel Alloted : </strong><?=$res_blog['hotel']?><br>
