@@ -87,15 +87,15 @@ include_once ('header.php');
                                         $main_email=$_GET['email'];
                                         ?>
                                          
-                                        <div class="container mt-3">
+                                        <div class="container id-card mt-3">
                                             
         <div class="row justify-content-center">
-        <div class="col-auto"style="width: 400px;
+        <div class="col-auto"style="
         border: 2px solid black;
         background: white;">
 
             <!-- ID CARD -->
-            <div class="id-card p-2"  >
+            <div class=" p-2"  >
 
             <!-- Header -->
             <div class="text-center fw-bold border-bottom border-dark ">
@@ -109,7 +109,7 @@ include_once ('header.php');
             </div>
 
           <!-- Organization -->
-          <div class="d-flex align-items-center justify-content-center mt-1 gap-5">
+          <div class="d-flex align-items-center justify-content-center mt-1">
 
             <!-- Circular Image -->
             <img 
@@ -126,6 +126,9 @@ include_once ('header.php');
                 Manas Sanatandharam<br>
                 Room/Hall No.______<br>
                 <strong>Hotel Alloted : </strong><?=$_GET['hotel']?><br>
+                <strong>Duty Person</strong><br>
+                <strong>Name:</strong><?=$res_blog['incharge_name']?><br>
+                <strong>Contact:</strong><?=$res_blog['incharge_phoneno']?><br>
             </div>
 
 </div>

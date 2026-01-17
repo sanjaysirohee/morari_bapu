@@ -72,12 +72,12 @@ include_once ('header.php');
                                 <!-- <tbody> -->
                                     
                                          
-                                        <div class="container p-3 mt-3 d-flex align-items-center justify-content-center">
+                                        <div class="container id-card p-3 mt-3 d-flex align-items-center justify-content-center">
                                             <div class="row justify-content-center">
         <div class="col-auto"style="width: 400px;
         border: 2px solid black;
         background: white;">
-        <div class="id-card p-2 align-item-center"  
+        <div class=" p-2 align-item-center"  
             >
 
     <h6 class="text-center fw-bold mb-2">आवश्यक सूचना</h6>
