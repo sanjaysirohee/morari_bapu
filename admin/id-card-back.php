@@ -80,7 +80,7 @@ include_once ('header.php');
         <div class=" p-2 align-item-center"  
             >
 
-    <h6 class="text-center fw-bold mb-2">आवश्यक सूचना</h6>
+    <h4 class="text-center mb-2" style="font-weight:400; font-size:16px;"><strong>आवश्यक सूचना</strong></h4>
 
     <div style="font-size: 12px; line-height: 1.4;">
         गुरुद्वारा परिसर एवं यात्री निवास की पवित्रता बनाए रखने हेतु सभी श्रद्धालुओं से विनम्र अनुरोध है कि वे निम्नलिखित नियमों का सख्ती से पालन करें —
@@ -98,9 +98,10 @@ include_once ('header.php');
             <li>विवाद या अनुशासनहीनता पर कार्रवाई होगी।</li>
         </ul>
 
-        <strong>❗ नोट:</strong><br>
+        <p style="font-weight:500; font-size:14px;">
+    <span style="font-size:14px;">❗ नोट:</span><br>
         कोई भी अतिथि अन्य व्यक्तियों के कमरे या बिस्तरों पर न जाए।
-        सभी श्रद्धालु गुरुद्वारा मर्यादा का पूर्ण रूप से पालन करें।
+        सभी श्रद्धालु गुरुद्वारा मर्यादा का पूर्ण रूप से पालन करें।</p>
 </div>
 </div>
 </div>

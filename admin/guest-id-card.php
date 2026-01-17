@@ -89,7 +89,7 @@ include_once ('header.php');
                                          
                                         <div class="container id-card mt-3">
                                             
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" >
         <div class="col-auto"style="
         border: 2px solid black;
         background: white;">
@@ -121,14 +121,14 @@ include_once ('header.php');
             >
 
             <!-- Text -->
-            <div class="text-start">
+            <div class="text-start" style="font-weight:400; font-size:14px;">
                 <strong>Ram Katha - Delhi</strong><br>
                 Manas Sanatandharam<br>
                 Room/Hall No.______<br>
-                <strong>Hotel Alloted : </strong><?=$_GET['hotel']?><br>
-                <strong>Duty Person</strong><br>
-                <strong>Name:</strong><?=$res_blog['incharge_name']?><br>
-                <strong>Contact:</strong><?=$res_blog['incharge_phoneno']?><br>
+                <strong>Hotel Alloted : </strong><?=$res_blog['hotel']?><br>
+                <strong>Duty Person -</strong><br>
+                <strong>Name : </strong><?=$res_blog['incharge_name']?><br>
+                <strong>Contact : </strong><?=$res_blog['incharge_phoneno']?><br>
             </div>
 
 </div>
@@ -155,12 +155,12 @@ include_once ('header.php');
               </div>
             </div>
 
-            <div class="col-8">
-              <div class="text-wrap"><strong>Name : </strong><?=$res_blog['first_name']?> <?=$res_blog['middle_name']?> <?=$res_blog['last_name']?></div>
-              <div class="text-wrap"><strong>Mobile : </strong><?=$_GET['phone']?></div>
-              <div class="text-wrap"><strong>Reg No : </strong><?=$res_blog['request_id']?>_<?=$res_blog['id']?></div>
-              <div class="text-wrap"><strong>Arrival date: </strong><?=$_GET['arrival']?></div>
-              <div class="text-wrap"><strong>Departure date: </strong><?=$_GET['departure']?></div>
+            <div class="col-8" style="font-weight:400; font-size:14px;">
+              <div class="text-break"><strong>Name : </strong><?=$res_blog['first_name']?> <?=$res_blog['middle_name']?> <?=$res_blog['last_name']?></div>
+              <div class="text-break"><strong>Mobile : </strong><?=$_GET['phone']?></div>
+              <div class="text-break"><strong>Reg No : </strong><?=$res_blog['request_id']?>_<?=$res_blog['id']?></div>
+              <div class="text-break"><strong>Arrival date : </strong><?=$_GET['arrival']?></div>
+              <div class="text-break"><strong>Departure date : </strong><?=$_GET['departure']?></div>
             </div>
           </div>
 

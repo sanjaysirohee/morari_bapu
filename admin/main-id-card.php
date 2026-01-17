@@ -120,14 +120,14 @@ include_once ('header.php');
             >
 
             <!-- Text -->
-            <div class="text-start">
+            <div class="text-start" style="font-weight:400; font-size:14px;">
                 <strong>Ram Katha - Delhi</strong><br>
                 Manas Sanatandharam<br>
                 Room/Hall No._____<br>
                 <strong>Hotel Alloted : </strong><?=$res_blog['hotel']?><br>
-                <strong>Duty Person</strong><br>
-                <strong>Name:</strong><?=$res_blog['incharge_name']?><br>
-                <strong>Contact:</strong><?=$res_blog['incharge_phoneno']?><br>
+                <strong>Duty Person - </strong><br>
+                <strong>Name : </strong><?=$res_blog['incharge_name']?><br>
+                <strong>Contact : </strong><?=$res_blog['incharge_phoneno']?><br>
             </div>
 
 </div>
@@ -153,12 +153,12 @@ include_once ('header.php');
               </div>
             </div>
 
-            <div class="col-8">
+            <div class="col-8" style="font-weight:400; font-size:14px;">
               <div><strong>Name : </strong><?=$res_blog['first_name']?> <?=$res_blog['middle_name']?> <?=$res_blog['last_name']?></div>
               <div><strong>Mobile : </strong><?=$res_blog['phone_number']?></div>
               <div><strong>Reg No : </strong><?=$res_blog['id']?></div>
-              <div><strong>Arrival date: </strong><?=$res_blog['arrival_date']?></div>
-              <div><strong>Departure date: </strong><?=$res_blog['departure_date']?></div>
+              <div><strong>Arrival date : </strong><?=$res_blog['arrival_date']?></div>
+              <div><strong>Departure date : </strong><?=$res_blog['departure_date']?></div>
             </div>
           </div>
 
